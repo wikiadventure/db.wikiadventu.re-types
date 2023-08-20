@@ -1,8 +1,9 @@
 import * as dntShim from "../_dnt.shims.js";
 import { HTTPException } from "../deps/deno.land/x/hono@v3.3.1/http-exception.js";
+import { getCookie } from "../deps/deno.land/x/hono@v3.3.1/middleware.js";
 import { env } from "../env/index.js";
 export async function guardOrySession(c) {
-    const ory_session_cookie = Object.entries(c.req.cookie() ?? {}).find(([k, v]) => k.startsWith("ory_session"));
+    const ory_session_cookie = Object.entries(getCookie(c) ?? {}).find(([k, v]) => k.startsWith("ory_session"));
     if (ory_session_cookie == null)
         throw new HTTPException(401, { message: "The user is not authenticated" });
     const ory_session = await dntShim.fetch(env.ORY_BASE_PATH + "/sessions/whoami", {
