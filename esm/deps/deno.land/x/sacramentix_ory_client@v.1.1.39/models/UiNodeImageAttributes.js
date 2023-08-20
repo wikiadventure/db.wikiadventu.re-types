@@ -10,28 +10,68 @@
  * Do not edit the class manually.
  */
 class UiNodeImageAttributes {
-    /**
-    * Height of the image
-    */
-    'height';
-    /**
-    * A unique identifier
-    */
-    'id';
-    /**
-    * NodeType represents this node\'s types. It is a mirror of `node.type` and is primarily used to allow compatibility with OpenAPI 3.0.  In this struct it technically always is \"img\".
-    */
-    'node_type';
-    /**
-    * The image\'s source URL.  format: uri
-    */
-    'src';
-    /**
-    * Width of the image
-    */
-    'width';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UiNodeImageAttributes.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Height of the image
+        */
+        Object.defineProperty(this, 'height', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * A unique identifier
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * NodeType represents this node\'s types. It is a mirror of `node.type` and is primarily used to allow compatibility with OpenAPI 3.0.  In this struct it technically always is \"img\".
+        */
+        Object.defineProperty(this, 'node_type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The image\'s source URL.  format: uri
+        */
+        Object.defineProperty(this, 'src', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Width of the image
+        */
+        Object.defineProperty(this, 'width', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UiNodeImageAttributes, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UiNodeImageAttributes, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "height",
             "baseName": "height",
@@ -62,11 +102,6 @@ class UiNodeImageAttributes {
             "type": "number",
             "format": "int64"
         }
-    ];
-    static getAttributeTypeMap() {
-        return UiNodeImageAttributes.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UiNodeImageAttributes };

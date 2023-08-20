@@ -13,20 +13,50 @@
 * Update Verification Flow with Link Method
 */
 class UpdateVerificationFlowWithLinkMethod {
-    /**
-    * Sending the anti-csrf token is only required for browser login flows.
-    */
-    'csrf_token';
-    /**
-    * Email to Verify  Needs to be set when initiating the flow. If the email is a registered verification email, a verification link will be sent. If the email is not known, a email with details on what happened will be sent instead.  format: email
-    */
-    'email';
-    /**
-    * Method is the method that should be used for this verification flow  Allowed values are `link` and `code` link VerificationStrategyLink code VerificationStrategyCode
-    */
-    'method';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateVerificationFlowWithLinkMethod.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Sending the anti-csrf token is only required for browser login flows.
+        */
+        Object.defineProperty(this, 'csrf_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Email to Verify  Needs to be set when initiating the flow. If the email is a registered verification email, a verification link will be sent. If the email is not known, a email with details on what happened will be sent instead.  format: email
+        */
+        Object.defineProperty(this, 'email', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method is the method that should be used for this verification flow  Allowed values are `link` and `code` link VerificationStrategyLink code VerificationStrategyCode
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateVerificationFlowWithLinkMethod, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateVerificationFlowWithLinkMethod, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "csrf_token",
             "baseName": "csrf_token",
@@ -45,11 +75,6 @@ class UpdateVerificationFlowWithLinkMethod {
             "type": "UpdateVerificationFlowWithLinkMethodMethodEnum",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateVerificationFlowWithLinkMethod.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateVerificationFlowWithLinkMethod };

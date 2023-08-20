@@ -10,16 +10,41 @@
  * Do not edit the class manually.
  */
 class PaginationHeaders {
-    /**
-    * The link header contains pagination links.  For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination).  in: header
-    */
-    'link';
-    /**
-    * The total number of clients.  in: header
-    */
-    'x_total_count';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return PaginationHeaders.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The link header contains pagination links.  For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination).  in: header
+        */
+        Object.defineProperty(this, 'link', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The total number of clients.  in: header
+        */
+        Object.defineProperty(this, 'x_total_count', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(PaginationHeaders, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(PaginationHeaders, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "link",
             "baseName": "link",
@@ -32,11 +57,6 @@ class PaginationHeaders {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return PaginationHeaders.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { PaginationHeaders };

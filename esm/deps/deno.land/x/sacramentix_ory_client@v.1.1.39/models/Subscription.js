@@ -10,42 +10,122 @@
  * Do not edit the class manually.
  */
 class Subscription {
-    'created_at';
-    /**
-    * The currency of the subscription. To change this, a new subscription must be created. usd USD eur Euro
-    */
-    'currency';
-    /**
-    * The currently active interval of the subscription monthly Monthly yearly Yearly
-    */
-    'current_interval';
-    /**
-    * The currently active plan of the subscription
-    */
-    'current_plan';
-    /**
-    * The ID of the stripe customer
-    */
-    'customer_id';
-    /**
-    * The ID of the subscription
-    */
-    'id';
-    'interval_changes_to';
-    'ongoing_stripe_checkout_id';
-    /**
-    * Until when the subscription is payed
-    */
-    'payed_until';
-    'plan_changes_at';
-    'plan_changes_to';
-    /**
-    * For `collection_method=charge_automatically` a subscription moves into `incomplete` if the initial payment attempt fails. A subscription in this state can only have metadata and default_source updated. Once the first invoice is paid, the subscription moves into an `active` state. If the first invoice is not paid within 23 hours, the subscription transitions to `incomplete_expired`. This is a terminal state, the open invoice will be voided and no further invoices will be generated.  A subscription that is currently in a trial period is `trialing` and moves to `active` when the trial period is over.  If subscription `collection_method=charge_automatically` it becomes `past_due` when payment to renew it fails and `canceled` or `unpaid` (depending on your subscriptions settings) when Stripe has exhausted all payment retry attempts.  If subscription `collection_method=send_invoice` it becomes `past_due` when its invoice is not paid by the due date, and `canceled` or `unpaid` if it is still not paid by an additional deadline after that. Note that when a subscription has a status of `unpaid`, no subsequent invoices will be attempted (invoices will be created, but then immediately automatically closed). After receiving updated payment information from a customer, you may choose to reopen and pay their closed invoices.
-    */
-    'status';
-    'updated_at';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return Subscription.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The currency of the subscription. To change this, a new subscription must be created. usd USD eur Euro
+        */
+        Object.defineProperty(this, 'currency', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The currently active interval of the subscription monthly Monthly yearly Yearly
+        */
+        Object.defineProperty(this, 'current_interval', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The currently active plan of the subscription
+        */
+        Object.defineProperty(this, 'current_plan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The ID of the stripe customer
+        */
+        Object.defineProperty(this, 'customer_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The ID of the subscription
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'interval_changes_to', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'ongoing_stripe_checkout_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Until when the subscription is payed
+        */
+        Object.defineProperty(this, 'payed_until', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'plan_changes_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'plan_changes_to', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * For `collection_method=charge_automatically` a subscription moves into `incomplete` if the initial payment attempt fails. A subscription in this state can only have metadata and default_source updated. Once the first invoice is paid, the subscription moves into an `active` state. If the first invoice is not paid within 23 hours, the subscription transitions to `incomplete_expired`. This is a terminal state, the open invoice will be voided and no further invoices will be generated.  A subscription that is currently in a trial period is `trialing` and moves to `active` when the trial period is over.  If subscription `collection_method=charge_automatically` it becomes `past_due` when payment to renew it fails and `canceled` or `unpaid` (depending on your subscriptions settings) when Stripe has exhausted all payment retry attempts.  If subscription `collection_method=send_invoice` it becomes `past_due` when its invoice is not paid by the due date, and `canceled` or `unpaid` if it is still not paid by an additional deadline after that. Note that when a subscription has a status of `unpaid`, no subsequent invoices will be attempted (invoices will be created, but then immediately automatically closed). After receiving updated payment information from a customer, you may choose to reopen and pay their closed invoices.
+        */
+        Object.defineProperty(this, 'status', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(Subscription, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(Subscription, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "created_at",
             "baseName": "created_at",
@@ -124,11 +204,6 @@ class Subscription {
             "type": "Date",
             "format": "date-time"
         }
-    ];
-    static getAttributeTypeMap() {
-        return Subscription.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { Subscription };

@@ -25,7 +25,6 @@ const route = app
     .post("/achieve/:achievement", async (c) => {
     const { achievement } = await c.req.param();
     const { user } = await guardOrySession(c);
-    c.req;
     return c.jsonT(await achieve(user, achievement));
 });
 const port = 9009;

@@ -72,10 +72,25 @@ function findMiddleware(middleware, path) {
     return undefined;
 }
 export class RegExpRouter {
-    name = 'RegExpRouter';
-    middleware;
-    routes;
     constructor() {
+        Object.defineProperty(this, "name", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: 'RegExpRouter'
+        });
+        Object.defineProperty(this, "middleware", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "routes", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.middleware = { [METHOD_NAME_ALL]: {} };
         this.routes = { [METHOD_NAME_ALL]: {} };
     }

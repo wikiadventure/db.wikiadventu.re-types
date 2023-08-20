@@ -13,23 +13,38 @@
 * Contains a redirect URL used to complete a login, consent, or logout request.
 */
 class OAuth2RedirectTo {
-    /**
-    * RedirectURL is the URL which you should redirect the user\'s browser to once the authentication process is completed.
-    */
-    'redirect_to';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return OAuth2RedirectTo.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * RedirectURL is the URL which you should redirect the user\'s browser to once the authentication process is completed.
+        */
+        Object.defineProperty(this, 'redirect_to', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(OAuth2RedirectTo, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(OAuth2RedirectTo, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "redirect_to",
             "baseName": "redirect_to",
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return OAuth2RedirectTo.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { OAuth2RedirectTo };

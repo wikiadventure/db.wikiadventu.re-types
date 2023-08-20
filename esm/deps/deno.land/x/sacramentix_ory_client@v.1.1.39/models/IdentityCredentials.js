@@ -13,26 +13,71 @@
 * Credentials represents a specific credential type
 */
 class IdentityCredentials {
-    'config';
-    /**
-    * CreatedAt is a helper struct field for gobuffalo.pop.
-    */
-    'created_at';
-    /**
-    * Identifiers represents a list of unique identifiers this credential type matches.
-    */
-    'identifiers';
-    'type';
-    /**
-    * UpdatedAt is a helper struct field for gobuffalo.pop.
-    */
-    'updated_at';
-    /**
-    * Version refers to the version of the credential. Useful when changing the config schema.
-    */
-    'version';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return IdentityCredentials.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'config', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * CreatedAt is a helper struct field for gobuffalo.pop.
+        */
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Identifiers represents a list of unique identifiers this credential type matches.
+        */
+        Object.defineProperty(this, 'identifiers', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * UpdatedAt is a helper struct field for gobuffalo.pop.
+        */
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Version refers to the version of the credential. Useful when changing the config schema.
+        */
+        Object.defineProperty(this, 'version', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(IdentityCredentials, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(IdentityCredentials, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "config",
             "baseName": "config",
@@ -69,11 +114,6 @@ class IdentityCredentials {
             "type": "number",
             "format": "int64"
         }
-    ];
-    static getAttributeTypeMap() {
-        return IdentityCredentials.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { IdentityCredentials };

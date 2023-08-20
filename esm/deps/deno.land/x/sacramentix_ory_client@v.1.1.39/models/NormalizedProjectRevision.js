@@ -10,563 +10,1343 @@
  * Do not edit the class manually.
  */
 class NormalizedProjectRevision {
-    /**
-    * The Project\'s Revision Creation Date
-    */
-    'created_at';
-    'hydra_oauth2_allowed_top_level_claims';
-    /**
-    * Automatically grant authorized OAuth2 Scope in OAuth2 Client Credentials Flow.  Each OAuth2 Client is allowed to request a predefined OAuth2 Scope (for example `read write`). If this option is enabled, the full scope is automatically granted when performing the OAuth2 Client Credentials flow.  If disabled, the OAuth2 Client has to request the scope in the OAuth2 request by providing the `scope` query parameter.  Setting this option to true is common if you need compatibility with MITREid.  This governs the \"oauth2.client_credentials.default_grant_allowed_scope\" setting.
-    */
-    'hydra_oauth2_client_credentials_default_grant_allowed_scope';
-    /**
-    * Set to true if you want to exclude claim `nbf (not before)` part of access token.  This governs the \"oauth2.exclude_not_before_claim\" setting.
-    */
-    'hydra_oauth2_exclude_not_before_claim';
-    /**
-    * Configures if the issued at (`iat`) claim is required in the JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants (RFC7523).  If set to `false`, the `iat` claim is required. Set this value to `true` only after careful consideration.  This governs the \"oauth2.grant.jwt.iat_optional\" setting.
-    */
-    'hydra_oauth2_grant_jwt_iat_optional';
-    /**
-    * Configures if the JSON Web Token ID (`jti`) claim is required in the JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants (RFC7523).  If set to `false`, the `jti` claim is required. Set this value to `true` only after careful consideration.  This governs the \"oauth2.grant.jwt.jti_optional\" setting.
-    */
-    'hydra_oauth2_grant_jwt_jti_optional';
-    /**
-    * Configures what the maximum age of a JWT assertion used in the JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants (RFC7523) can be.  This feature uses the `exp` claim and `iat` claim to calculate assertion age. Assertions exceeding the max age will be denied.  Useful as a safety measure and recommended to keep below 720h.  This governs the \"oauth2.grant.jwt.max_ttl\" setting.
-    */
-    'hydra_oauth2_grant_jwt_max_ttl';
-    /**
-    * Configures whether PKCE should be enforced for all OAuth2 Clients.  This governs the \"oauth2.pkce.enforced\" setting.
-    */
-    'hydra_oauth2_pkce_enforced';
-    /**
-    * Configures whether PKCE should be enforced for OAuth2 Clients without a client secret (public clients).  This governs the \"oauth2.pkce.enforced_for_public_clients\" setting.
-    */
-    'hydra_oauth2_pkce_enforced_for_public_clients';
-    /**
-    * Sets the Refresh Token Hook Endpoint. If set this endpoint will be called during the OAuth2 Token Refresh grant update the OAuth2 Access Token claims.  This governs the \"oauth2.refresh_token_hook\" setting.
-    */
-    'hydra_oauth2_refresh_token_hook';
-    'hydra_oidc_dynamic_client_registration_default_scope';
-    /**
-    * Configures OpenID Connect Dynamic Client Registration.  This governs the \"oidc.dynamic_client_registration.enabled\" setting.
-    */
-    'hydra_oidc_dynamic_client_registration_enabled';
-    /**
-    * Configures OpenID Connect Discovery and overwrites the pairwise algorithm  This governs the \"oidc.subject_identifiers.pairwise_salt\" setting.
-    */
-    'hydra_oidc_subject_identifiers_pairwise_salt';
-    'hydra_oidc_subject_identifiers_supported_types';
-    'hydra_secrets_cookie';
-    'hydra_secrets_system';
-    'hydra_serve_admin_cors_allowed_origins';
-    /**
-    * Configures the Ory Hydra CORS Settings  This governs the \"serve.admin.cors.enabled\" setting.
-    */
-    'hydra_serve_admin_cors_enabled';
-    /**
-    * Configures the Ory Hydra Cookie Same Site Legacy Workaround  This governs the \"serve.cookies.same_site_legacy_workaround\" setting.
-    */
-    'hydra_serve_cookies_same_site_legacy_workaround';
-    /**
-    * Configures the Ory Hydra Cookie Same Site Mode  This governs the \"serve.cookies.same_site_mode\" setting.
-    */
-    'hydra_serve_cookies_same_site_mode';
-    'hydra_serve_public_cors_allowed_origins';
-    /**
-    * Configures the Ory Hydra CORS Settings  This governs the \"serve.public.cors.enabled\" setting.
-    */
-    'hydra_serve_public_cors_enabled';
-    /**
-    * Defines access token type. jwt is a bad idea, see https://www.ory.sh/docs/hydra/advanced#json-web-tokens  This governs the \"strategies.access_token\" setting. opaque Oauth2AccessTokenStrategyOpaque jwt Oauth2AccessTokenStrategyJwt
-    */
-    'hydra_strategies_access_token';
-    /**
-    * Defines how scopes are matched. For more details have a look at https://github.com/ory/fosite#scopes  This governs the \"strategies.scope\" setting. exact Oauth2ScopeStrategyExact wildcard Oauth2ScopeStrategyWildcard
-    */
-    'hydra_strategies_scope';
-    /**
-    * This governs the \"ttl.access_token\" setting.
-    */
-    'hydra_ttl_access_token';
-    /**
-    * Configures how long refresh tokens are valid.  Set to -1 for refresh tokens to never expire. This is not recommended!  This governs the \"ttl.auth_code\" setting.
-    */
-    'hydra_ttl_auth_code';
-    /**
-    * This governs the \"ttl.id_token\" setting.
-    */
-    'hydra_ttl_id_token';
-    /**
-    * Configures how long a user login and consent flow may take.  This governs the \"ttl.login_consent_request\" setting.
-    */
-    'hydra_ttl_login_consent_request';
-    /**
-    * Configures how long refresh tokens are valid.  Set to -1 for refresh tokens to never expire. This is not recommended!  This governs the \"ttl.refresh_token\" setting.
-    */
-    'hydra_ttl_refresh_token';
-    /**
-    * Sets the OAuth2 Consent Endpoint URL of the OAuth2 User Login & Consent flow.  Defaults to the Ory Account Experience if left empty.  This governs the \"urls.consent\" setting.
-    */
-    'hydra_urls_consent';
-    /**
-    * Sets the OAuth2 Error URL of the OAuth2 User Login & Consent flow.  Defaults to the Ory Account Experience if left empty.  This governs the \"urls.error\" setting.
-    */
-    'hydra_urls_error';
-    /**
-    * Sets the OAuth2 Login Endpoint URL of the OAuth2 User Login & Consent flow.  Defaults to the Ory Account Experience if left empty.  This governs the \"urls.login\" setting.
-    */
-    'hydra_urls_login';
-    /**
-    * Sets the logout endpoint.  Defaults to the Ory Account Experience if left empty.  This governs the \"urls.logout\" setting.
-    */
-    'hydra_urls_logout';
-    /**
-    * When an OAuth2-related user agent requests to log out, they will be redirected to this url afterwards per default.  Defaults to the Ory Account Experience in development and your application in production mode when a custom domain is connected.  This governs the \"urls.post_logout_redirect\" setting.
-    */
-    'hydra_urls_post_logout_redirect';
-    /**
-    * This value will be used as the issuer in access and ID tokens. It must be specified and using HTTPS protocol, unless the development mode is enabled.  On the Ory Network it will be very rare that you want to modify this value. If left empty, it will default to the correct value for the Ory Network.  This governs the \"urls.self.issuer\" setting.
-    */
-    'hydra_urls_self_issuer';
-    'hydra_webfinger_jwks_broadcast_keys';
-    /**
-    * Configures OpenID Connect Discovery and overwrites the OAuth2 Authorization URL.  This governs the \"webfinger.oidc.discovery.auth_url\" setting.
-    */
-    'hydra_webfinger_oidc_discovery_auth_url';
-    /**
-    * Configures OpenID Connect Discovery and overwrites the OpenID Connect Dynamic Client Registration Endpoint.  This governs the \"webfinger.oidc.discovery.client_registration_url\" setting.
-    */
-    'hydra_webfinger_oidc_discovery_client_registration_url';
-    /**
-    * Configures OpenID Connect Discovery and overwrites the JWKS URL.  This governs the \"webfinger.oidc.discovery.jwks_url\" setting.
-    */
-    'hydra_webfinger_oidc_discovery_jwks_url';
-    'hydra_webfinger_oidc_discovery_supported_claims';
-    'hydra_webfinger_oidc_discovery_supported_scope';
-    /**
-    * Configures OpenID Connect Discovery and overwrites the OAuth2 Token URL.  This governs the \"webfinger.oidc.discovery.token_url\" setting.
-    */
-    'hydra_webfinger_oidc_discovery_token_url';
-    /**
-    * Configures OpenID Connect Discovery and overwrites userinfo endpoint to be advertised at the OpenID Connect Discovery endpoint /.well-known/openid-configuration. Defaults to Ory Hydra\'s userinfo endpoint at /userinfo. Set this value if you want to handle this endpoint yourself.  This governs the \"webfinger.oidc.discovery.userinfo_url\" setting.
-    */
-    'hydra_webfinger_oidc_discovery_userinfo_url';
-    /**
-    * The revision ID.
-    */
-    'id';
-    /**
-    * The Revisions\' Keto Namespace Configuration  The string is a URL pointing to an OPL file with the configuration.
-    */
-    'keto_namespace_configuration';
-    'keto_namespaces';
-    'keto_read_max_depth';
-    /**
-    * Configures the Ory Kratos Cookie SameSite Attribute  This governs the \"cookies.same_site\" setting.
-    */
-    'kratos_cookies_same_site';
-    /**
-    * Configures the Ory Kratos SMTP Connection URI  This governs the \"courier.smtp.connection_uri\" setting.
-    */
-    'kratos_courier_smtp_connection_uri';
-    /**
-    * Configures the Ory Kratos SMTP From Address  This governs the \"courier.smtp.from_address\" setting.
-    */
-    'kratos_courier_smtp_from_address';
-    /**
-    * Configures the Ory Kratos SMTP From Name  This governs the \"courier.smtp.from_name\" setting.
-    */
-    'kratos_courier_smtp_from_name';
-    /**
-    * NullJSONRawMessage represents a json.RawMessage that works well with JSON, SQL, and Swagger and is NULLable-
-    */
-    'kratos_courier_smtp_headers';
-    /**
-    * Configures the Ory Kratos Invalid Recovery via Code Email Body HTML Template  This governs the \"courier.smtp.templates.recovery_code.invalid.email.body.html\" setting.
-    */
-    'kratos_courier_templates_recovery_code_invalid_email_body_html';
-    /**
-    * Configures the Ory Kratos Invalid Recovery via Code Email Body Plaintext Template  This governs the \"courier.smtp.templates.recovery_code.invalid.email.body.plaintext\" setting.
-    */
-    'kratos_courier_templates_recovery_code_invalid_email_body_plaintext';
-    /**
-    * Configures the Ory Kratos Invalid Recovery via Code Email Subject Template  This governs the \"courier.smtp.templates.recovery_code.invalid.email.body.html\" setting.
-    */
-    'kratos_courier_templates_recovery_code_invalid_email_subject';
-    /**
-    * Configures the Ory Kratos Valid Recovery via Code Email Body HTML Template  This governs the \"courier.smtp.templates.recovery_code.valid.email.body.html\" setting.
-    */
-    'kratos_courier_templates_recovery_code_valid_email_body_html';
-    /**
-    * Configures the Ory Kratos Valid Recovery via Code Email Body Plaintext Template  This governs the \"courier.smtp.templates.recovery_code.valid.email.body.plaintext\" setting.
-    */
-    'kratos_courier_templates_recovery_code_valid_email_body_plaintext';
-    /**
-    * Configures the Ory Kratos Valid Recovery via Code Email Subject Template  This governs the \"courier.smtp.templates.recovery_code.valid.email.subject\" setting.
-    */
-    'kratos_courier_templates_recovery_code_valid_email_subject';
-    /**
-    * Configures the Ory Kratos Invalid Recovery Email Body HTML Template  This governs the \"courier.smtp.templates.recovery.invalid.email.body.html\" setting.
-    */
-    'kratos_courier_templates_recovery_invalid_email_body_html';
-    /**
-    * Configures the Ory Kratos Invalid Recovery Email Body Plaintext Template  This governs the \"courier.smtp.templates.recovery.invalid.email.body.plaintext\" setting.
-    */
-    'kratos_courier_templates_recovery_invalid_email_body_plaintext';
-    /**
-    * Configures the Ory Kratos Invalid Recovery Email Subject Template  This governs the \"courier.smtp.templates.recovery.invalid.email.body.html\" setting.
-    */
-    'kratos_courier_templates_recovery_invalid_email_subject';
-    /**
-    * Configures the Ory Kratos Valid Recovery Email Body HTML Template  This governs the \"courier.smtp.templates.recovery.valid.email.body.html\" setting.
-    */
-    'kratos_courier_templates_recovery_valid_email_body_html';
-    /**
-    * Configures the Ory Kratos Valid Recovery Email Body Plaintext Template  This governs the \"courier.smtp.templates.recovery.valid.email.body.plaintext\" setting.
-    */
-    'kratos_courier_templates_recovery_valid_email_body_plaintext';
-    /**
-    * Configures the Ory Kratos Valid Recovery Email Subject Template  This governs the \"courier.smtp.templates.recovery.valid.email.subject\" setting.
-    */
-    'kratos_courier_templates_recovery_valid_email_subject';
-    /**
-    * Configures the Ory Kratos Invalid Verification via Code Email Body HTML Template  This governs the \"courier.smtp.templates.verification_code.invalid.email.body.html\" setting.
-    */
-    'kratos_courier_templates_verification_code_invalid_email_body_html';
-    /**
-    * Configures the Ory Kratos Invalid Verification via Code Email Body Plaintext Template  This governs the \"courier.smtp.templates.verification_code.invalid.email.body.plaintext\" setting.
-    */
-    'kratos_courier_templates_verification_code_invalid_email_body_plaintext';
-    /**
-    * Configures the Ory Kratos Invalid Verification via Code Email Subject Template  This governs the \"courier.smtp.templates.verification_code.invalid.email.subject\" setting.
-    */
-    'kratos_courier_templates_verification_code_invalid_email_subject';
-    /**
-    * Configures the Ory Kratos Valid Verification via Code Email Body HTML Template  This governs the \"courier.smtp.templates.verification_code.valid.email.body.html\" setting.
-    */
-    'kratos_courier_templates_verification_code_valid_email_body_html';
-    /**
-    * Configures the Ory Kratos Valid Verification via Code Email Body Plaintext Template  This governs the \"courier.smtp.templates.verification_code.valid.email.body.plaintext\" setting.
-    */
-    'kratos_courier_templates_verification_code_valid_email_body_plaintext';
-    /**
-    * Configures the Ory Kratos Valid Verification via Code Email Subject Template  This governs the \"courier.smtp.templates.verification_code.valid.email.subject\" setting.
-    */
-    'kratos_courier_templates_verification_code_valid_email_subject';
-    /**
-    * Configures the Ory Kratos Invalid Verification Email Body HTML Template  This governs the \"courier.smtp.templates.verification.invalid.email.body.html\" setting.
-    */
-    'kratos_courier_templates_verification_invalid_email_body_html';
-    /**
-    * Configures the Ory Kratos Invalid Verification Email Body Plaintext Template  This governs the \"courier.smtp.templates.verification.invalid.email.body.plaintext\" setting.
-    */
-    'kratos_courier_templates_verification_invalid_email_body_plaintext';
-    /**
-    * Configures the Ory Kratos Invalid Verification Email Subject Template  This governs the \"courier.smtp.templates.verification.invalid.email.subject\" setting.
-    */
-    'kratos_courier_templates_verification_invalid_email_subject';
-    /**
-    * Configures the Ory Kratos Valid Verification Email Body HTML Template  This governs the \"courier.smtp.templates.verification.valid.email.body.html\" setting.
-    */
-    'kratos_courier_templates_verification_valid_email_body_html';
-    /**
-    * Configures the Ory Kratos Valid Verification Email Body Plaintext Template  This governs the \"courier.smtp.templates.verification.valid.email.body.plaintext\" setting.
-    */
-    'kratos_courier_templates_verification_valid_email_body_plaintext';
-    /**
-    * Configures the Ory Kratos Valid Verification Email Subject Template  This governs the \"courier.smtp.templates.verification.valid.email.subject\" setting.
-    */
-    'kratos_courier_templates_verification_valid_email_subject';
-    /**
-    * Configures the Ory Kratos Session caching feature flag  This governs the \"feature_flags.cacheable_sessions\" setting.
-    */
-    'kratos_feature_flags_cacheable_sessions';
-    'kratos_identity_schemas';
-    /**
-    * NullJSONRawMessage represents a json.RawMessage that works well with JSON, SQL, and Swagger and is NULLable-
-    */
-    'kratos_oauth2_provider_headers';
-    /**
-    * Kratos OAuth2 Provider Override Return To  Enabling this allows Kratos to set the return_to parameter automatically to the OAuth2 request URL on the login flow, allowing complex flows such as recovery to continue to the initial OAuth2 flow.
-    */
-    'kratos_oauth2_provider_override_return_to';
-    /**
-    * The Revisions\' OAuth2 Provider Integration URL  This governs the \"oauth2_provider.url\" setting.
-    */
-    'kratos_oauth2_provider_url';
-    'kratos_secrets_cipher';
-    'kratos_secrets_cookie';
-    'kratos_secrets_default';
-    'kratos_selfservice_allowed_return_urls';
-    /**
-    * Configures the Ory Kratos Default Return URL  This governs the \"selfservice.allowed_return_urls\" setting.
-    */
-    'kratos_selfservice_default_browser_return_url';
-    /**
-    * Configures the Ory Kratos Error UI URL  This governs the \"selfservice.flows.error.ui_url\" setting.
-    */
-    'kratos_selfservice_flows_error_ui_url';
-    'kratos_selfservice_flows_hooks';
-    /**
-    * Configures the Ory Kratos Login Default Return URL  This governs the \"selfservice.flows.login.after.default_browser_return_url\" setting.
-    */
-    'kratos_selfservice_flows_login_after_default_browser_return_url';
-    /**
-    * Configures the Ory Kratos Login After OIDC Default Return URL  This governs the \"selfservice.flows.login.after.oidc.default_browser_return_url\" setting.
-    */
-    'kratos_selfservice_flows_login_after_oidc_default_browser_return_url';
-    /**
-    * Configures the Ory Kratos Login After Password Default Return URL  This governs the \"selfservice.flows.login.after.password.default_browser_return_url\" setting.
-    */
-    'kratos_selfservice_flows_login_after_password_default_browser_return_url';
-    /**
-    * Configures the Ory Kratos Login After WebAuthn Default Return URL  This governs the \"selfservice.flows.login.after.webauthn.default_browser_return_url\" setting.
-    */
-    'kratos_selfservice_flows_login_after_webauthn_default_browser_return_url';
-    /**
-    * Configures the Ory Kratos Login Lifespan  This governs the \"selfservice.flows.login.lifespan\" setting.
-    */
-    'kratos_selfservice_flows_login_lifespan';
-    /**
-    * Configures the Ory Kratos Login UI URL  This governs the \"selfservice.flows.login.ui_url\" setting.
-    */
-    'kratos_selfservice_flows_login_ui_url';
-    /**
-    * Configures the Ory Kratos Logout Default Return URL  This governs the \"selfservice.flows.logout.after.default_browser_return_url\" setting.
-    */
-    'kratos_selfservice_flows_logout_after_default_browser_return_url';
-    /**
-    * Configures the Ory Kratos Recovery Default Return URL  This governs the \"selfservice.flows.recovery.after.default_browser_return_url\" setting.
-    */
-    'kratos_selfservice_flows_recovery_after_default_browser_return_url';
-    /**
-    * Configures the Ory Kratos Recovery Enabled Setting  This governs the \"selfservice.flows.recovery.enabled\" setting.
-    */
-    'kratos_selfservice_flows_recovery_enabled';
-    /**
-    * Configures the Ory Kratos Recovery Lifespan  This governs the \"selfservice.flows.recovery.lifespan\" setting.
-    */
-    'kratos_selfservice_flows_recovery_lifespan';
-    /**
-    * Configures whether to notify unknown recipients of a Ory Kratos recovery flow  This governs the \"selfservice.flows.recovery.notify_unknown_recipients\" setting.
-    */
-    'kratos_selfservice_flows_recovery_notify_unknown_recipients';
-    /**
-    * Configures the Ory Kratos Recovery UI URL  This governs the \"selfservice.flows.recovery.ui_url\" setting.
-    */
-    'kratos_selfservice_flows_recovery_ui_url';
-    /**
-    * Configures the Ory Kratos Recovery strategy to use (\"link\" or \"code\")  This governs the \"selfservice.flows.recovery.use\" setting. link SelfServiceMessageVerificationStrategyLink code SelfServiceMessageVerificationStrategyCode
-    */
-    'kratos_selfservice_flows_recovery_use';
-    /**
-    * Configures the Ory Kratos Registration Default Return URL  This governs the \"selfservice.flows.registration.after.default_browser_return_url\" setting.
-    */
-    'kratos_selfservice_flows_registration_after_default_browser_return_url';
-    /**
-    * Configures the Ory Kratos Registration After OIDC Default Return URL  This governs the \"selfservice.flows.registration.after.oidc.default_browser_return_url\" setting.
-    */
-    'kratos_selfservice_flows_registration_after_oidc_default_browser_return_url';
-    /**
-    * Configures the Ory Kratos Registration After Password Default Return URL  This governs the \"selfservice.flows.registration.after.password.default_browser_return_url\" setting.
-    */
-    'kratos_selfservice_flows_registration_after_password_default_browser_return_url';
-    /**
-    * Configures the Ory Kratos Registration After Password Default Return URL  This governs the \"selfservice.flows.registration.after.password.default_browser_return_url\" setting.
-    */
-    'kratos_selfservice_flows_registration_after_webauthn_default_browser_return_url';
-    /**
-    * Configures the Whether Ory Kratos Registration is Enabled  This governs the \"selfservice.flows.registration.enabled\" setting.0
-    */
-    'kratos_selfservice_flows_registration_enabled';
-    /**
-    * Configures the Ory Kratos Registration Lifespan  This governs the \"selfservice.flows.registration.lifespan\" setting.
-    */
-    'kratos_selfservice_flows_registration_lifespan';
-    /**
-    * Configures the Ory Kratos Registration UI URL  This governs the \"selfservice.flows.registration.ui_url\" setting.
-    */
-    'kratos_selfservice_flows_registration_ui_url';
-    /**
-    * Configures the Ory Kratos Settings Default Return URL  This governs the \"selfservice.flows.settings.after.default_browser_return_url\" setting.
-    */
-    'kratos_selfservice_flows_settings_after_default_browser_return_url';
-    /**
-    * Configures the Ory Kratos Settings Default Return URL After Updating Passwords  This governs the \"selfservice.flows.settings.after.password.default_browser_return_url\" setting.
-    */
-    'kratos_selfservice_flows_settings_after_password_default_browser_return_url';
-    /**
-    * Configures the Ory Kratos Settings Default Return URL After Updating Profiles  This governs the \"selfservice.flows.settings.after.profile.default_browser_return_url\" setting.
-    */
-    'kratos_selfservice_flows_settings_after_profile_default_browser_return_url';
-    /**
-    * Configures the Ory Kratos Settings Lifespan  This governs the \"selfservice.flows.settings.lifespan\" setting.
-    */
-    'kratos_selfservice_flows_settings_lifespan';
-    /**
-    * Configures the Ory Kratos Settings Privileged Session Max Age  This governs the \"selfservice.flows.settings.privileged_session_max_age\" setting.
-    */
-    'kratos_selfservice_flows_settings_privileged_session_max_age';
-    /**
-    * Configures the Ory Kratos Settings Required AAL  This governs the \"selfservice.flows.settings.required_aal\" setting.
-    */
-    'kratos_selfservice_flows_settings_required_aal';
-    /**
-    * Configures the Ory Kratos Settings UI URL  This governs the \"selfservice.flows.settings.ui_url\" setting.
-    */
-    'kratos_selfservice_flows_settings_ui_url';
-    /**
-    * Configures the Ory Kratos Verification Default Return URL  This governs the \"selfservice.flows.verification.after.default_browser_return_url\" setting.
-    */
-    'kratos_selfservice_flows_verification_after_default_browser_return_url';
-    /**
-    * Configures the Ory Kratos Verification Enabled Setting  This governs the \"selfservice.flows.verification.enabled\" setting.
-    */
-    'kratos_selfservice_flows_verification_enabled';
-    /**
-    * Configures the Ory Kratos Verification Lifespan  This governs the \"selfservice.flows.verification.lifespan\" setting.
-    */
-    'kratos_selfservice_flows_verification_lifespan';
-    /**
-    * Configures whether to notify unknown recipients of a Ory Kratos verification flow  This governs the \"selfservice.flows.verification.notify_unknown_recipients\" setting.
-    */
-    'kratos_selfservice_flows_verification_notify_unknown_recipients';
-    /**
-    * Configures the Ory Kratos Verification UI URL  This governs the \"selfservice.flows.verification.ui_url\" setting.
-    */
-    'kratos_selfservice_flows_verification_ui_url';
-    /**
-    * Configures the Ory Kratos Strategy to use for Verification  This governs the \"selfservice.flows.verification.use\" setting. link SelfServiceMessageVerificationStrategyLink code SelfServiceMessageVerificationStrategyCode
-    */
-    'kratos_selfservice_flows_verification_use';
-    /**
-    * Configures the Ory Kratos Code Method\'s lifespan  This governs the \"selfservice.methods.code.config.lifespan\" setting.
-    */
-    'kratos_selfservice_methods_code_config_lifespan';
-    /**
-    * Configures whether Ory Kratos Code Method is enabled  This governs the \"selfservice.methods.code.enabled\" setting.
-    */
-    'kratos_selfservice_methods_code_enabled';
-    /**
-    * Configures the Base URL which Recovery, Verification, and Login Links Point to  It is recommended to leave this value empty. It will be appropriately configured to the best matching domain (e.g. when using custom domains) automatically.  This governs the \"selfservice.methods.link.config.base_url\" setting.
-    */
-    'kratos_selfservice_methods_link_config_base_url';
-    /**
-    * Configures the Ory Kratos Link Method\'s lifespan  This governs the \"selfservice.methods.link.config.lifespan\" setting.
-    */
-    'kratos_selfservice_methods_link_config_lifespan';
-    /**
-    * Configures whether Ory Kratos Link Method is enabled  This governs the \"selfservice.methods.link.enabled\" setting.
-    */
-    'kratos_selfservice_methods_link_enabled';
-    /**
-    * Configures whether Ory Kratos TOTP Lookup Secret is enabled  This governs the \"selfservice.methods.lookup_secret.enabled\" setting.
-    */
-    'kratos_selfservice_methods_lookup_secret_enabled';
-    /**
-    * Configures the Ory Kratos Third Party / OpenID Connect base redirect URI  This governs the \"selfservice.methods.oidc.config.base_redirect_uri\" setting.
-    */
-    'kratos_selfservice_methods_oidc_config_base_redirect_uri';
-    'kratos_selfservice_methods_oidc_config_providers';
-    /**
-    * Configures whether Ory Kratos Third Party / OpenID Connect Login is enabled  This governs the \"selfservice.methods.oidc.enabled\" setting.
-    */
-    'kratos_selfservice_methods_oidc_enabled';
-    /**
-    * Configures whether Ory Kratos Password HIBP Checks is enabled  This governs the \"selfservice.methods.password.config.haveibeenpwned_enabled\" setting.
-    */
-    'kratos_selfservice_methods_password_config_haveibeenpwned_enabled';
-    /**
-    * Configures whether Ory Kratos Password should disable the similarity policy.  This governs the \"selfservice.methods.password.config.identifier_similarity_check_enabled\" setting.
-    */
-    'kratos_selfservice_methods_password_config_identifier_similarity_check_enabled';
-    /**
-    * Configures whether Ory Kratos Password Should ignore HIBPWND Network Errors  This governs the \"selfservice.methods.password.config.ignore_network_errors\" setting.
-    */
-    'kratos_selfservice_methods_password_config_ignore_network_errors';
-    /**
-    * Configures Ory Kratos Password Max Breaches Detection  This governs the \"selfservice.methods.password.config.max_breaches\" setting.
-    */
-    'kratos_selfservice_methods_password_config_max_breaches';
-    /**
-    * Configures the minimum length of passwords.  This governs the \"selfservice.methods.password.config.min_password_length\" setting.
-    */
-    'kratos_selfservice_methods_password_config_min_password_length';
-    /**
-    * Configures whether Ory Kratos Password Method is enabled  This governs the \"selfservice.methods.password.enabled\" setting.
-    */
-    'kratos_selfservice_methods_password_enabled';
-    /**
-    * Configures whether Ory Kratos Profile Method is enabled  This governs the \"selfservice.methods.profile.enabled\" setting.
-    */
-    'kratos_selfservice_methods_profile_enabled';
-    /**
-    * Configures Ory Kratos TOTP Issuer  This governs the \"selfservice.methods.totp.config.issuer\" setting.
-    */
-    'kratos_selfservice_methods_totp_config_issuer';
-    /**
-    * Configures whether Ory Kratos TOTP Method is enabled  This governs the \"selfservice.methods.totp.enabled\" setting.
-    */
-    'kratos_selfservice_methods_totp_enabled';
-    /**
-    * Configures whether Ory Kratos Webauthn is used for passwordless flows  This governs the \"selfservice.methods.webauthn.config.passwordless\" setting.
-    */
-    'kratos_selfservice_methods_webauthn_config_passwordless';
-    /**
-    * Configures the Ory Kratos Webauthn RP Display Name  This governs the \"selfservice.methods.webauthn.config.rp.display_name\" setting.
-    */
-    'kratos_selfservice_methods_webauthn_config_rp_display_name';
-    /**
-    * Configures the Ory Kratos Webauthn RP Icon  This governs the \"selfservice.methods.webauthn.config.rp.icon\" setting.
-    */
-    'kratos_selfservice_methods_webauthn_config_rp_icon';
-    /**
-    * Configures the Ory Kratos Webauthn RP ID  This governs the \"selfservice.methods.webauthn.config.rp.id\" setting.
-    */
-    'kratos_selfservice_methods_webauthn_config_rp_id';
-    /**
-    * Configures the Ory Kratos Webauthn RP Origin  This governs the \"selfservice.methods.webauthn.config.rp.origin\" setting.
-    */
-    'kratos_selfservice_methods_webauthn_config_rp_origin';
-    /**
-    * Configures whether Ory Kratos Webauthn is enabled  This governs the \"selfservice.methods.webauthn.enabled\" setting.
-    */
-    'kratos_selfservice_methods_webauthn_enabled';
-    /**
-    * Configures the Ory Kratos Session Cookie Persistent Attribute  This governs the \"session.cookie.persistent\" setting.
-    */
-    'kratos_session_cookie_persistent';
-    /**
-    * Configures the Ory Kratos Session Cookie SameSite Attribute  This governs the \"session.cookie.same_site\" setting.
-    */
-    'kratos_session_cookie_same_site';
-    /**
-    * Configures the Ory Kratos Session Lifespan  This governs the \"session.lifespan\" setting.
-    */
-    'kratos_session_lifespan';
-    /**
-    * Configures the Ory Kratos Session Whoami AAL requirement  This governs the \"session.whoami.required_aal\" setting.
-    */
-    'kratos_session_whoami_required_aal';
-    /**
-    * The project\'s name.
-    */
-    'name';
-    /**
-    * Whether this project is in production mode or not.  In development mode, a low-security profile is used making it easier to develop against your, for example, local environment.
-    */
-    'production';
-    /**
-    * The Revision\'s Project ID
-    */
-    'project_id';
-    /**
-    * Last Time Project\'s Revision was Updated
-    */
-    'updated_at';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return NormalizedProjectRevision.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The Project\'s Revision Creation Date
+        */
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'hydra_oauth2_allowed_top_level_claims', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Automatically grant authorized OAuth2 Scope in OAuth2 Client Credentials Flow.  Each OAuth2 Client is allowed to request a predefined OAuth2 Scope (for example `read write`). If this option is enabled, the full scope is automatically granted when performing the OAuth2 Client Credentials flow.  If disabled, the OAuth2 Client has to request the scope in the OAuth2 request by providing the `scope` query parameter.  Setting this option to true is common if you need compatibility with MITREid.  This governs the \"oauth2.client_credentials.default_grant_allowed_scope\" setting.
+        */
+        Object.defineProperty(this, 'hydra_oauth2_client_credentials_default_grant_allowed_scope', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Set to true if you want to exclude claim `nbf (not before)` part of access token.  This governs the \"oauth2.exclude_not_before_claim\" setting.
+        */
+        Object.defineProperty(this, 'hydra_oauth2_exclude_not_before_claim', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures if the issued at (`iat`) claim is required in the JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants (RFC7523).  If set to `false`, the `iat` claim is required. Set this value to `true` only after careful consideration.  This governs the \"oauth2.grant.jwt.iat_optional\" setting.
+        */
+        Object.defineProperty(this, 'hydra_oauth2_grant_jwt_iat_optional', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures if the JSON Web Token ID (`jti`) claim is required in the JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants (RFC7523).  If set to `false`, the `jti` claim is required. Set this value to `true` only after careful consideration.  This governs the \"oauth2.grant.jwt.jti_optional\" setting.
+        */
+        Object.defineProperty(this, 'hydra_oauth2_grant_jwt_jti_optional', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures what the maximum age of a JWT assertion used in the JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants (RFC7523) can be.  This feature uses the `exp` claim and `iat` claim to calculate assertion age. Assertions exceeding the max age will be denied.  Useful as a safety measure and recommended to keep below 720h.  This governs the \"oauth2.grant.jwt.max_ttl\" setting.
+        */
+        Object.defineProperty(this, 'hydra_oauth2_grant_jwt_max_ttl', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures whether PKCE should be enforced for all OAuth2 Clients.  This governs the \"oauth2.pkce.enforced\" setting.
+        */
+        Object.defineProperty(this, 'hydra_oauth2_pkce_enforced', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures whether PKCE should be enforced for OAuth2 Clients without a client secret (public clients).  This governs the \"oauth2.pkce.enforced_for_public_clients\" setting.
+        */
+        Object.defineProperty(this, 'hydra_oauth2_pkce_enforced_for_public_clients', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Sets the Refresh Token Hook Endpoint. If set this endpoint will be called during the OAuth2 Token Refresh grant update the OAuth2 Access Token claims.  This governs the \"oauth2.refresh_token_hook\" setting.
+        */
+        Object.defineProperty(this, 'hydra_oauth2_refresh_token_hook', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'hydra_oidc_dynamic_client_registration_default_scope', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures OpenID Connect Dynamic Client Registration.  This governs the \"oidc.dynamic_client_registration.enabled\" setting.
+        */
+        Object.defineProperty(this, 'hydra_oidc_dynamic_client_registration_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures OpenID Connect Discovery and overwrites the pairwise algorithm  This governs the \"oidc.subject_identifiers.pairwise_salt\" setting.
+        */
+        Object.defineProperty(this, 'hydra_oidc_subject_identifiers_pairwise_salt', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'hydra_oidc_subject_identifiers_supported_types', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'hydra_secrets_cookie', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'hydra_secrets_system', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'hydra_serve_admin_cors_allowed_origins', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Hydra CORS Settings  This governs the \"serve.admin.cors.enabled\" setting.
+        */
+        Object.defineProperty(this, 'hydra_serve_admin_cors_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Hydra Cookie Same Site Legacy Workaround  This governs the \"serve.cookies.same_site_legacy_workaround\" setting.
+        */
+        Object.defineProperty(this, 'hydra_serve_cookies_same_site_legacy_workaround', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Hydra Cookie Same Site Mode  This governs the \"serve.cookies.same_site_mode\" setting.
+        */
+        Object.defineProperty(this, 'hydra_serve_cookies_same_site_mode', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'hydra_serve_public_cors_allowed_origins', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Hydra CORS Settings  This governs the \"serve.public.cors.enabled\" setting.
+        */
+        Object.defineProperty(this, 'hydra_serve_public_cors_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Defines access token type. jwt is a bad idea, see https://www.ory.sh/docs/hydra/advanced#json-web-tokens  This governs the \"strategies.access_token\" setting. opaque Oauth2AccessTokenStrategyOpaque jwt Oauth2AccessTokenStrategyJwt
+        */
+        Object.defineProperty(this, 'hydra_strategies_access_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Defines how scopes are matched. For more details have a look at https://github.com/ory/fosite#scopes  This governs the \"strategies.scope\" setting. exact Oauth2ScopeStrategyExact wildcard Oauth2ScopeStrategyWildcard
+        */
+        Object.defineProperty(this, 'hydra_strategies_scope', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * This governs the \"ttl.access_token\" setting.
+        */
+        Object.defineProperty(this, 'hydra_ttl_access_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures how long refresh tokens are valid.  Set to -1 for refresh tokens to never expire. This is not recommended!  This governs the \"ttl.auth_code\" setting.
+        */
+        Object.defineProperty(this, 'hydra_ttl_auth_code', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * This governs the \"ttl.id_token\" setting.
+        */
+        Object.defineProperty(this, 'hydra_ttl_id_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures how long a user login and consent flow may take.  This governs the \"ttl.login_consent_request\" setting.
+        */
+        Object.defineProperty(this, 'hydra_ttl_login_consent_request', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures how long refresh tokens are valid.  Set to -1 for refresh tokens to never expire. This is not recommended!  This governs the \"ttl.refresh_token\" setting.
+        */
+        Object.defineProperty(this, 'hydra_ttl_refresh_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Sets the OAuth2 Consent Endpoint URL of the OAuth2 User Login & Consent flow.  Defaults to the Ory Account Experience if left empty.  This governs the \"urls.consent\" setting.
+        */
+        Object.defineProperty(this, 'hydra_urls_consent', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Sets the OAuth2 Error URL of the OAuth2 User Login & Consent flow.  Defaults to the Ory Account Experience if left empty.  This governs the \"urls.error\" setting.
+        */
+        Object.defineProperty(this, 'hydra_urls_error', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Sets the OAuth2 Login Endpoint URL of the OAuth2 User Login & Consent flow.  Defaults to the Ory Account Experience if left empty.  This governs the \"urls.login\" setting.
+        */
+        Object.defineProperty(this, 'hydra_urls_login', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Sets the logout endpoint.  Defaults to the Ory Account Experience if left empty.  This governs the \"urls.logout\" setting.
+        */
+        Object.defineProperty(this, 'hydra_urls_logout', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * When an OAuth2-related user agent requests to log out, they will be redirected to this url afterwards per default.  Defaults to the Ory Account Experience in development and your application in production mode when a custom domain is connected.  This governs the \"urls.post_logout_redirect\" setting.
+        */
+        Object.defineProperty(this, 'hydra_urls_post_logout_redirect', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * This value will be used as the issuer in access and ID tokens. It must be specified and using HTTPS protocol, unless the development mode is enabled.  On the Ory Network it will be very rare that you want to modify this value. If left empty, it will default to the correct value for the Ory Network.  This governs the \"urls.self.issuer\" setting.
+        */
+        Object.defineProperty(this, 'hydra_urls_self_issuer', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'hydra_webfinger_jwks_broadcast_keys', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures OpenID Connect Discovery and overwrites the OAuth2 Authorization URL.  This governs the \"webfinger.oidc.discovery.auth_url\" setting.
+        */
+        Object.defineProperty(this, 'hydra_webfinger_oidc_discovery_auth_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures OpenID Connect Discovery and overwrites the OpenID Connect Dynamic Client Registration Endpoint.  This governs the \"webfinger.oidc.discovery.client_registration_url\" setting.
+        */
+        Object.defineProperty(this, 'hydra_webfinger_oidc_discovery_client_registration_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures OpenID Connect Discovery and overwrites the JWKS URL.  This governs the \"webfinger.oidc.discovery.jwks_url\" setting.
+        */
+        Object.defineProperty(this, 'hydra_webfinger_oidc_discovery_jwks_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'hydra_webfinger_oidc_discovery_supported_claims', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'hydra_webfinger_oidc_discovery_supported_scope', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures OpenID Connect Discovery and overwrites the OAuth2 Token URL.  This governs the \"webfinger.oidc.discovery.token_url\" setting.
+        */
+        Object.defineProperty(this, 'hydra_webfinger_oidc_discovery_token_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures OpenID Connect Discovery and overwrites userinfo endpoint to be advertised at the OpenID Connect Discovery endpoint /.well-known/openid-configuration. Defaults to Ory Hydra\'s userinfo endpoint at /userinfo. Set this value if you want to handle this endpoint yourself.  This governs the \"webfinger.oidc.discovery.userinfo_url\" setting.
+        */
+        Object.defineProperty(this, 'hydra_webfinger_oidc_discovery_userinfo_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The revision ID.
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Revisions\' Keto Namespace Configuration  The string is a URL pointing to an OPL file with the configuration.
+        */
+        Object.defineProperty(this, 'keto_namespace_configuration', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'keto_namespaces', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'keto_read_max_depth', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Cookie SameSite Attribute  This governs the \"cookies.same_site\" setting.
+        */
+        Object.defineProperty(this, 'kratos_cookies_same_site', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos SMTP Connection URI  This governs the \"courier.smtp.connection_uri\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_smtp_connection_uri', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos SMTP From Address  This governs the \"courier.smtp.from_address\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_smtp_from_address', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos SMTP From Name  This governs the \"courier.smtp.from_name\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_smtp_from_name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * NullJSONRawMessage represents a json.RawMessage that works well with JSON, SQL, and Swagger and is NULLable-
+        */
+        Object.defineProperty(this, 'kratos_courier_smtp_headers', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Invalid Recovery via Code Email Body HTML Template  This governs the \"courier.smtp.templates.recovery_code.invalid.email.body.html\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_recovery_code_invalid_email_body_html', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Invalid Recovery via Code Email Body Plaintext Template  This governs the \"courier.smtp.templates.recovery_code.invalid.email.body.plaintext\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_recovery_code_invalid_email_body_plaintext', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Invalid Recovery via Code Email Subject Template  This governs the \"courier.smtp.templates.recovery_code.invalid.email.body.html\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_recovery_code_invalid_email_subject', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Valid Recovery via Code Email Body HTML Template  This governs the \"courier.smtp.templates.recovery_code.valid.email.body.html\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_recovery_code_valid_email_body_html', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Valid Recovery via Code Email Body Plaintext Template  This governs the \"courier.smtp.templates.recovery_code.valid.email.body.plaintext\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_recovery_code_valid_email_body_plaintext', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Valid Recovery via Code Email Subject Template  This governs the \"courier.smtp.templates.recovery_code.valid.email.subject\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_recovery_code_valid_email_subject', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Invalid Recovery Email Body HTML Template  This governs the \"courier.smtp.templates.recovery.invalid.email.body.html\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_recovery_invalid_email_body_html', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Invalid Recovery Email Body Plaintext Template  This governs the \"courier.smtp.templates.recovery.invalid.email.body.plaintext\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_recovery_invalid_email_body_plaintext', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Invalid Recovery Email Subject Template  This governs the \"courier.smtp.templates.recovery.invalid.email.body.html\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_recovery_invalid_email_subject', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Valid Recovery Email Body HTML Template  This governs the \"courier.smtp.templates.recovery.valid.email.body.html\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_recovery_valid_email_body_html', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Valid Recovery Email Body Plaintext Template  This governs the \"courier.smtp.templates.recovery.valid.email.body.plaintext\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_recovery_valid_email_body_plaintext', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Valid Recovery Email Subject Template  This governs the \"courier.smtp.templates.recovery.valid.email.subject\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_recovery_valid_email_subject', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Invalid Verification via Code Email Body HTML Template  This governs the \"courier.smtp.templates.verification_code.invalid.email.body.html\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_verification_code_invalid_email_body_html', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Invalid Verification via Code Email Body Plaintext Template  This governs the \"courier.smtp.templates.verification_code.invalid.email.body.plaintext\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_verification_code_invalid_email_body_plaintext', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Invalid Verification via Code Email Subject Template  This governs the \"courier.smtp.templates.verification_code.invalid.email.subject\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_verification_code_invalid_email_subject', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Valid Verification via Code Email Body HTML Template  This governs the \"courier.smtp.templates.verification_code.valid.email.body.html\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_verification_code_valid_email_body_html', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Valid Verification via Code Email Body Plaintext Template  This governs the \"courier.smtp.templates.verification_code.valid.email.body.plaintext\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_verification_code_valid_email_body_plaintext', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Valid Verification via Code Email Subject Template  This governs the \"courier.smtp.templates.verification_code.valid.email.subject\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_verification_code_valid_email_subject', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Invalid Verification Email Body HTML Template  This governs the \"courier.smtp.templates.verification.invalid.email.body.html\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_verification_invalid_email_body_html', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Invalid Verification Email Body Plaintext Template  This governs the \"courier.smtp.templates.verification.invalid.email.body.plaintext\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_verification_invalid_email_body_plaintext', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Invalid Verification Email Subject Template  This governs the \"courier.smtp.templates.verification.invalid.email.subject\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_verification_invalid_email_subject', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Valid Verification Email Body HTML Template  This governs the \"courier.smtp.templates.verification.valid.email.body.html\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_verification_valid_email_body_html', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Valid Verification Email Body Plaintext Template  This governs the \"courier.smtp.templates.verification.valid.email.body.plaintext\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_verification_valid_email_body_plaintext', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Valid Verification Email Subject Template  This governs the \"courier.smtp.templates.verification.valid.email.subject\" setting.
+        */
+        Object.defineProperty(this, 'kratos_courier_templates_verification_valid_email_subject', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Session caching feature flag  This governs the \"feature_flags.cacheable_sessions\" setting.
+        */
+        Object.defineProperty(this, 'kratos_feature_flags_cacheable_sessions', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'kratos_identity_schemas', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * NullJSONRawMessage represents a json.RawMessage that works well with JSON, SQL, and Swagger and is NULLable-
+        */
+        Object.defineProperty(this, 'kratos_oauth2_provider_headers', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Kratos OAuth2 Provider Override Return To  Enabling this allows Kratos to set the return_to parameter automatically to the OAuth2 request URL on the login flow, allowing complex flows such as recovery to continue to the initial OAuth2 flow.
+        */
+        Object.defineProperty(this, 'kratos_oauth2_provider_override_return_to', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Revisions\' OAuth2 Provider Integration URL  This governs the \"oauth2_provider.url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_oauth2_provider_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'kratos_secrets_cipher', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'kratos_secrets_cookie', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'kratos_secrets_default', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'kratos_selfservice_allowed_return_urls', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Default Return URL  This governs the \"selfservice.allowed_return_urls\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_default_browser_return_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Error UI URL  This governs the \"selfservice.flows.error.ui_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_error_ui_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'kratos_selfservice_flows_hooks', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Login Default Return URL  This governs the \"selfservice.flows.login.after.default_browser_return_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_login_after_default_browser_return_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Login After OIDC Default Return URL  This governs the \"selfservice.flows.login.after.oidc.default_browser_return_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_login_after_oidc_default_browser_return_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Login After Password Default Return URL  This governs the \"selfservice.flows.login.after.password.default_browser_return_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_login_after_password_default_browser_return_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Login After WebAuthn Default Return URL  This governs the \"selfservice.flows.login.after.webauthn.default_browser_return_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_login_after_webauthn_default_browser_return_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Login Lifespan  This governs the \"selfservice.flows.login.lifespan\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_login_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Login UI URL  This governs the \"selfservice.flows.login.ui_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_login_ui_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Logout Default Return URL  This governs the \"selfservice.flows.logout.after.default_browser_return_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_logout_after_default_browser_return_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Recovery Default Return URL  This governs the \"selfservice.flows.recovery.after.default_browser_return_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_recovery_after_default_browser_return_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Recovery Enabled Setting  This governs the \"selfservice.flows.recovery.enabled\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_recovery_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Recovery Lifespan  This governs the \"selfservice.flows.recovery.lifespan\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_recovery_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures whether to notify unknown recipients of a Ory Kratos recovery flow  This governs the \"selfservice.flows.recovery.notify_unknown_recipients\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_recovery_notify_unknown_recipients', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Recovery UI URL  This governs the \"selfservice.flows.recovery.ui_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_recovery_ui_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Recovery strategy to use (\"link\" or \"code\")  This governs the \"selfservice.flows.recovery.use\" setting. link SelfServiceMessageVerificationStrategyLink code SelfServiceMessageVerificationStrategyCode
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_recovery_use', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Registration Default Return URL  This governs the \"selfservice.flows.registration.after.default_browser_return_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_registration_after_default_browser_return_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Registration After OIDC Default Return URL  This governs the \"selfservice.flows.registration.after.oidc.default_browser_return_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_registration_after_oidc_default_browser_return_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Registration After Password Default Return URL  This governs the \"selfservice.flows.registration.after.password.default_browser_return_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_registration_after_password_default_browser_return_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Registration After Password Default Return URL  This governs the \"selfservice.flows.registration.after.password.default_browser_return_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_registration_after_webauthn_default_browser_return_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Whether Ory Kratos Registration is Enabled  This governs the \"selfservice.flows.registration.enabled\" setting.0
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_registration_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Registration Lifespan  This governs the \"selfservice.flows.registration.lifespan\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_registration_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Registration UI URL  This governs the \"selfservice.flows.registration.ui_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_registration_ui_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Settings Default Return URL  This governs the \"selfservice.flows.settings.after.default_browser_return_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_settings_after_default_browser_return_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Settings Default Return URL After Updating Passwords  This governs the \"selfservice.flows.settings.after.password.default_browser_return_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_settings_after_password_default_browser_return_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Settings Default Return URL After Updating Profiles  This governs the \"selfservice.flows.settings.after.profile.default_browser_return_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_settings_after_profile_default_browser_return_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Settings Lifespan  This governs the \"selfservice.flows.settings.lifespan\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_settings_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Settings Privileged Session Max Age  This governs the \"selfservice.flows.settings.privileged_session_max_age\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_settings_privileged_session_max_age', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Settings Required AAL  This governs the \"selfservice.flows.settings.required_aal\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_settings_required_aal', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Settings UI URL  This governs the \"selfservice.flows.settings.ui_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_settings_ui_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Verification Default Return URL  This governs the \"selfservice.flows.verification.after.default_browser_return_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_verification_after_default_browser_return_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Verification Enabled Setting  This governs the \"selfservice.flows.verification.enabled\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_verification_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Verification Lifespan  This governs the \"selfservice.flows.verification.lifespan\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_verification_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures whether to notify unknown recipients of a Ory Kratos verification flow  This governs the \"selfservice.flows.verification.notify_unknown_recipients\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_verification_notify_unknown_recipients', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Verification UI URL  This governs the \"selfservice.flows.verification.ui_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_verification_ui_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Strategy to use for Verification  This governs the \"selfservice.flows.verification.use\" setting. link SelfServiceMessageVerificationStrategyLink code SelfServiceMessageVerificationStrategyCode
+        */
+        Object.defineProperty(this, 'kratos_selfservice_flows_verification_use', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Code Method\'s lifespan  This governs the \"selfservice.methods.code.config.lifespan\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_code_config_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures whether Ory Kratos Code Method is enabled  This governs the \"selfservice.methods.code.enabled\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_code_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Base URL which Recovery, Verification, and Login Links Point to  It is recommended to leave this value empty. It will be appropriately configured to the best matching domain (e.g. when using custom domains) automatically.  This governs the \"selfservice.methods.link.config.base_url\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_link_config_base_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Link Method\'s lifespan  This governs the \"selfservice.methods.link.config.lifespan\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_link_config_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures whether Ory Kratos Link Method is enabled  This governs the \"selfservice.methods.link.enabled\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_link_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures whether Ory Kratos TOTP Lookup Secret is enabled  This governs the \"selfservice.methods.lookup_secret.enabled\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_lookup_secret_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Third Party / OpenID Connect base redirect URI  This governs the \"selfservice.methods.oidc.config.base_redirect_uri\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_oidc_config_base_redirect_uri', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'kratos_selfservice_methods_oidc_config_providers', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures whether Ory Kratos Third Party / OpenID Connect Login is enabled  This governs the \"selfservice.methods.oidc.enabled\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_oidc_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures whether Ory Kratos Password HIBP Checks is enabled  This governs the \"selfservice.methods.password.config.haveibeenpwned_enabled\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_password_config_haveibeenpwned_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures whether Ory Kratos Password should disable the similarity policy.  This governs the \"selfservice.methods.password.config.identifier_similarity_check_enabled\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_password_config_identifier_similarity_check_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures whether Ory Kratos Password Should ignore HIBPWND Network Errors  This governs the \"selfservice.methods.password.config.ignore_network_errors\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_password_config_ignore_network_errors', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures Ory Kratos Password Max Breaches Detection  This governs the \"selfservice.methods.password.config.max_breaches\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_password_config_max_breaches', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the minimum length of passwords.  This governs the \"selfservice.methods.password.config.min_password_length\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_password_config_min_password_length', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures whether Ory Kratos Password Method is enabled  This governs the \"selfservice.methods.password.enabled\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_password_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures whether Ory Kratos Profile Method is enabled  This governs the \"selfservice.methods.profile.enabled\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_profile_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures Ory Kratos TOTP Issuer  This governs the \"selfservice.methods.totp.config.issuer\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_totp_config_issuer', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures whether Ory Kratos TOTP Method is enabled  This governs the \"selfservice.methods.totp.enabled\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_totp_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures whether Ory Kratos Webauthn is used for passwordless flows  This governs the \"selfservice.methods.webauthn.config.passwordless\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_webauthn_config_passwordless', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Webauthn RP Display Name  This governs the \"selfservice.methods.webauthn.config.rp.display_name\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_webauthn_config_rp_display_name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Webauthn RP Icon  This governs the \"selfservice.methods.webauthn.config.rp.icon\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_webauthn_config_rp_icon', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Webauthn RP ID  This governs the \"selfservice.methods.webauthn.config.rp.id\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_webauthn_config_rp_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Webauthn RP Origin  This governs the \"selfservice.methods.webauthn.config.rp.origin\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_webauthn_config_rp_origin', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures whether Ory Kratos Webauthn is enabled  This governs the \"selfservice.methods.webauthn.enabled\" setting.
+        */
+        Object.defineProperty(this, 'kratos_selfservice_methods_webauthn_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Session Cookie Persistent Attribute  This governs the \"session.cookie.persistent\" setting.
+        */
+        Object.defineProperty(this, 'kratos_session_cookie_persistent', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Session Cookie SameSite Attribute  This governs the \"session.cookie.same_site\" setting.
+        */
+        Object.defineProperty(this, 'kratos_session_cookie_same_site', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Session Lifespan  This governs the \"session.lifespan\" setting.
+        */
+        Object.defineProperty(this, 'kratos_session_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Configures the Ory Kratos Session Whoami AAL requirement  This governs the \"session.whoami.required_aal\" setting.
+        */
+        Object.defineProperty(this, 'kratos_session_whoami_required_aal', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The project\'s name.
+        */
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Whether this project is in production mode or not.  In development mode, a low-security profile is used making it easier to develop against your, for example, local environment.
+        */
+        Object.defineProperty(this, 'production', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Revision\'s Project ID
+        */
+        Object.defineProperty(this, 'project_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Last Time Project\'s Revision was Updated
+        */
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(NormalizedProjectRevision, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(NormalizedProjectRevision, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "created_at",
             "baseName": "created_at",
@@ -1485,11 +2265,6 @@ class NormalizedProjectRevision {
             "type": "Date",
             "format": "date-time"
         }
-    ];
-    static getAttributeTypeMap() {
-        return NormalizedProjectRevision.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { NormalizedProjectRevision };

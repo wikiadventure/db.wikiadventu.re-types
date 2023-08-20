@@ -13,20 +13,35 @@
 * Get Project Branding Request Body
 */
 class InternalGetProjectBrandingBody {
-    'hostname';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return InternalGetProjectBrandingBody.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'hostname', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(InternalGetProjectBrandingBody, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(InternalGetProjectBrandingBody, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "hostname",
             "baseName": "hostname",
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return InternalGetProjectBrandingBody.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { InternalGetProjectBrandingBody };

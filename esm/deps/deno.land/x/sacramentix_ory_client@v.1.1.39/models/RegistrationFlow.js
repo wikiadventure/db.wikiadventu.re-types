@@ -10,44 +10,119 @@
  * Do not edit the class manually.
  */
 class RegistrationFlow {
-    'active';
-    /**
-    * ExpiresAt is the time (UTC) when the flow expires. If the user still wishes to log in, a new flow has to be initiated.
-    */
-    'expires_at';
-    /**
-    * ID represents the flow\'s unique ID. When performing the registration flow, this represents the id in the registration ui\'s query parameter: http://<selfservice.flows.registration.ui_url>/?flow=<id>
-    */
-    'id';
-    /**
-    * IssuedAt is the time (UTC) when the flow occurred.
-    */
-    'issued_at';
-    'oauth2_login_challenge';
-    'oauth2_login_request';
-    /**
-    * RequestURL is the initial URL that was requested from Ory Kratos. It can be used to forward information contained in the URL\'s path or query for example.
-    */
-    'request_url';
-    /**
-    * ReturnTo contains the requested return_to URL.
-    */
-    'return_to';
-    /**
-    * SessionTokenExchangeCode holds the secret code that the client can use to retrieve a session token after the flow has been completed. This is only set if the client has requested a session token exchange code, and if the flow is of type \"api\", and only on creating the flow.
-    */
-    'session_token_exchange_code';
-    /**
-    * TransientPayload is used to pass data from the registration to a webhook
-    */
-    'transient_payload';
-    /**
-    * The flow type can either be `api` or `browser`.
-    */
-    'type';
-    'ui';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return RegistrationFlow.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'active', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ExpiresAt is the time (UTC) when the flow expires. If the user still wishes to log in, a new flow has to be initiated.
+        */
+        Object.defineProperty(this, 'expires_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ID represents the flow\'s unique ID. When performing the registration flow, this represents the id in the registration ui\'s query parameter: http://<selfservice.flows.registration.ui_url>/?flow=<id>
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * IssuedAt is the time (UTC) when the flow occurred.
+        */
+        Object.defineProperty(this, 'issued_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'oauth2_login_challenge', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'oauth2_login_request', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * RequestURL is the initial URL that was requested from Ory Kratos. It can be used to forward information contained in the URL\'s path or query for example.
+        */
+        Object.defineProperty(this, 'request_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ReturnTo contains the requested return_to URL.
+        */
+        Object.defineProperty(this, 'return_to', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * SessionTokenExchangeCode holds the secret code that the client can use to retrieve a session token after the flow has been completed. This is only set if the client has requested a session token exchange code, and if the flow is of type \"api\", and only on creating the flow.
+        */
+        Object.defineProperty(this, 'session_token_exchange_code', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * TransientPayload is used to pass data from the registration to a webhook
+        */
+        Object.defineProperty(this, 'transient_payload', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The flow type can either be `api` or `browser`.
+        */
+        Object.defineProperty(this, 'type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'ui', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(RegistrationFlow, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(RegistrationFlow, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "active",
             "baseName": "active",
@@ -120,11 +195,6 @@ class RegistrationFlow {
             "type": "UiContainer",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return RegistrationFlow.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { RegistrationFlow };

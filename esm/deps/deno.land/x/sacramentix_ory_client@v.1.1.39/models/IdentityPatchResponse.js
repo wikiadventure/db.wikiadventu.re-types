@@ -13,20 +13,50 @@
 * Response for a single identity patch
 */
 class IdentityPatchResponse {
-    /**
-    * The action for this specific patch create ActionCreate  Create this identity.
-    */
-    'action';
-    /**
-    * The identity ID payload of this patch
-    */
-    'identity';
-    /**
-    * The ID of this patch response, if an ID was specified in the patch.
-    */
-    'patch_id';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return IdentityPatchResponse.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The action for this specific patch create ActionCreate  Create this identity.
+        */
+        Object.defineProperty(this, 'action', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The identity ID payload of this patch
+        */
+        Object.defineProperty(this, 'identity', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The ID of this patch response, if an ID was specified in the patch.
+        */
+        Object.defineProperty(this, 'patch_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(IdentityPatchResponse, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(IdentityPatchResponse, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "action",
             "baseName": "action",
@@ -45,11 +75,6 @@ class IdentityPatchResponse {
             "type": "string",
             "format": "uuid"
         }
-    ];
-    static getAttributeTypeMap() {
-        return IdentityPatchResponse.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { IdentityPatchResponse };

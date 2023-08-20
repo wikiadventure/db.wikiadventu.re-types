@@ -1,8 +1,25 @@
 import { METHOD_NAME_ALL } from '../../router.js';
 export class PatternRouter {
-    name = 'PatternRouter';
-    routes = [];
-    dNames = {}; // Short name of duplicatedNames
+    constructor() {
+        Object.defineProperty(this, "name", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: 'PatternRouter'
+        });
+        Object.defineProperty(this, "routes", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: []
+        });
+        Object.defineProperty(this, "dNames", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: {}
+        }); // Short name of duplicatedNames
+    }
     add(method, path, handler) {
         const endsWithWildcard = path[path.length - 1] === '*';
         if (endsWithWildcard) {

@@ -13,23 +13,38 @@
 * Patch identities response
 */
 class BatchPatchIdentitiesResponse {
-    /**
-    * The patch responses for the individual identities.
-    */
-    'identities';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return BatchPatchIdentitiesResponse.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The patch responses for the individual identities.
+        */
+        Object.defineProperty(this, 'identities', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(BatchPatchIdentitiesResponse, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(BatchPatchIdentitiesResponse, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "identities",
             "baseName": "identities",
             "type": "Array<IdentityPatchResponse>",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return BatchPatchIdentitiesResponse.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { BatchPatchIdentitiesResponse };

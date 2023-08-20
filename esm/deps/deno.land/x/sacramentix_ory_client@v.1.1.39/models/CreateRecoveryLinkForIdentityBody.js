@@ -13,16 +13,41 @@
 * Create Recovery Link for Identity Request Body
 */
 class CreateRecoveryLinkForIdentityBody {
-    /**
-    * Link Expires In  The recovery link will expire after that amount of time has passed. Defaults to the configuration value of `selfservice.methods.code.config.lifespan`.
-    */
-    'expires_in';
-    /**
-    * Identity to Recover  The identity\'s ID you wish to recover.
-    */
-    'identity_id';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return CreateRecoveryLinkForIdentityBody.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Link Expires In  The recovery link will expire after that amount of time has passed. Defaults to the configuration value of `selfservice.methods.code.config.lifespan`.
+        */
+        Object.defineProperty(this, 'expires_in', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Identity to Recover  The identity\'s ID you wish to recover.
+        */
+        Object.defineProperty(this, 'identity_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(CreateRecoveryLinkForIdentityBody, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(CreateRecoveryLinkForIdentityBody, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "expires_in",
             "baseName": "expires_in",
@@ -35,11 +60,6 @@ class CreateRecoveryLinkForIdentityBody {
             "type": "string",
             "format": "uuid"
         }
-    ];
-    static getAttributeTypeMap() {
-        return CreateRecoveryLinkForIdentityBody.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { CreateRecoveryLinkForIdentityBody };

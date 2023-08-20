@@ -13,29 +13,74 @@
 * The Project Branding
 */
 class ProjectBranding {
-    /**
-    * The Customization Creation Date
-    */
-    'created_at';
-    'default_theme';
-    /**
-    * The customization ID.
-    */
-    'id';
-    /**
-    * The Project\'s ID this customization is associated with
-    */
-    'project_id';
-    /**
-    * The Project Branding Themes
-    */
-    'themes';
-    /**
-    * Last Time Branding was Updated
-    */
-    'updated_at';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ProjectBranding.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The Customization Creation Date
+        */
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'default_theme', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The customization ID.
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Project\'s ID this customization is associated with
+        */
+        Object.defineProperty(this, 'project_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Project Branding Themes
+        */
+        Object.defineProperty(this, 'themes', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Last Time Branding was Updated
+        */
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ProjectBranding, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ProjectBranding, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "created_at",
             "baseName": "created_at",
@@ -72,11 +117,6 @@ class ProjectBranding {
             "type": "Date",
             "format": "date-time"
         }
-    ];
-    static getAttributeTypeMap() {
-        return ProjectBranding.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ProjectBranding };

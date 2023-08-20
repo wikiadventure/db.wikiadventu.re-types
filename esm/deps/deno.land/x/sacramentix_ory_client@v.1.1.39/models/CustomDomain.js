@@ -13,19 +13,89 @@
 * Custom Hostname
 */
 class CustomDomain {
-    'cookie_domain';
-    'cors_allowed_origins';
-    'cors_enabled';
-    'created_at';
-    'custom_ui_base_url';
-    'hostname';
-    'id';
-    'ssl_status';
-    'updated_at';
-    'verification_errors';
-    'verification_status';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return CustomDomain.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'cookie_domain', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'cors_allowed_origins', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'cors_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'custom_ui_base_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'hostname', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'ssl_status', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'verification_errors', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'verification_status', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(CustomDomain, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(CustomDomain, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "cookie_domain",
             "baseName": "cookie_domain",
@@ -92,11 +162,6 @@ class CustomDomain {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return CustomDomain.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { CustomDomain };

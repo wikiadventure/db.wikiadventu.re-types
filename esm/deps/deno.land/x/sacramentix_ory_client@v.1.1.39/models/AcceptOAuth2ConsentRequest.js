@@ -10,20 +10,65 @@
  * Do not edit the class manually.
  */
 class AcceptOAuth2ConsentRequest {
-    'grant_access_token_audience';
-    'grant_scope';
-    'handled_at';
-    /**
-    * Remember, if set to true, tells ORY Hydra to remember this consent authorization and reuse it if the same client asks the same user for the same, or a subset of, scope.
-    */
-    'remember';
-    /**
-    * RememberFor sets how long the consent authorization should be remembered for in seconds. If set to `0`, the authorization will be remembered indefinitely.
-    */
-    'remember_for';
-    'session';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return AcceptOAuth2ConsentRequest.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'grant_access_token_audience', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'grant_scope', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'handled_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Remember, if set to true, tells ORY Hydra to remember this consent authorization and reuse it if the same client asks the same user for the same, or a subset of, scope.
+        */
+        Object.defineProperty(this, 'remember', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * RememberFor sets how long the consent authorization should be remembered for in seconds. If set to `0`, the authorization will be remembered indefinitely.
+        */
+        Object.defineProperty(this, 'remember_for', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'session', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(AcceptOAuth2ConsentRequest, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(AcceptOAuth2ConsentRequest, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "grant_access_token_audience",
             "baseName": "grant_access_token_audience",
@@ -60,11 +105,6 @@ class AcceptOAuth2ConsentRequest {
             "type": "AcceptOAuth2ConsentRequestSession",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return AcceptOAuth2ConsentRequest.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { AcceptOAuth2ConsentRequest };

@@ -13,13 +13,38 @@
 * Is sent when a flow is replaced by a different flow of the same class
 */
 class ErrorFlowReplaced {
-    'error';
-    /**
-    * The flow ID that should be used for the new flow as it contains the correct messages.
-    */
-    'use_flow_id';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ErrorFlowReplaced.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'error', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The flow ID that should be used for the new flow as it contains the correct messages.
+        */
+        Object.defineProperty(this, 'use_flow_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ErrorFlowReplaced, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ErrorFlowReplaced, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "error",
             "baseName": "error",
@@ -32,11 +57,6 @@ class ErrorFlowReplaced {
             "type": "string",
             "format": "uuid"
         }
-    ];
-    static getAttributeTypeMap() {
-        return ErrorFlowReplaced.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ErrorFlowReplaced };

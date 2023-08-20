@@ -2,8 +2,6 @@
  * Applies http authentication to the request context.
  */
 export class BasicAuthentication {
-    username;
-    password;
     /**
      * Configures the http authentication with the required details.
      *
@@ -11,8 +9,18 @@ export class BasicAuthentication {
      * @param password password for http basic authentication
      */
     constructor(username, password) {
-        this.username = username;
-        this.password = password;
+        Object.defineProperty(this, "username", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: username
+        });
+        Object.defineProperty(this, "password", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: password
+        });
     }
     getName() {
         return "basic";
@@ -26,14 +34,18 @@ export class BasicAuthentication {
  * Applies http authentication to the request context.
  */
 export class BearerAuthentication {
-    tokenProvider;
     /**
      * Configures the http authentication with the required details.
      *
      * @param tokenProvider service that can provide the up-to-date token when needed
      */
     constructor(tokenProvider) {
-        this.tokenProvider = tokenProvider;
+        Object.defineProperty(this, "tokenProvider", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: tokenProvider
+        });
     }
     getName() {
         return "bearer";
@@ -46,14 +58,18 @@ export class BearerAuthentication {
  * Applies oauth2 authentication to the request context.
  */
 export class Oauth2Authentication {
-    accessToken;
     /**
      * Configures OAuth2 with the necessary properties
      *
      * @param accessToken: The access token to be used for every request
      */
     constructor(accessToken) {
-        this.accessToken = accessToken;
+        Object.defineProperty(this, "accessToken", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: accessToken
+        });
     }
     getName() {
         return "oauth2";
@@ -66,14 +82,18 @@ export class Oauth2Authentication {
  * Applies http authentication to the request context.
  */
 export class OryAccessTokenAuthentication {
-    tokenProvider;
     /**
      * Configures the http authentication with the required details.
      *
      * @param tokenProvider service that can provide the up-to-date token when needed
      */
     constructor(tokenProvider) {
-        this.tokenProvider = tokenProvider;
+        Object.defineProperty(this, "tokenProvider", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: tokenProvider
+        });
     }
     getName() {
         return "oryAccessToken";

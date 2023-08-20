@@ -13,28 +13,68 @@
 * Update Login Flow with Password Method
 */
 class UpdateLoginFlowWithPasswordMethod {
-    /**
-    * Sending the anti-csrf token is only required for browser login flows.
-    */
-    'csrf_token';
-    /**
-    * Identifier is the email or username of the user trying to log in.
-    */
-    'identifier';
-    /**
-    * Method should be set to \"password\" when logging in using the identifier and password strategy.
-    */
-    'method';
-    /**
-    * The user\'s password.
-    */
-    'password';
-    /**
-    * Identifier is the email or username of the user trying to log in. This field is deprecated!
-    */
-    'password_identifier';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateLoginFlowWithPasswordMethod.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Sending the anti-csrf token is only required for browser login flows.
+        */
+        Object.defineProperty(this, 'csrf_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Identifier is the email or username of the user trying to log in.
+        */
+        Object.defineProperty(this, 'identifier', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method should be set to \"password\" when logging in using the identifier and password strategy.
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The user\'s password.
+        */
+        Object.defineProperty(this, 'password', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Identifier is the email or username of the user trying to log in. This field is deprecated!
+        */
+        Object.defineProperty(this, 'password_identifier', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateLoginFlowWithPasswordMethod, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateLoginFlowWithPasswordMethod, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "csrf_token",
             "baseName": "csrf_token",
@@ -65,11 +105,6 @@ class UpdateLoginFlowWithPasswordMethod {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateLoginFlowWithPasswordMethod.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateLoginFlowWithPasswordMethod };

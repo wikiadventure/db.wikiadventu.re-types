@@ -13,13 +13,38 @@
 * The Response for Registration Flows via API
 */
 class SuccessfulCodeExchangeResponse {
-    'session';
-    /**
-    * The Session Token  A session token is equivalent to a session cookie, but it can be sent in the HTTP Authorization Header:  Authorization: bearer ${session-token}  The session token is only issued for API flows, not for Browser flows!
-    */
-    'session_token';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return SuccessfulCodeExchangeResponse.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'session', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Session Token  A session token is equivalent to a session cookie, but it can be sent in the HTTP Authorization Header:  Authorization: bearer ${session-token}  The session token is only issued for API flows, not for Browser flows!
+        */
+        Object.defineProperty(this, 'session_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(SuccessfulCodeExchangeResponse, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(SuccessfulCodeExchangeResponse, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "session",
             "baseName": "session",
@@ -32,11 +57,6 @@ class SuccessfulCodeExchangeResponse {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return SuccessfulCodeExchangeResponse.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { SuccessfulCodeExchangeResponse };

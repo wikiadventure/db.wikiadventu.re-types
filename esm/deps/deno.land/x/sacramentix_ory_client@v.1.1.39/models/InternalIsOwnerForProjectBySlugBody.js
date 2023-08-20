@@ -13,24 +13,59 @@
 * Is Owner For Project By Slug Request Body
 */
 class InternalIsOwnerForProjectBySlugBody {
-    /**
-    * Namespace is the namespace of the subject.
-    */
-    'namespace';
-    /**
-    * ProjectScope is the project_id resolved from the API Token.
-    */
-    'project_scope';
-    /**
-    * ProjectSlug is the project\'s slug.
-    */
-    'project_slug';
-    /**
-    * Subject is the subject acting (user or API key).
-    */
-    'subject';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return InternalIsOwnerForProjectBySlugBody.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Namespace is the namespace of the subject.
+        */
+        Object.defineProperty(this, 'namespace', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ProjectScope is the project_id resolved from the API Token.
+        */
+        Object.defineProperty(this, 'project_scope', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ProjectSlug is the project\'s slug.
+        */
+        Object.defineProperty(this, 'project_slug', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Subject is the subject acting (user or API key).
+        */
+        Object.defineProperty(this, 'subject', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(InternalIsOwnerForProjectBySlugBody, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(InternalIsOwnerForProjectBySlugBody, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "namespace",
             "baseName": "namespace",
@@ -55,11 +90,6 @@ class InternalIsOwnerForProjectBySlugBody {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return InternalIsOwnerForProjectBySlugBody.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { InternalIsOwnerForProjectBySlugBody };

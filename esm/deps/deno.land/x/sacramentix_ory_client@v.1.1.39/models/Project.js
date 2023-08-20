@@ -10,29 +10,74 @@
  * Do not edit the class manually.
  */
 class Project {
-    /**
-    * The project\'s ID.
-    */
-    'id';
-    /**
-    * The name of the project.
-    */
-    'name';
-    /**
-    * The configuration revision ID.
-    */
-    'revision_id';
-    'services';
-    /**
-    * The project\'s slug
-    */
-    'slug';
-    /**
-    * The state of the project. running Running halted Halted deleted Deleted
-    */
-    'state';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return Project.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The project\'s ID.
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The name of the project.
+        */
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The configuration revision ID.
+        */
+        Object.defineProperty(this, 'revision_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'services', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The project\'s slug
+        */
+        Object.defineProperty(this, 'slug', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The state of the project. running Running halted Halted deleted Deleted
+        */
+        Object.defineProperty(this, 'state', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(Project, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(Project, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "id",
             "baseName": "id",
@@ -69,11 +114,6 @@ class Project {
             "type": "ProjectStateEnum",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return Project.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { Project };

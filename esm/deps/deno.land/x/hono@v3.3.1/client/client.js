@@ -17,75 +17,110 @@ const createProxy = (callback, path) => {
     return proxy;
 };
 class ClientRequestImpl {
-    url;
-    method;
-    queryParams = undefined;
-    pathParams = {};
-    rBody;
-    cType = undefined;
     constructor(url, method) {
+        Object.defineProperty(this, "url", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "method", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "queryParams", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: undefined
+        });
+        Object.defineProperty(this, "pathParams", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: {}
+        });
+        Object.defineProperty(this, "rBody", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "cType", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: undefined
+        });
+        Object.defineProperty(this, "fetch", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: (args, opt) => {
+                if (args) {
+                    if (args.query) {
+                        for (const [k, v] of Object.entries(args.query)) {
+                            this.queryParams ||= new URLSearchParams();
+                            if (Array.isArray(v)) {
+                                for (const v2 of v) {
+                                    this.queryParams.append(k, v2);
+                                }
+                            }
+                            else {
+                                this.queryParams.set(k, v);
+                            }
+                        }
+                    }
+                    if (args.queries) {
+                        for (const [k, v] of Object.entries(args.queries)) {
+                            for (const v2 of v) {
+                                this.queryParams ||= new URLSearchParams();
+                                this.queryParams.append(k, v2);
+                            }
+                        }
+                    }
+                    if (args.form) {
+                        const form = new dntShim.FormData();
+                        for (const [k, v] of Object.entries(args.form)) {
+                            form.append(k, v);
+                        }
+                        this.rBody = form;
+                    }
+                    if (args.json) {
+                        this.rBody = JSON.stringify(args.json);
+                        this.cType = 'application/json';
+                    }
+                    if (args.param) {
+                        this.pathParams = args.param;
+                    }
+                }
+                let methodUpperCase = this.method.toUpperCase();
+                let setBody = !(methodUpperCase === 'GET' || methodUpperCase === 'HEAD');
+                const headerValues = opt?.headers ? opt.headers : {};
+                if (this.cType)
+                    headerValues['Content-Type'] = this.cType;
+                const headers = new dntShim.Headers(headerValues ?? undefined);
+                let url = this.url;
+                url = removeIndexString(url);
+                url = replaceUrlParam(url, this.pathParams);
+                if (this.queryParams) {
+                    url = url + '?' + this.queryParams.toString();
+                }
+                methodUpperCase = this.method.toUpperCase();
+                setBody = !(methodUpperCase === 'GET' || methodUpperCase === 'HEAD');
+                // Pass URL string to 1st arg for testing with MSW and node-fetch
+                return (opt?.fetch || dntShim.fetch)(url, {
+                    body: setBody ? this.rBody : undefined,
+                    method: methodUpperCase,
+                    headers: headers,
+                });
+            }
+        });
         this.url = url;
         this.method = method;
     }
-    fetch = (args, opt) => {
-        if (args) {
-            if (args.query) {
-                for (const [k, v] of Object.entries(args.query)) {
-                    this.queryParams ||= new URLSearchParams();
-                    if (Array.isArray(v)) {
-                        for (const v2 of v) {
-                            this.queryParams.append(k, v2);
-                        }
-                    }
-                    else {
-                        this.queryParams.set(k, v);
-                    }
-                }
-            }
-            if (args.queries) {
-                for (const [k, v] of Object.entries(args.queries)) {
-                    for (const v2 of v) {
-                        this.queryParams ||= new URLSearchParams();
-                        this.queryParams.append(k, v2);
-                    }
-                }
-            }
-            if (args.form) {
-                const form = new dntShim.FormData();
-                for (const [k, v] of Object.entries(args.form)) {
-                    form.append(k, v);
-                }
-                this.rBody = form;
-            }
-            if (args.json) {
-                this.rBody = JSON.stringify(args.json);
-                this.cType = 'application/json';
-            }
-            if (args.param) {
-                this.pathParams = args.param;
-            }
-        }
-        let methodUpperCase = this.method.toUpperCase();
-        let setBody = !(methodUpperCase === 'GET' || methodUpperCase === 'HEAD');
-        const headerValues = opt?.headers ? opt.headers : {};
-        if (this.cType)
-            headerValues['Content-Type'] = this.cType;
-        const headers = new dntShim.Headers(headerValues ?? undefined);
-        let url = this.url;
-        url = removeIndexString(url);
-        url = replaceUrlParam(url, this.pathParams);
-        if (this.queryParams) {
-            url = url + '?' + this.queryParams.toString();
-        }
-        methodUpperCase = this.method.toUpperCase();
-        setBody = !(methodUpperCase === 'GET' || methodUpperCase === 'HEAD');
-        // Pass URL string to 1st arg for testing with MSW and node-fetch
-        return (opt?.fetch || dntShim.fetch)(url, {
-            body: setBody ? this.rBody : undefined,
-            method: methodUpperCase,
-            headers: headers,
-        });
-    };
 }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const hc = (baseUrl, options) => createProxy(async (opts) => {

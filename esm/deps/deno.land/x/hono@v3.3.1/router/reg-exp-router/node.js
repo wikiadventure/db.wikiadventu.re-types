@@ -33,9 +33,26 @@ function compareKey(a, b) {
     return a.length === b.length ? (a < b ? -1 : 1) : b.length - a.length;
 }
 export class Node {
-    index;
-    varIndex;
-    children = {};
+    constructor() {
+        Object.defineProperty(this, "index", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "varIndex", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "children", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: {}
+        });
+    }
     insert(tokens, index, paramMap, context, pathErrorCheckOnly) {
         if (tokens.length === 0) {
             if (this.index !== undefined) {

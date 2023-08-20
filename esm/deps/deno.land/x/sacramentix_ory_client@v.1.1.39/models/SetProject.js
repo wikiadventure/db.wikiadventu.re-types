@@ -10,13 +10,38 @@
  * Do not edit the class manually.
  */
 class SetProject {
-    /**
-    * The name of the project.
-    */
-    'name';
-    'services';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return SetProject.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The name of the project.
+        */
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'services', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(SetProject, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(SetProject, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "name",
             "baseName": "name",
@@ -29,11 +54,6 @@ class SetProject {
             "type": "ProjectServices",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return SetProject.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { SetProject };

@@ -13,38 +13,98 @@
 * Used to verify an out-of-band communication channel such as an email address or a phone number.  For more information head over to: https://www.ory.sh/docs/kratos/self-service/flows/verify-email-account-activation
 */
 class VerificationFlow {
-    /**
-    * Active, if set, contains the registration method that is being used. It is initially not set.
-    */
-    'active';
-    /**
-    * ExpiresAt is the time (UTC) when the request expires. If the user still wishes to verify the address, a new request has to be initiated.
-    */
-    'expires_at';
-    /**
-    * ID represents the request\'s unique ID. When performing the verification flow, this represents the id in the verify ui\'s query parameter: http://<selfservice.flows.verification.ui_url>?request=<id>  type: string format: uuid
-    */
-    'id';
-    /**
-    * IssuedAt is the time (UTC) when the request occurred.
-    */
-    'issued_at';
-    /**
-    * RequestURL is the initial URL that was requested from Ory Kratos. It can be used to forward information contained in the URL\'s path or query for example.
-    */
-    'request_url';
-    /**
-    * ReturnTo contains the requested return_to URL.
-    */
-    'return_to';
-    'state';
-    /**
-    * The flow type can either be `api` or `browser`.
-    */
-    'type';
-    'ui';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return VerificationFlow.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Active, if set, contains the registration method that is being used. It is initially not set.
+        */
+        Object.defineProperty(this, 'active', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ExpiresAt is the time (UTC) when the request expires. If the user still wishes to verify the address, a new request has to be initiated.
+        */
+        Object.defineProperty(this, 'expires_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ID represents the request\'s unique ID. When performing the verification flow, this represents the id in the verify ui\'s query parameter: http://<selfservice.flows.verification.ui_url>?request=<id>  type: string format: uuid
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * IssuedAt is the time (UTC) when the request occurred.
+        */
+        Object.defineProperty(this, 'issued_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * RequestURL is the initial URL that was requested from Ory Kratos. It can be used to forward information contained in the URL\'s path or query for example.
+        */
+        Object.defineProperty(this, 'request_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ReturnTo contains the requested return_to URL.
+        */
+        Object.defineProperty(this, 'return_to', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'state', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The flow type can either be `api` or `browser`.
+        */
+        Object.defineProperty(this, 'type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'ui', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(VerificationFlow, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(VerificationFlow, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "active",
             "baseName": "active",
@@ -99,11 +159,6 @@ class VerificationFlow {
             "type": "UiContainer",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return VerificationFlow.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { VerificationFlow };

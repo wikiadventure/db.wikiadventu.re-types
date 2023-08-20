@@ -10,13 +10,38 @@
  * Do not edit the class manually.
  */
 class SuccessfulProjectUpdate {
-    'project';
-    /**
-    * Import Warnings  Not all configuration items can be imported to the Ory Network. For example, setting the port does not make sense because the Ory Network provides the runtime and networking.  This field contains warnings where configuration keys were found but can not be imported. These keys will be ignored by the Ory Network. This field will help you understand why certain configuration keys might not be respected!
-    */
-    'warnings';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return SuccessfulProjectUpdate.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'project', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Import Warnings  Not all configuration items can be imported to the Ory Network. For example, setting the port does not make sense because the Ory Network provides the runtime and networking.  This field contains warnings where configuration keys were found but can not be imported. These keys will be ignored by the Ory Network. This field will help you understand why certain configuration keys might not be respected!
+        */
+        Object.defineProperty(this, 'warnings', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(SuccessfulProjectUpdate, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(SuccessfulProjectUpdate, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "project",
             "baseName": "project",
@@ -29,11 +54,6 @@ class SuccessfulProjectUpdate {
             "type": "Array<Warning>",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return SuccessfulProjectUpdate.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { SuccessfulProjectUpdate };

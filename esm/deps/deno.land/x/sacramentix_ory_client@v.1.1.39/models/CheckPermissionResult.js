@@ -13,23 +13,38 @@
 * The content of the allowed field is mirrored in the HTTP status code.
 */
 class CheckPermissionResult {
-    /**
-    * whether the relation tuple is allowed
-    */
-    'allowed';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return CheckPermissionResult.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * whether the relation tuple is allowed
+        */
+        Object.defineProperty(this, 'allowed', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(CheckPermissionResult, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(CheckPermissionResult, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "allowed",
             "baseName": "allowed",
             "type": "boolean",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return CheckPermissionResult.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { CheckPermissionResult };

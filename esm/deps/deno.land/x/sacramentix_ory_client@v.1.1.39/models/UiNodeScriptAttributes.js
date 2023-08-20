@@ -10,44 +10,104 @@
  * Do not edit the class manually.
  */
 class UiNodeScriptAttributes {
-    /**
-    * The script async type
-    */
-    'async';
-    /**
-    * The script cross origin policy
-    */
-    'crossorigin';
-    /**
-    * A unique identifier
-    */
-    'id';
-    /**
-    * The script\'s integrity hash
-    */
-    'integrity';
-    /**
-    * NodeType represents this node\'s types. It is a mirror of `node.type` and is primarily used to allow compatibility with OpenAPI 3.0. In this struct it technically always is \"script\".
-    */
-    'node_type';
-    /**
-    * Nonce for CSP  A nonce you may want to use to improve your Content Security Policy. You do not have to use this value but if you want to improve your CSP policies you may use it. You can also choose to use your own nonce value!
-    */
-    'nonce';
-    /**
-    * The script referrer policy
-    */
-    'referrerpolicy';
-    /**
-    * The script source
-    */
-    'src';
-    /**
-    * The script MIME type
-    */
-    'type';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UiNodeScriptAttributes.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The script async type
+        */
+        Object.defineProperty(this, 'async', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The script cross origin policy
+        */
+        Object.defineProperty(this, 'crossorigin', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * A unique identifier
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The script\'s integrity hash
+        */
+        Object.defineProperty(this, 'integrity', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * NodeType represents this node\'s types. It is a mirror of `node.type` and is primarily used to allow compatibility with OpenAPI 3.0. In this struct it technically always is \"script\".
+        */
+        Object.defineProperty(this, 'node_type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Nonce for CSP  A nonce you may want to use to improve your Content Security Policy. You do not have to use this value but if you want to improve your CSP policies you may use it. You can also choose to use your own nonce value!
+        */
+        Object.defineProperty(this, 'nonce', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The script referrer policy
+        */
+        Object.defineProperty(this, 'referrerpolicy', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The script source
+        */
+        Object.defineProperty(this, 'src', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The script MIME type
+        */
+        Object.defineProperty(this, 'type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UiNodeScriptAttributes, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UiNodeScriptAttributes, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "async",
             "baseName": "async",
@@ -102,11 +162,6 @@ class UiNodeScriptAttributes {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UiNodeScriptAttributes.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UiNodeScriptAttributes };

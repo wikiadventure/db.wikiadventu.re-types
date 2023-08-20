@@ -13,26 +13,71 @@
 * Update Identity Body
 */
 class UpdateIdentityBody {
-    'credentials';
-    /**
-    * Store metadata about the user which is only accessible through admin APIs such as `GET /admin/identities/<id>`.
-    */
-    'metadata_admin';
-    /**
-    * Store metadata about the identity which the identity itself can see when calling for example the session endpoint. Do not store sensitive information (e.g. credit score) about the identity in this field.
-    */
-    'metadata_public';
-    /**
-    * SchemaID is the ID of the JSON Schema to be used for validating the identity\'s traits. If set will update the Identity\'s SchemaID.
-    */
-    'schema_id';
-    'state';
-    /**
-    * Traits represent an identity\'s traits. The identity is able to create, modify, and delete traits in a self-service manner. The input will always be validated against the JSON Schema defined in `schema_id`.
-    */
-    'traits';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateIdentityBody.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'credentials', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Store metadata about the user which is only accessible through admin APIs such as `GET /admin/identities/<id>`.
+        */
+        Object.defineProperty(this, 'metadata_admin', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Store metadata about the identity which the identity itself can see when calling for example the session endpoint. Do not store sensitive information (e.g. credit score) about the identity in this field.
+        */
+        Object.defineProperty(this, 'metadata_public', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * SchemaID is the ID of the JSON Schema to be used for validating the identity\'s traits. If set will update the Identity\'s SchemaID.
+        */
+        Object.defineProperty(this, 'schema_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'state', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Traits represent an identity\'s traits. The identity is able to create, modify, and delete traits in a self-service manner. The input will always be validated against the JSON Schema defined in `schema_id`.
+        */
+        Object.defineProperty(this, 'traits', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateIdentityBody, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateIdentityBody, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "credentials",
             "baseName": "credentials",
@@ -69,11 +114,6 @@ class UpdateIdentityBody {
             "type": "any",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateIdentityBody.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateIdentityBody };

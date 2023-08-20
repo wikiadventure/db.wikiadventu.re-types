@@ -13,32 +13,77 @@
 * Update Settings Flow with OpenID Connect Method
 */
 class UpdateSettingsFlowWithOidcMethod {
-    /**
-    * Flow ID is the flow\'s ID.  in: query
-    */
-    'flow';
-    /**
-    * Link this provider  Either this or `unlink` must be set.  type: string in: body
-    */
-    'link';
-    /**
-    * Method  Should be set to profile when trying to update a profile.
-    */
-    'method';
-    /**
-    * The identity\'s traits  in: body
-    */
-    'traits';
-    /**
-    * Unlink this provider  Either this or `link` must be set.  type: string in: body
-    */
-    'unlink';
-    /**
-    * UpstreamParameters are the parameters that are passed to the upstream identity provider.  These parameters are optional and depend on what the upstream identity provider supports. Supported parameters are: `login_hint` (string): The `login_hint` parameter suppresses the account chooser and either pre-fills the email box on the sign-in form, or selects the proper session. `hd` (string): The `hd` parameter limits the login/registration process to a Google Organization, e.g. `mycollege.edu`. `prompt` (string): The `prompt` specifies whether the Authorization Server prompts the End-User for reauthentication and consent, e.g. `select_account`.
-    */
-    'upstream_parameters';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateSettingsFlowWithOidcMethod.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Flow ID is the flow\'s ID.  in: query
+        */
+        Object.defineProperty(this, 'flow', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Link this provider  Either this or `unlink` must be set.  type: string in: body
+        */
+        Object.defineProperty(this, 'link', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method  Should be set to profile when trying to update a profile.
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The identity\'s traits  in: body
+        */
+        Object.defineProperty(this, 'traits', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Unlink this provider  Either this or `link` must be set.  type: string in: body
+        */
+        Object.defineProperty(this, 'unlink', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * UpstreamParameters are the parameters that are passed to the upstream identity provider.  These parameters are optional and depend on what the upstream identity provider supports. Supported parameters are: `login_hint` (string): The `login_hint` parameter suppresses the account chooser and either pre-fills the email box on the sign-in form, or selects the proper session. `hd` (string): The `hd` parameter limits the login/registration process to a Google Organization, e.g. `mycollege.edu`. `prompt` (string): The `prompt` specifies whether the Authorization Server prompts the End-User for reauthentication and consent, e.g. `select_account`.
+        */
+        Object.defineProperty(this, 'upstream_parameters', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateSettingsFlowWithOidcMethod, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateSettingsFlowWithOidcMethod, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "flow",
             "baseName": "flow",
@@ -75,11 +120,6 @@ class UpdateSettingsFlowWithOidcMethod {
             "type": "any",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateSettingsFlowWithOidcMethod.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateSettingsFlowWithOidcMethod };

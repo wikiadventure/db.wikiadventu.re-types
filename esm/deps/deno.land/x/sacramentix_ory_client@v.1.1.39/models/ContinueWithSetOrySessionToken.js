@@ -13,16 +13,41 @@
 * Indicates that a session was issued, and the application should use this token for authenticated requests
 */
 class ContinueWithSetOrySessionToken {
-    /**
-    * Action will always be `set_ory_session_token` set_ory_session_token ContinueWithActionSetOrySessionToken show_verification_ui ContinueWithActionShowVerificationUI
-    */
-    'action';
-    /**
-    * Token is the token of the session
-    */
-    'ory_session_token';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ContinueWithSetOrySessionToken.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Action will always be `set_ory_session_token` set_ory_session_token ContinueWithActionSetOrySessionToken show_verification_ui ContinueWithActionShowVerificationUI
+        */
+        Object.defineProperty(this, 'action', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Token is the token of the session
+        */
+        Object.defineProperty(this, 'ory_session_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ContinueWithSetOrySessionToken, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ContinueWithSetOrySessionToken, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "action",
             "baseName": "action",
@@ -35,11 +60,6 @@ class ContinueWithSetOrySessionToken {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return ContinueWithSetOrySessionToken.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ContinueWithSetOrySessionToken };

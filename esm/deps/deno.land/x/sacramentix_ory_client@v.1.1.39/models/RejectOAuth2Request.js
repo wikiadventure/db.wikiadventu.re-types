@@ -10,28 +10,68 @@
  * Do not edit the class manually.
  */
 class RejectOAuth2Request {
-    /**
-    * The error should follow the OAuth2 error format (e.g. `invalid_request`, `login_required`).  Defaults to `request_denied`.
-    */
-    'error';
-    /**
-    * Debug contains information to help resolve the problem as a developer. Usually not exposed to the public but only in the server logs.
-    */
-    'error_debug';
-    /**
-    * Description of the error in a human readable format.
-    */
-    'error_description';
-    /**
-    * Hint to help resolve the error.
-    */
-    'error_hint';
-    /**
-    * Represents the HTTP status code of the error (e.g. 401 or 403)  Defaults to 400
-    */
-    'status_code';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return RejectOAuth2Request.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The error should follow the OAuth2 error format (e.g. `invalid_request`, `login_required`).  Defaults to `request_denied`.
+        */
+        Object.defineProperty(this, 'error', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Debug contains information to help resolve the problem as a developer. Usually not exposed to the public but only in the server logs.
+        */
+        Object.defineProperty(this, 'error_debug', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Description of the error in a human readable format.
+        */
+        Object.defineProperty(this, 'error_description', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Hint to help resolve the error.
+        */
+        Object.defineProperty(this, 'error_hint', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Represents the HTTP status code of the error (e.g. 401 or 403)  Defaults to 400
+        */
+        Object.defineProperty(this, 'status_code', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(RejectOAuth2Request, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(RejectOAuth2Request, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "error",
             "baseName": "error",
@@ -62,11 +102,6 @@ class RejectOAuth2Request {
             "type": "number",
             "format": "int64"
         }
-    ];
-    static getAttributeTypeMap() {
-        return RejectOAuth2Request.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { RejectOAuth2Request };

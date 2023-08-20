@@ -10,17 +10,47 @@
  * Do not edit the class manually.
  */
 class UiNodeTextAttributes {
-    /**
-    * A unique identifier
-    */
-    'id';
-    /**
-    * NodeType represents this node\'s types. It is a mirror of `node.type` and is primarily used to allow compatibility with OpenAPI 3.0.  In this struct it technically always is \"text\".
-    */
-    'node_type';
-    'text';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UiNodeTextAttributes.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * A unique identifier
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * NodeType represents this node\'s types. It is a mirror of `node.type` and is primarily used to allow compatibility with OpenAPI 3.0.  In this struct it technically always is \"text\".
+        */
+        Object.defineProperty(this, 'node_type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'text', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UiNodeTextAttributes, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UiNodeTextAttributes, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "id",
             "baseName": "id",
@@ -39,11 +69,6 @@ class UiNodeTextAttributes {
             "type": "UiText",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UiNodeTextAttributes.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UiNodeTextAttributes };

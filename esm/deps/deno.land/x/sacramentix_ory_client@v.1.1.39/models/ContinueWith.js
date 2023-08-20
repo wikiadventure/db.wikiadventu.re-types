@@ -10,17 +10,48 @@
  * Do not edit the class manually.
  */
 class ContinueWith {
-    /**
-    * Action will always be `set_ory_session_token` set_ory_session_token ContinueWithActionSetOrySessionToken show_verification_ui ContinueWithActionShowVerificationUI
-    */
-    'action';
-    'flow';
-    /**
-    * Token is the token of the session
-    */
-    'ory_session_token';
-    static discriminator = "action";
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ContinueWith.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Action will always be `set_ory_session_token` set_ory_session_token ContinueWithActionSetOrySessionToken show_verification_ui ContinueWithActionShowVerificationUI
+        */
+        Object.defineProperty(this, 'action', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'flow', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Token is the token of the session
+        */
+        Object.defineProperty(this, 'ory_session_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        this.action = "ContinueWith";
+    }
+}
+Object.defineProperty(ContinueWith, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: "action"
+});
+Object.defineProperty(ContinueWith, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "action",
             "baseName": "action",
@@ -39,12 +70,6 @@ class ContinueWith {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return ContinueWith.attributeTypeMap;
-    }
-    constructor() {
-        this.action = "ContinueWith";
-    }
-}
+    ]
+});
 export { ContinueWith };

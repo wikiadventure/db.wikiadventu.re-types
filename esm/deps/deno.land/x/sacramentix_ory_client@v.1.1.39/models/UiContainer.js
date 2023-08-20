@@ -13,18 +13,53 @@
 * Container represents a HTML Form. The container can work with both HTTP Form and JSON requests
 */
 class UiContainer {
-    /**
-    * Action should be used as the form action URL `<form action=\"{{ .Action }}\" method=\"post\">`.
-    */
-    'action';
-    'messages';
-    /**
-    * Method is the form method (e.g. POST)
-    */
-    'method';
-    'nodes';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UiContainer.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Action should be used as the form action URL `<form action=\"{{ .Action }}\" method=\"post\">`.
+        */
+        Object.defineProperty(this, 'action', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'messages', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method is the form method (e.g. POST)
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'nodes', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UiContainer, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UiContainer, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "action",
             "baseName": "action",
@@ -49,11 +84,6 @@ class UiContainer {
             "type": "Array<UiNode>",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UiContainer.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UiContainer };

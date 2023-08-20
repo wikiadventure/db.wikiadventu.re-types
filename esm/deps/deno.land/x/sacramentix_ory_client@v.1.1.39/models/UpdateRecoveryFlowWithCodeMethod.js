@@ -13,24 +13,59 @@
 * Update Recovery Flow with Code Method
 */
 class UpdateRecoveryFlowWithCodeMethod {
-    /**
-    * Code from the recovery email  If you want to submit a code, use this field, but make sure to _not_ include the email field, as well.
-    */
-    'code';
-    /**
-    * Sending the anti-csrf token is only required for browser login flows.
-    */
-    'csrf_token';
-    /**
-    * The email address of the account to recover  If the email belongs to a valid account, a recovery email will be sent.  If you want to notify the email address if the account does not exist, see the [notify_unknown_recipients flag](https://www.ory.sh/docs/kratos/self-service/flows/account-recovery-password-reset#attempted-recovery-notifications)  If a code was already sent, including this field in the payload will invalidate the sent code and re-send a new code.  format: email
-    */
-    'email';
-    /**
-    * Method is the method that should be used for this recovery flow  Allowed values are `link` and `code`. link RecoveryStrategyLink code RecoveryStrategyCode
-    */
-    'method';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateRecoveryFlowWithCodeMethod.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Code from the recovery email  If you want to submit a code, use this field, but make sure to _not_ include the email field, as well.
+        */
+        Object.defineProperty(this, 'code', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Sending the anti-csrf token is only required for browser login flows.
+        */
+        Object.defineProperty(this, 'csrf_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The email address of the account to recover  If the email belongs to a valid account, a recovery email will be sent.  If you want to notify the email address if the account does not exist, see the [notify_unknown_recipients flag](https://www.ory.sh/docs/kratos/self-service/flows/account-recovery-password-reset#attempted-recovery-notifications)  If a code was already sent, including this field in the payload will invalidate the sent code and re-send a new code.  format: email
+        */
+        Object.defineProperty(this, 'email', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method is the method that should be used for this recovery flow  Allowed values are `link` and `code`. link RecoveryStrategyLink code RecoveryStrategyCode
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateRecoveryFlowWithCodeMethod, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateRecoveryFlowWithCodeMethod, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "code",
             "baseName": "code",
@@ -55,11 +90,6 @@ class UpdateRecoveryFlowWithCodeMethod {
             "type": "UpdateRecoveryFlowWithCodeMethodMethodEnum",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateRecoveryFlowWithCodeMethod.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateRecoveryFlowWithCodeMethod };

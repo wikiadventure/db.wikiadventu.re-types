@@ -10,20 +10,50 @@
  * Do not edit the class manually.
  */
 class ProjectHost {
-    /**
-    * The project\'s host.
-    */
-    'host';
-    /**
-    * The mapping\'s ID.
-    */
-    'id';
-    /**
-    * The Revision\'s Project ID
-    */
-    'project_id';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ProjectHost.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The project\'s host.
+        */
+        Object.defineProperty(this, 'host', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The mapping\'s ID.
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Revision\'s Project ID
+        */
+        Object.defineProperty(this, 'project_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ProjectHost, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ProjectHost, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "host",
             "baseName": "host",
@@ -42,11 +72,6 @@ class ProjectHost {
             "type": "string",
             "format": "uuid"
         }
-    ];
-    static getAttributeTypeMap() {
-        return ProjectHost.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ProjectHost };

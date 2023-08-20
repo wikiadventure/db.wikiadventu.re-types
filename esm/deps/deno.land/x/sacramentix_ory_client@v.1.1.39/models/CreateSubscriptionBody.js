@@ -13,19 +13,59 @@
 * Create Subscription Request Body
 */
 class CreateSubscriptionBody {
-    /**
-    *  usd USD eur Euro
-    */
-    'currency';
-    /**
-    *  monthly Monthly yearly Yearly
-    */
-    'interval';
-    'plan';
-    'provision_first_project';
-    'return_to';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return CreateSubscriptionBody.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        *  usd USD eur Euro
+        */
+        Object.defineProperty(this, 'currency', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        *  monthly Monthly yearly Yearly
+        */
+        Object.defineProperty(this, 'interval', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'plan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'provision_first_project', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'return_to', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(CreateSubscriptionBody, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(CreateSubscriptionBody, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "currency",
             "baseName": "currency",
@@ -56,11 +96,6 @@ class CreateSubscriptionBody {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return CreateSubscriptionBody.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { CreateSubscriptionBody };

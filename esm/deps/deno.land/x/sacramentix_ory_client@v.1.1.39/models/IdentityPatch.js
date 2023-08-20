@@ -13,13 +13,38 @@
 * Payload for patching an identity
 */
 class IdentityPatch {
-    'create';
-    /**
-    * The ID of this patch.  The patch ID is optional. If specified, the ID will be returned in the response, so consumers of this API can correlate the response with the patch.
-    */
-    'patch_id';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return IdentityPatch.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'create', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The ID of this patch.  The patch ID is optional. If specified, the ID will be returned in the response, so consumers of this API can correlate the response with the patch.
+        */
+        Object.defineProperty(this, 'patch_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(IdentityPatch, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(IdentityPatch, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "create",
             "baseName": "create",
@@ -32,11 +57,6 @@ class IdentityPatch {
             "type": "string",
             "format": "uuid"
         }
-    ];
-    static getAttributeTypeMap() {
-        return IdentityPatch.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { IdentityPatch };

@@ -13,22 +13,77 @@
 * A completed OAuth 2.0 Consent Session.
 */
 class OAuth2ConsentSession {
-    'consent_request';
-    'expires_at';
-    'grant_access_token_audience';
-    'grant_scope';
-    'handled_at';
-    /**
-    * Remember Consent  Remember, if set to true, tells ORY Hydra to remember this consent authorization and reuse it if the same client asks the same user for the same, or a subset of, scope.
-    */
-    'remember';
-    /**
-    * Remember Consent For  RememberFor sets how long the consent authorization should be remembered for in seconds. If set to `0`, the authorization will be remembered indefinitely.
-    */
-    'remember_for';
-    'session';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return OAuth2ConsentSession.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'consent_request', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'expires_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'grant_access_token_audience', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'grant_scope', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'handled_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Remember Consent  Remember, if set to true, tells ORY Hydra to remember this consent authorization and reuse it if the same client asks the same user for the same, or a subset of, scope.
+        */
+        Object.defineProperty(this, 'remember', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Remember Consent For  RememberFor sets how long the consent authorization should be remembered for in seconds. If set to `0`, the authorization will be remembered indefinitely.
+        */
+        Object.defineProperty(this, 'remember_for', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'session', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(OAuth2ConsentSession, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(OAuth2ConsentSession, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "consent_request",
             "baseName": "consent_request",
@@ -77,11 +132,6 @@ class OAuth2ConsentSession {
             "type": "AcceptOAuth2ConsentRequestSession",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return OAuth2ConsentSession.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { OAuth2ConsentSession };

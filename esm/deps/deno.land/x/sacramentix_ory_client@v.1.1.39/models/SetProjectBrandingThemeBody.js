@@ -13,21 +13,56 @@
 * Set Project Branding Theme Request Parameters
 */
 class SetProjectBrandingThemeBody {
-    /**
-    * Logo type
-    */
-    'logo_type';
-    /**
-    * Logo URL
-    */
-    'logo_url';
-    /**
-    * Branding name
-    */
-    'name';
-    'theme';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return SetProjectBrandingThemeBody.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Logo type
+        */
+        Object.defineProperty(this, 'logo_type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Logo URL
+        */
+        Object.defineProperty(this, 'logo_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Branding name
+        */
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'theme', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(SetProjectBrandingThemeBody, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(SetProjectBrandingThemeBody, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "logo_type",
             "baseName": "logo_type",
@@ -52,11 +87,6 @@ class SetProjectBrandingThemeBody {
             "type": "ProjectBrandingColors",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return SetProjectBrandingThemeBody.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { SetProjectBrandingThemeBody };

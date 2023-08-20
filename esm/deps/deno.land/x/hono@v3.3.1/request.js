@@ -2,11 +2,31 @@ import { parseBody } from './utils/body.js';
 import { parse } from './utils/cookie.js';
 import { getQueryParam, getQueryParams, decodeURIComponent_ } from './utils/url.js';
 export class HonoRequest {
-    raw;
-    paramData;
-    vData; // Short name of validatedData
-    path;
     constructor(request, path = '/', paramData) {
+        Object.defineProperty(this, "raw", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "paramData", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "vData", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        }); // Short name of validatedData
+        Object.defineProperty(this, "path", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.raw = request;
         this.path = path;
         this.paramData = paramData;

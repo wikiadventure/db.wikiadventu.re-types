@@ -10,16 +10,41 @@
  * Do not edit the class manually.
  */
 class GenericUsage {
-    /**
-    * AdditionalPrice is the price per-unit exceeding IncludedUsage. A price of 0 means that no other items can be consumed.
-    */
-    'additional_price';
-    /**
-    * IncludedUsage is the number of included items.
-    */
-    'included_usage';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return GenericUsage.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * AdditionalPrice is the price per-unit exceeding IncludedUsage. A price of 0 means that no other items can be consumed.
+        */
+        Object.defineProperty(this, 'additional_price', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * IncludedUsage is the number of included items.
+        */
+        Object.defineProperty(this, 'included_usage', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(GenericUsage, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(GenericUsage, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "additional_price",
             "baseName": "additional_price",
@@ -32,11 +57,6 @@ class GenericUsage {
             "type": "number",
             "format": "int64"
         }
-    ];
-    static getAttributeTypeMap() {
-        return GenericUsage.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { GenericUsage };

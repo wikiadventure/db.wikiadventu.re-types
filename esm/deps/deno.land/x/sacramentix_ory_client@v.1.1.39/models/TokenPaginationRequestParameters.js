@@ -13,16 +13,41 @@
 * The `Link` HTTP header contains multiple links (`first`, `next`, `last`, `previous`) formatted as: `<https://{project-slug}.projects.oryapis.com/admin/clients?page_size={limit}&page_token={offset}>; rel=\"{page}\"`  For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination).
 */
 class TokenPaginationRequestParameters {
-    /**
-    * Items per Page  This is the number of items per page to return. For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination).
-    */
-    'page_size';
-    /**
-    * Next Page Token  The next page token. For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination).
-    */
-    'page_token';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return TokenPaginationRequestParameters.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Items per Page  This is the number of items per page to return. For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination).
+        */
+        Object.defineProperty(this, 'page_size', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Next Page Token  The next page token. For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination).
+        */
+        Object.defineProperty(this, 'page_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(TokenPaginationRequestParameters, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(TokenPaginationRequestParameters, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "page_size",
             "baseName": "page_size",
@@ -35,11 +60,6 @@ class TokenPaginationRequestParameters {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return TokenPaginationRequestParameters.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { TokenPaginationRequestParameters };

@@ -13,28 +13,68 @@
 * Error
 */
 class ErrorOAuth2 {
-    /**
-    * Error
-    */
-    'error';
-    /**
-    * Error Debug Information  Only available in dev mode.
-    */
-    'error_debug';
-    /**
-    * Error Description
-    */
-    'error_description';
-    /**
-    * Error Hint  Helps the user identify the error cause.
-    */
-    'error_hint';
-    /**
-    * HTTP Status Code
-    */
-    'status_code';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ErrorOAuth2.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Error
+        */
+        Object.defineProperty(this, 'error', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Error Debug Information  Only available in dev mode.
+        */
+        Object.defineProperty(this, 'error_debug', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Error Description
+        */
+        Object.defineProperty(this, 'error_description', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Error Hint  Helps the user identify the error cause.
+        */
+        Object.defineProperty(this, 'error_hint', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * HTTP Status Code
+        */
+        Object.defineProperty(this, 'status_code', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ErrorOAuth2, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ErrorOAuth2, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "error",
             "baseName": "error",
@@ -65,11 +105,6 @@ class ErrorOAuth2 {
             "type": "number",
             "format": "int64"
         }
-    ];
-    static getAttributeTypeMap() {
-        return ErrorOAuth2.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ErrorOAuth2 };

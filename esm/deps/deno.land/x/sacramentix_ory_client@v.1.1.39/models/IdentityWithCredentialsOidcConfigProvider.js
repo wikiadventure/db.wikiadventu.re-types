@@ -13,16 +13,41 @@
 * Create Identity and Import Social Sign In Credentials Configuration
 */
 class IdentityWithCredentialsOidcConfigProvider {
-    /**
-    * The OpenID Connect provider to link the subject to. Usually something like `google` or `github`.
-    */
-    'provider';
-    /**
-    * The subject (`sub`) of the OpenID Connect connection. Usually the `sub` field of the ID Token.
-    */
-    'subject';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return IdentityWithCredentialsOidcConfigProvider.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The OpenID Connect provider to link the subject to. Usually something like `google` or `github`.
+        */
+        Object.defineProperty(this, 'provider', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The subject (`sub`) of the OpenID Connect connection. Usually the `sub` field of the ID Token.
+        */
+        Object.defineProperty(this, 'subject', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(IdentityWithCredentialsOidcConfigProvider, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(IdentityWithCredentialsOidcConfigProvider, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "provider",
             "baseName": "provider",
@@ -35,11 +60,6 @@ class IdentityWithCredentialsOidcConfigProvider {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return IdentityWithCredentialsOidcConfigProvider.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { IdentityWithCredentialsOidcConfigProvider };

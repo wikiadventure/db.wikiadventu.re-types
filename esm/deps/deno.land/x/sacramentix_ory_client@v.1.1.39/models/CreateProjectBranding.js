@@ -13,12 +13,47 @@
 * Create a Project Branding
 */
 class CreateProjectBranding {
-    'logo_type';
-    'logo_url';
-    'name';
-    'theme';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return CreateProjectBranding.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'logo_type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'logo_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'theme', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(CreateProjectBranding, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(CreateProjectBranding, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "logo_type",
             "baseName": "logo_type",
@@ -43,11 +78,6 @@ class CreateProjectBranding {
             "type": "ProjectBrandingColors",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return CreateProjectBranding.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { CreateProjectBranding };

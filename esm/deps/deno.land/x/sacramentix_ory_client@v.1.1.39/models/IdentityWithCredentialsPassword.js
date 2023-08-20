@@ -13,20 +13,35 @@
 * Create Identity and Import Password Credentials
 */
 class IdentityWithCredentialsPassword {
-    'config';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return IdentityWithCredentialsPassword.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'config', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(IdentityWithCredentialsPassword, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(IdentityWithCredentialsPassword, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "config",
             "baseName": "config",
             "type": "IdentityWithCredentialsPasswordConfig",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return IdentityWithCredentialsPassword.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { IdentityWithCredentialsPassword };

@@ -10,20 +10,50 @@
  * Do not edit the class manually.
  */
 class ContinueWithVerificationUiFlow {
-    /**
-    * The ID of the verification flow
-    */
-    'id';
-    /**
-    * The URL of the verification flow
-    */
-    'url';
-    /**
-    * The address that should be verified in this flow
-    */
-    'verifiable_address';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ContinueWithVerificationUiFlow.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The ID of the verification flow
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The URL of the verification flow
+        */
+        Object.defineProperty(this, 'url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The address that should be verified in this flow
+        */
+        Object.defineProperty(this, 'verifiable_address', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ContinueWithVerificationUiFlow, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ContinueWithVerificationUiFlow, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "id",
             "baseName": "id",
@@ -42,11 +72,6 @@ class ContinueWithVerificationUiFlow {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return ContinueWithVerificationUiFlow.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ContinueWithVerificationUiFlow };

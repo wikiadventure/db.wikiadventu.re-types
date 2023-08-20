@@ -37,7 +37,14 @@ export function addIssueToContext(ctx, issueData) {
     ctx.common.issues.push(issue);
 }
 export class ParseStatus {
-    value = "valid";
+    constructor() {
+        Object.defineProperty(this, "value", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: "valid"
+        });
+    }
     dirty() {
         if (this.value === "valid")
             this.value = "dirty";

@@ -10,21 +10,56 @@
  * Do not edit the class manually.
  */
 class UiText {
-    /**
-    * The message\'s context. Useful when customizing messages.
-    */
-    'context';
-    'id';
-    /**
-    * The message text. Written in american english.
-    */
-    'text';
-    /**
-    * The message type. info Info error Error success Success
-    */
-    'type';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UiText.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The message\'s context. Useful when customizing messages.
+        */
+        Object.defineProperty(this, 'context', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The message text. Written in american english.
+        */
+        Object.defineProperty(this, 'text', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The message type. info Info error Error success Success
+        */
+        Object.defineProperty(this, 'type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UiText, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UiText, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "context",
             "baseName": "context",
@@ -49,11 +84,6 @@ class UiText {
             "type": "UiTextTypeEnum",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UiText.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UiText };

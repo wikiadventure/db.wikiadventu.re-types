@@ -10,16 +10,41 @@
  * Do not edit the class manually.
  */
 class TokenPagination {
-    /**
-    * Items per page  This is the number of items per page to return. For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination).
-    */
-    'page_size';
-    /**
-    * Next Page Token  The next page token. For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination).
-    */
-    'page_token';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return TokenPagination.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Items per page  This is the number of items per page to return. For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination).
+        */
+        Object.defineProperty(this, 'page_size', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Next Page Token  The next page token. For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination).
+        */
+        Object.defineProperty(this, 'page_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(TokenPagination, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(TokenPagination, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "page_size",
             "baseName": "page_size",
@@ -32,11 +57,6 @@ class TokenPagination {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return TokenPagination.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { TokenPagination };

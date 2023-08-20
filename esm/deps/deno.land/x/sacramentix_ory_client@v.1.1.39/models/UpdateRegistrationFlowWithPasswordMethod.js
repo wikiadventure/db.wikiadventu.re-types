@@ -13,28 +13,68 @@
 * Update Registration Flow with Password Method
 */
 class UpdateRegistrationFlowWithPasswordMethod {
-    /**
-    * The CSRF Token
-    */
-    'csrf_token';
-    /**
-    * Method to use  This field must be set to `password` when using the password method.
-    */
-    'method';
-    /**
-    * Password to sign the user up with
-    */
-    'password';
-    /**
-    * The identity\'s traits
-    */
-    'traits';
-    /**
-    * Transient data to pass along to any webhooks
-    */
-    'transient_payload';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateRegistrationFlowWithPasswordMethod.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The CSRF Token
+        */
+        Object.defineProperty(this, 'csrf_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method to use  This field must be set to `password` when using the password method.
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Password to sign the user up with
+        */
+        Object.defineProperty(this, 'password', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The identity\'s traits
+        */
+        Object.defineProperty(this, 'traits', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Transient data to pass along to any webhooks
+        */
+        Object.defineProperty(this, 'transient_payload', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateRegistrationFlowWithPasswordMethod, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateRegistrationFlowWithPasswordMethod, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "csrf_token",
             "baseName": "csrf_token",
@@ -65,11 +105,6 @@ class UpdateRegistrationFlowWithPasswordMethod {
             "type": "any",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateRegistrationFlowWithPasswordMethod.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateRegistrationFlowWithPasswordMethod };

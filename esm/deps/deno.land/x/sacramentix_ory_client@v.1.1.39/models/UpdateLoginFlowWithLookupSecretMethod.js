@@ -13,20 +13,50 @@
 * Update Login Flow with Lookup Secret Method
 */
 class UpdateLoginFlowWithLookupSecretMethod {
-    /**
-    * Sending the anti-csrf token is only required for browser login flows.
-    */
-    'csrf_token';
-    /**
-    * The lookup secret.
-    */
-    'lookup_secret';
-    /**
-    * Method should be set to \"lookup_secret\" when logging in using the lookup_secret strategy.
-    */
-    'method';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateLoginFlowWithLookupSecretMethod.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Sending the anti-csrf token is only required for browser login flows.
+        */
+        Object.defineProperty(this, 'csrf_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The lookup secret.
+        */
+        Object.defineProperty(this, 'lookup_secret', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method should be set to \"lookup_secret\" when logging in using the lookup_secret strategy.
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateLoginFlowWithLookupSecretMethod, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateLoginFlowWithLookupSecretMethod, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "csrf_token",
             "baseName": "csrf_token",
@@ -45,11 +75,6 @@ class UpdateLoginFlowWithLookupSecretMethod {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateLoginFlowWithLookupSecretMethod.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateLoginFlowWithLookupSecretMethod };

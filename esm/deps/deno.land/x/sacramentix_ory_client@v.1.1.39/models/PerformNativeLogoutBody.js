@@ -13,23 +13,38 @@
 * Perform Native Logout Request Body
 */
 class PerformNativeLogoutBody {
-    /**
-    * The Session Token  Invalidate this session token.
-    */
-    'session_token';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return PerformNativeLogoutBody.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The Session Token  Invalidate this session token.
+        */
+        Object.defineProperty(this, 'session_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(PerformNativeLogoutBody, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(PerformNativeLogoutBody, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "session_token",
             "baseName": "session_token",
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return PerformNativeLogoutBody.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { PerformNativeLogoutBody };

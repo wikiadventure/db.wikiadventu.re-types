@@ -10,16 +10,41 @@
  * Do not edit the class manually.
  */
 class Plan {
-    /**
-    * Name is the name of the plan.
-    */
-    'name';
-    /**
-    * Version is the version of the plan. The combination of `name@version` must be unique.
-    */
-    'version';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return Plan.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Name is the name of the plan.
+        */
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Version is the version of the plan. The combination of `name@version` must be unique.
+        */
+        Object.defineProperty(this, 'version', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(Plan, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(Plan, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "name",
             "baseName": "name",
@@ -32,11 +57,6 @@ class Plan {
             "type": "number",
             "format": "int64"
         }
-    ];
-    static getAttributeTypeMap() {
-        return Plan.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { Plan };

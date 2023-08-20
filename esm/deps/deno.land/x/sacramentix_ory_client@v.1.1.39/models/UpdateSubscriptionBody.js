@@ -13,14 +13,44 @@
 * Update Subscription Request Body
 */
 class UpdateSubscriptionBody {
-    /**
-    *  monthly Monthly yearly Yearly
-    */
-    'interval';
-    'plan';
-    'return_to';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateSubscriptionBody.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        *  monthly Monthly yearly Yearly
+        */
+        Object.defineProperty(this, 'interval', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'plan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'return_to', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateSubscriptionBody, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateSubscriptionBody, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "interval",
             "baseName": "interval",
@@ -39,11 +69,6 @@ class UpdateSubscriptionBody {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateSubscriptionBody.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateSubscriptionBody };

@@ -1,9 +1,19 @@
 import { checkOptionalParameter } from '../../utils/url.js';
 import { Node } from './node.js';
 export class TrieRouter {
-    name = 'TrieRouter';
-    node;
     constructor() {
+        Object.defineProperty(this, "name", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: 'TrieRouter'
+        });
+        Object.defineProperty(this, "node", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.node = new Node();
     }
     add(method, path, handler) {

@@ -13,16 +13,41 @@
 * Represents a single datapoint/bucket of a time series
 */
 class MetricsDatapoint {
-    /**
-    * The count of events that occured in this time
-    */
-    'count';
-    /**
-    * The time of the bucket
-    */
-    'time';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return MetricsDatapoint.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The count of events that occured in this time
+        */
+        Object.defineProperty(this, 'count', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The time of the bucket
+        */
+        Object.defineProperty(this, 'time', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(MetricsDatapoint, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(MetricsDatapoint, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "count",
             "baseName": "count",
@@ -35,11 +60,6 @@ class MetricsDatapoint {
             "type": "Date",
             "format": "date-time"
         }
-    ];
-    static getAttributeTypeMap() {
-        return MetricsDatapoint.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { MetricsDatapoint };

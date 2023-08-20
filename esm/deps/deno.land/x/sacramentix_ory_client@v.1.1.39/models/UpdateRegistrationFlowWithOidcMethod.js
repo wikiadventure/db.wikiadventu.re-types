@@ -13,32 +13,77 @@
 * Update Registration Flow with OpenID Connect Method
 */
 class UpdateRegistrationFlowWithOidcMethod {
-    /**
-    * The CSRF Token
-    */
-    'csrf_token';
-    /**
-    * Method to use  This field must be set to `oidc` when using the oidc method.
-    */
-    'method';
-    /**
-    * The provider to register with
-    */
-    'provider';
-    /**
-    * The identity traits
-    */
-    'traits';
-    /**
-    * Transient data to pass along to any webhooks
-    */
-    'transient_payload';
-    /**
-    * UpstreamParameters are the parameters that are passed to the upstream identity provider.  These parameters are optional and depend on what the upstream identity provider supports. Supported parameters are: `login_hint` (string): The `login_hint` parameter suppresses the account chooser and either pre-fills the email box on the sign-in form, or selects the proper session. `hd` (string): The `hd` parameter limits the login/registration process to a Google Organization, e.g. `mycollege.edu`. `prompt` (string): The `prompt` specifies whether the Authorization Server prompts the End-User for reauthentication and consent, e.g. `select_account`.
-    */
-    'upstream_parameters';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateRegistrationFlowWithOidcMethod.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The CSRF Token
+        */
+        Object.defineProperty(this, 'csrf_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method to use  This field must be set to `oidc` when using the oidc method.
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The provider to register with
+        */
+        Object.defineProperty(this, 'provider', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The identity traits
+        */
+        Object.defineProperty(this, 'traits', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Transient data to pass along to any webhooks
+        */
+        Object.defineProperty(this, 'transient_payload', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * UpstreamParameters are the parameters that are passed to the upstream identity provider.  These parameters are optional and depend on what the upstream identity provider supports. Supported parameters are: `login_hint` (string): The `login_hint` parameter suppresses the account chooser and either pre-fills the email box on the sign-in form, or selects the proper session. `hd` (string): The `hd` parameter limits the login/registration process to a Google Organization, e.g. `mycollege.edu`. `prompt` (string): The `prompt` specifies whether the Authorization Server prompts the End-User for reauthentication and consent, e.g. `select_account`.
+        */
+        Object.defineProperty(this, 'upstream_parameters', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateRegistrationFlowWithOidcMethod, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateRegistrationFlowWithOidcMethod, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "csrf_token",
             "baseName": "csrf_token",
@@ -75,11 +120,6 @@ class UpdateRegistrationFlowWithOidcMethod {
             "type": "any",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateRegistrationFlowWithOidcMethod.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateRegistrationFlowWithOidcMethod };

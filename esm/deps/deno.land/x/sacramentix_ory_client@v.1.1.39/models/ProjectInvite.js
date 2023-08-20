@@ -10,41 +10,101 @@
  * Do not edit the class manually.
  */
 class ProjectInvite {
-    /**
-    * The Project\'s Revision Creation Date
-    */
-    'created_at';
-    /**
-    * The invite\'s ID.
-    */
-    'id';
-    /**
-    * The invitee\'s email
-    */
-    'invitee_email';
-    'invitee_id';
-    /**
-    * The invite owner\'s email Usually the project\'s owner email
-    */
-    'owner_email';
-    /**
-    * The invite owner\'s ID Usually the project\'s owner
-    */
-    'owner_id';
-    /**
-    * The Project\'s ID this invite is associated with
-    */
-    'project_id';
-    /**
-    * The invite\'s status Keeps track of the invites status such as pending, accepted, declined, expired pending PENDING accepted ACCEPTED declined DECLINED expired EXPIRED cancelled CANCELLED removed REMOVED
-    */
-    'status';
-    /**
-    * Last Time Project\'s Revision was Updated
-    */
-    'updated_at';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ProjectInvite.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The Project\'s Revision Creation Date
+        */
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The invite\'s ID.
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The invitee\'s email
+        */
+        Object.defineProperty(this, 'invitee_email', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'invitee_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The invite owner\'s email Usually the project\'s owner email
+        */
+        Object.defineProperty(this, 'owner_email', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The invite owner\'s ID Usually the project\'s owner
+        */
+        Object.defineProperty(this, 'owner_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Project\'s ID this invite is associated with
+        */
+        Object.defineProperty(this, 'project_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The invite\'s status Keeps track of the invites status such as pending, accepted, declined, expired pending PENDING accepted ACCEPTED declined DECLINED expired EXPIRED cancelled CANCELLED removed REMOVED
+        */
+        Object.defineProperty(this, 'status', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Last Time Project\'s Revision was Updated
+        */
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ProjectInvite, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ProjectInvite, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "created_at",
             "baseName": "created_at",
@@ -99,11 +159,6 @@ class ProjectInvite {
             "type": "Date",
             "format": "date-time"
         }
-    ];
-    static getAttributeTypeMap() {
-        return ProjectInvite.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ProjectInvite };

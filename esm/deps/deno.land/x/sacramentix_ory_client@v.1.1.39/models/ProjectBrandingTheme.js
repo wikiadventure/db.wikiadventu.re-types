@@ -13,152 +13,347 @@
 * The Project Branding Theme
 */
 class ProjectBrandingTheme {
-    /**
-    * AccentDefaultColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'accent_default_color';
-    /**
-    * AccentDisabledColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'accent_disabled_color';
-    /**
-    * AccentEmphasisColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'accent_emphasis_color';
-    /**
-    * AccentMutedColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'accent_muted_color';
-    /**
-    * AccentSubtleColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'accent_subtle_color';
-    /**
-    * BackgroundCanvasColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'background_canvas_color';
-    /**
-    * BackgroundSubtleColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'background_subtle_color';
-    /**
-    * BackgroundSurfaceColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'background_surface_color';
-    /**
-    * BorderDefaultColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'border_default_color';
-    /**
-    * The Customiation Creation Date
-    */
-    'created_at';
-    /**
-    * ErrorDefaultColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'error_default_color';
-    /**
-    * ErrorEmphasisColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'error_emphasis_color';
-    /**
-    * ErrorMutedColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'error_muted_color';
-    /**
-    * ErrorSubtleColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'error_subtle_color';
-    /**
-    * ForegroundDefaultColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'foreground_default_color';
-    /**
-    * ForegroundDisabledColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'foreground_disabled_color';
-    /**
-    * ForegroundMutedColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'foreground_muted_color';
-    /**
-    * ForegroundOnAccentColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'foreground_on_accent_color';
-    /**
-    * ForegroundOnDarkColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'foreground_on_dark_color';
-    /**
-    * ForegroundOnDisabledColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'foreground_on_disabled_color';
-    /**
-    * ForegroundSubtleColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'foreground_subtle_color';
-    /**
-    * The customization theme ID.
-    */
-    'id';
-    /**
-    * InputBackgroundColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'input_background_color';
-    /**
-    * InputDisabledColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'input_disabled_color';
-    /**
-    * InputPlaceholderColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'input_placeholder_color';
-    /**
-    * InputTextColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'input_text_color';
-    /**
-    * Logo Type The Logo mime type.
-    */
-    'logo_type';
-    /**
-    * Logo URL Logo can be an https:// or base64:// URL. If the URL is not allowed, the logo will be stored inside the Ory Network storage bucket.
-    */
-    'logo_url';
-    /**
-    * The customization theme name.
-    */
-    'name';
-    /**
-    * Primary color is an hsla color value used to derive the other colors from for the Ory Account Experience theme.
-    */
-    'primary_color';
-    /**
-    * The ProjectBranding ID this customization is associated with
-    */
-    'project_branding_id';
-    /**
-    * Secondary color is a hsla color code used to derive the other colors from for the Ory Account Experience theme.
-    */
-    'secondary_color';
-    /**
-    * SuccessEmphasisColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'success_emphasis_color';
-    /**
-    * TextDefaultColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'text_default_color';
-    /**
-    * TextDisabledColor is a hex color code used by the Ory Account Experience theme.
-    */
-    'text_disabled_color';
-    /**
-    * Last Time Branding was Updated
-    */
-    'updated_at';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ProjectBrandingTheme.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * AccentDefaultColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'accent_default_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * AccentDisabledColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'accent_disabled_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * AccentEmphasisColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'accent_emphasis_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * AccentMutedColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'accent_muted_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * AccentSubtleColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'accent_subtle_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * BackgroundCanvasColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'background_canvas_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * BackgroundSubtleColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'background_subtle_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * BackgroundSurfaceColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'background_surface_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * BorderDefaultColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'border_default_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Customiation Creation Date
+        */
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ErrorDefaultColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'error_default_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ErrorEmphasisColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'error_emphasis_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ErrorMutedColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'error_muted_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ErrorSubtleColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'error_subtle_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ForegroundDefaultColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'foreground_default_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ForegroundDisabledColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'foreground_disabled_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ForegroundMutedColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'foreground_muted_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ForegroundOnAccentColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'foreground_on_accent_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ForegroundOnDarkColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'foreground_on_dark_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ForegroundOnDisabledColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'foreground_on_disabled_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ForegroundSubtleColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'foreground_subtle_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The customization theme ID.
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * InputBackgroundColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'input_background_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * InputDisabledColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'input_disabled_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * InputPlaceholderColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'input_placeholder_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * InputTextColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'input_text_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Logo Type The Logo mime type.
+        */
+        Object.defineProperty(this, 'logo_type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Logo URL Logo can be an https:// or base64:// URL. If the URL is not allowed, the logo will be stored inside the Ory Network storage bucket.
+        */
+        Object.defineProperty(this, 'logo_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The customization theme name.
+        */
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Primary color is an hsla color value used to derive the other colors from for the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'primary_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The ProjectBranding ID this customization is associated with
+        */
+        Object.defineProperty(this, 'project_branding_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Secondary color is a hsla color code used to derive the other colors from for the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'secondary_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * SuccessEmphasisColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'success_emphasis_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * TextDefaultColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'text_default_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * TextDisabledColor is a hex color code used by the Ory Account Experience theme.
+        */
+        Object.defineProperty(this, 'text_disabled_color', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Last Time Branding was Updated
+        */
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ProjectBrandingTheme, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ProjectBrandingTheme, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "accent_default_color",
             "baseName": "accent_default_color",
@@ -375,11 +570,6 @@ class ProjectBrandingTheme {
             "type": "Date",
             "format": "date-time"
         }
-    ];
-    static getAttributeTypeMap() {
-        return ProjectBrandingTheme.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ProjectBrandingTheme };

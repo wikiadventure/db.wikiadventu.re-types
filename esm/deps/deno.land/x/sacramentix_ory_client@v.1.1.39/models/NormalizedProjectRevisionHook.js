@@ -10,80 +10,185 @@
  * Do not edit the class manually.
  */
 class NormalizedProjectRevisionHook {
-    /**
-    * The Hooks Config Key
-    */
-    'config_key';
-    /**
-    * The Project\'s Revision Creation Date
-    */
-    'created_at';
-    /**
-    * The Hook Type
-    */
-    'hook';
-    /**
-    * ID of the entry
-    */
-    'id';
-    /**
-    * The Revision\'s ID this schema belongs to
-    */
-    'project_revision_id';
-    /**
-    * Last Time Project\'s Revision was Updated
-    */
-    'updated_at';
-    /**
-    * Whether to send the API Key in the HTTP Header or as a HTTP Cookie
-    */
-    'web_hook_config_auth_api_key_in';
-    /**
-    * The name of the api key
-    */
-    'web_hook_config_auth_api_key_name';
-    /**
-    * The value of the api key
-    */
-    'web_hook_config_auth_api_key_value';
-    /**
-    * The password to be sent in the HTTP Basic Auth Header
-    */
-    'web_hook_config_auth_basic_auth_password';
-    /**
-    * The username to be sent in the HTTP Basic Auth Header
-    */
-    'web_hook_config_auth_basic_auth_user';
-    /**
-    * HTTP Auth Method to use for the Web-Hook
-    */
-    'web_hook_config_auth_type';
-    /**
-    * URI pointing to the JsonNet template used for Web-Hook payload generation. Only used for those HTTP methods, which support HTTP body payloads.
-    */
-    'web_hook_config_body';
-    /**
-    * If enabled allows the web hook to interrupt / abort the self-service flow. It only applies to certain flows (registration/verification/login/settings) and requires a valid response format.
-    */
-    'web_hook_config_can_interrupt';
-    /**
-    * The HTTP method to use (GET, POST, etc) for the Web-Hook
-    */
-    'web_hook_config_method';
-    /**
-    * Whether to ignore the Web Hook response
-    */
-    'web_hook_config_response_ignore';
-    /**
-    * Whether to parse the Web Hook response
-    */
-    'web_hook_config_response_parse';
-    /**
-    * The URL the Web-Hook should call
-    */
-    'web_hook_config_url';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return NormalizedProjectRevisionHook.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The Hooks Config Key
+        */
+        Object.defineProperty(this, 'config_key', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Project\'s Revision Creation Date
+        */
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Hook Type
+        */
+        Object.defineProperty(this, 'hook', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ID of the entry
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Revision\'s ID this schema belongs to
+        */
+        Object.defineProperty(this, 'project_revision_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Last Time Project\'s Revision was Updated
+        */
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Whether to send the API Key in the HTTP Header or as a HTTP Cookie
+        */
+        Object.defineProperty(this, 'web_hook_config_auth_api_key_in', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The name of the api key
+        */
+        Object.defineProperty(this, 'web_hook_config_auth_api_key_name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The value of the api key
+        */
+        Object.defineProperty(this, 'web_hook_config_auth_api_key_value', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The password to be sent in the HTTP Basic Auth Header
+        */
+        Object.defineProperty(this, 'web_hook_config_auth_basic_auth_password', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The username to be sent in the HTTP Basic Auth Header
+        */
+        Object.defineProperty(this, 'web_hook_config_auth_basic_auth_user', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * HTTP Auth Method to use for the Web-Hook
+        */
+        Object.defineProperty(this, 'web_hook_config_auth_type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * URI pointing to the JsonNet template used for Web-Hook payload generation. Only used for those HTTP methods, which support HTTP body payloads.
+        */
+        Object.defineProperty(this, 'web_hook_config_body', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * If enabled allows the web hook to interrupt / abort the self-service flow. It only applies to certain flows (registration/verification/login/settings) and requires a valid response format.
+        */
+        Object.defineProperty(this, 'web_hook_config_can_interrupt', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The HTTP method to use (GET, POST, etc) for the Web-Hook
+        */
+        Object.defineProperty(this, 'web_hook_config_method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Whether to ignore the Web Hook response
+        */
+        Object.defineProperty(this, 'web_hook_config_response_ignore', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Whether to parse the Web Hook response
+        */
+        Object.defineProperty(this, 'web_hook_config_response_parse', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The URL the Web-Hook should call
+        */
+        Object.defineProperty(this, 'web_hook_config_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(NormalizedProjectRevisionHook, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(NormalizedProjectRevisionHook, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "config_key",
             "baseName": "config_key",
@@ -192,11 +297,6 @@ class NormalizedProjectRevisionHook {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return NormalizedProjectRevisionHook.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { NormalizedProjectRevisionHook };

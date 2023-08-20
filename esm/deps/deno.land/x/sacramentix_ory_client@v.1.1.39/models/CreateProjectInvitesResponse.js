@@ -13,10 +13,35 @@
 * Response to the create project invite request
 */
 class CreateProjectInvitesResponse {
-    'all_invites';
-    'created_invites';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return CreateProjectInvitesResponse.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'all_invites', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'created_invites', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(CreateProjectInvitesResponse, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(CreateProjectInvitesResponse, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "all_invites",
             "baseName": "all_invites",
@@ -29,11 +54,6 @@ class CreateProjectInvitesResponse {
             "type": "Array<ProjectInvite>",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return CreateProjectInvitesResponse.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { CreateProjectInvitesResponse };

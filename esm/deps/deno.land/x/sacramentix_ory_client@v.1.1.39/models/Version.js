@@ -10,23 +10,38 @@
  * Do not edit the class manually.
  */
 class Version {
-    /**
-    * Version is the service\'s version.
-    */
-    'version';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return Version.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Version is the service\'s version.
+        */
+        Object.defineProperty(this, 'version', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(Version, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(Version, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "version",
             "baseName": "version",
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return Version.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { Version };

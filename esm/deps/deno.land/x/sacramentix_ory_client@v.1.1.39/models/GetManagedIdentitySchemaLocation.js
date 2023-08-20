@@ -13,20 +13,35 @@
 * Ory Identity Schema Location
 */
 class GetManagedIdentitySchemaLocation {
-    'location';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return GetManagedIdentitySchemaLocation.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'location', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(GetManagedIdentitySchemaLocation, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(GetManagedIdentitySchemaLocation, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "location",
             "baseName": "location",
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return GetManagedIdentitySchemaLocation.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { GetManagedIdentitySchemaLocation };

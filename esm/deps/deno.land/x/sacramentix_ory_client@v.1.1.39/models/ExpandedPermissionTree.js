@@ -10,17 +10,47 @@
  * Do not edit the class manually.
  */
 class ExpandedPermissionTree {
-    /**
-    * The children of the node, possibly none.
-    */
-    'children';
-    'tuple';
-    /**
-    * The type of the node. union TreeNodeUnion exclusion TreeNodeExclusion intersection TreeNodeIntersection leaf TreeNodeLeaf tuple_to_subject_set TreeNodeTupleToSubjectSet computed_subject_set TreeNodeComputedSubjectSet not TreeNodeNot unspecified TreeNodeUnspecified
-    */
-    'type';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ExpandedPermissionTree.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The children of the node, possibly none.
+        */
+        Object.defineProperty(this, 'children', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'tuple', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The type of the node. union TreeNodeUnion exclusion TreeNodeExclusion intersection TreeNodeIntersection leaf TreeNodeLeaf tuple_to_subject_set TreeNodeTupleToSubjectSet computed_subject_set TreeNodeComputedSubjectSet not TreeNodeNot unspecified TreeNodeUnspecified
+        */
+        Object.defineProperty(this, 'type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ExpandedPermissionTree, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ExpandedPermissionTree, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "children",
             "baseName": "children",
@@ -39,11 +69,6 @@ class ExpandedPermissionTree {
             "type": "ExpandedPermissionTreeTypeEnum",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return ExpandedPermissionTree.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ExpandedPermissionTree };

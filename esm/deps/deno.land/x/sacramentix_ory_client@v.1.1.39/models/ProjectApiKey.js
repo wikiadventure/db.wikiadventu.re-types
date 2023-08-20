@@ -10,36 +10,86 @@
  * Do not edit the class manually.
  */
 class ProjectApiKey {
-    /**
-    * The token\'s creation date
-    */
-    'created_at';
-    /**
-    * The token\'s ID.
-    */
-    'id';
-    /**
-    * The Token\'s Name  Set this to help you remember, for example, where you use the token.
-    */
-    'name';
-    /**
-    * The token\'s owner
-    */
-    'owner_id';
-    /**
-    * The Token\'s Project ID
-    */
-    'project_id';
-    /**
-    * The token\'s last update date
-    */
-    'updated_at';
-    /**
-    * The token\'s value
-    */
-    'value';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ProjectApiKey.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The token\'s creation date
+        */
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The token\'s ID.
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Token\'s Name  Set this to help you remember, for example, where you use the token.
+        */
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The token\'s owner
+        */
+        Object.defineProperty(this, 'owner_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Token\'s Project ID
+        */
+        Object.defineProperty(this, 'project_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The token\'s last update date
+        */
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The token\'s value
+        */
+        Object.defineProperty(this, 'value', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ProjectApiKey, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ProjectApiKey, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "created_at",
             "baseName": "created_at",
@@ -82,11 +132,6 @@ class ProjectApiKey {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return ProjectApiKey.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ProjectApiKey };

@@ -13,24 +13,59 @@
 * Update Settings Flow with TOTP Method
 */
 class UpdateSettingsFlowWithTotpMethod {
-    /**
-    * CSRFToken is the anti-CSRF token
-    */
-    'csrf_token';
-    /**
-    * Method  Should be set to \"totp\" when trying to add, update, or remove a totp pairing.
-    */
-    'method';
-    /**
-    * ValidationTOTP must contain a valid TOTP based on the
-    */
-    'totp_code';
-    /**
-    * UnlinkTOTP if true will remove the TOTP pairing, effectively removing the credential. This can be used to set up a new TOTP device.
-    */
-    'totp_unlink';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateSettingsFlowWithTotpMethod.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * CSRFToken is the anti-CSRF token
+        */
+        Object.defineProperty(this, 'csrf_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method  Should be set to \"totp\" when trying to add, update, or remove a totp pairing.
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ValidationTOTP must contain a valid TOTP based on the
+        */
+        Object.defineProperty(this, 'totp_code', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * UnlinkTOTP if true will remove the TOTP pairing, effectively removing the credential. This can be used to set up a new TOTP device.
+        */
+        Object.defineProperty(this, 'totp_unlink', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateSettingsFlowWithTotpMethod, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateSettingsFlowWithTotpMethod, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "csrf_token",
             "baseName": "csrf_token",
@@ -55,11 +90,6 @@ class UpdateSettingsFlowWithTotpMethod {
             "type": "boolean",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateSettingsFlowWithTotpMethod.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateSettingsFlowWithTotpMethod };

@@ -13,23 +13,38 @@
 * Set active project in the Ory Network Console Request Body
 */
 class SetActiveProjectInConsoleBody {
-    /**
-    * Project ID  The Project ID you want to set active.  format: uuid
-    */
-    'project_id';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return SetActiveProjectInConsoleBody.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Project ID  The Project ID you want to set active.  format: uuid
+        */
+        Object.defineProperty(this, 'project_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(SetActiveProjectInConsoleBody, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(SetActiveProjectInConsoleBody, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "project_id",
             "baseName": "project_id",
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return SetActiveProjectInConsoleBody.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { SetActiveProjectInConsoleBody };

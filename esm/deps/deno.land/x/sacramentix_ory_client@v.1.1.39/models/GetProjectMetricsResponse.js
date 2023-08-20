@@ -13,23 +13,38 @@
 * Response of the getMetrics endpoint
 */
 class GetProjectMetricsResponse {
-    /**
-    * The list of data points.
-    */
-    'data';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return GetProjectMetricsResponse.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The list of data points.
+        */
+        Object.defineProperty(this, 'data', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(GetProjectMetricsResponse, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(GetProjectMetricsResponse, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "data",
             "baseName": "data",
             "type": "Array<MetricsDatapoint>",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return GetProjectMetricsResponse.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { GetProjectMetricsResponse };

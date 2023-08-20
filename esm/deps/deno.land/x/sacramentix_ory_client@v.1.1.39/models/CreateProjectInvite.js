@@ -13,23 +13,38 @@
 * Create Project Invite Request Body
 */
 class CreateProjectInvite {
-    /**
-    * A list of emails to invite
-    */
-    'invitee_emails';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return CreateProjectInvite.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * A list of emails to invite
+        */
+        Object.defineProperty(this, 'invitee_emails', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(CreateProjectInvite, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(CreateProjectInvite, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "invitee_emails",
             "baseName": "invitee_emails",
             "type": "Array<string>",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return CreateProjectInvite.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { CreateProjectInvite };

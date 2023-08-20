@@ -13,20 +13,50 @@
 * Update Settings Flow with Profile Method
 */
 class UpdateSettingsFlowWithProfileMethod {
-    /**
-    * The Anti-CSRF Token  This token is only required when performing browser flows.
-    */
-    'csrf_token';
-    /**
-    * Method  Should be set to profile when trying to update a profile.
-    */
-    'method';
-    /**
-    * Traits  The identity\'s traits.
-    */
-    'traits';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateSettingsFlowWithProfileMethod.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The Anti-CSRF Token  This token is only required when performing browser flows.
+        */
+        Object.defineProperty(this, 'csrf_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method  Should be set to profile when trying to update a profile.
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Traits  The identity\'s traits.
+        */
+        Object.defineProperty(this, 'traits', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateSettingsFlowWithProfileMethod, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateSettingsFlowWithProfileMethod, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "csrf_token",
             "baseName": "csrf_token",
@@ -45,11 +75,6 @@ class UpdateSettingsFlowWithProfileMethod {
             "type": "any",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateSettingsFlowWithProfileMethod.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateSettingsFlowWithProfileMethod };

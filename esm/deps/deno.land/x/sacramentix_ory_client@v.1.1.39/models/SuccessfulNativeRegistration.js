@@ -13,18 +13,53 @@
 * The Response for Registration Flows via API
 */
 class SuccessfulNativeRegistration {
-    /**
-    * Contains a list of actions, that could follow this flow  It can, for example, this will contain a reference to the verification flow, created as part of the user\'s registration or the token of the session.
-    */
-    'continue_with';
-    'identity';
-    'session';
-    /**
-    * The Session Token  This field is only set when the session hook is configured as a post-registration hook.  A session token is equivalent to a session cookie, but it can be sent in the HTTP Authorization Header:  Authorization: bearer ${session-token}  The session token is only issued for API flows, not for Browser flows!
-    */
-    'session_token';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return SuccessfulNativeRegistration.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Contains a list of actions, that could follow this flow  It can, for example, this will contain a reference to the verification flow, created as part of the user\'s registration or the token of the session.
+        */
+        Object.defineProperty(this, 'continue_with', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'identity', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'session', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Session Token  This field is only set when the session hook is configured as a post-registration hook.  A session token is equivalent to a session cookie, but it can be sent in the HTTP Authorization Header:  Authorization: bearer ${session-token}  The session token is only issued for API flows, not for Browser flows!
+        */
+        Object.defineProperty(this, 'session_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(SuccessfulNativeRegistration, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(SuccessfulNativeRegistration, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "continue_with",
             "baseName": "continue_with",
@@ -49,11 +84,6 @@ class SuccessfulNativeRegistration {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return SuccessfulNativeRegistration.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { SuccessfulNativeRegistration };

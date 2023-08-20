@@ -2,12 +2,37 @@ import * as dntShim from "../../../../../../_dnt.shims.js";
 import { NoConnectionDetails } from "../errors.js";
 import { processUrl } from "./processUrl.js";
 export class SurrealHTTP {
-    url;
-    authorization;
-    namespace;
-    database;
-    fetch;
     constructor(url, { fetcher, } = {}) {
+        Object.defineProperty(this, "url", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "authorization", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "namespace", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "database", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "fetch", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.fetch = fetcher ?? dntShim.fetch;
         this.url = processUrl(url, {
             ws: "http",

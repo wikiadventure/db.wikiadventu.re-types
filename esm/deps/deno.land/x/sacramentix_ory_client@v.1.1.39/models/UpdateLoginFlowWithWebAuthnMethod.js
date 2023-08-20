@@ -13,24 +13,59 @@
 * Update Login Flow with WebAuthn Method
 */
 class UpdateLoginFlowWithWebAuthnMethod {
-    /**
-    * Sending the anti-csrf token is only required for browser login flows.
-    */
-    'csrf_token';
-    /**
-    * Identifier is the email or username of the user trying to log in.
-    */
-    'identifier';
-    /**
-    * Method should be set to \"webAuthn\" when logging in using the WebAuthn strategy.
-    */
-    'method';
-    /**
-    * Login a WebAuthn Security Key  This must contain the ID of the WebAuthN connection.
-    */
-    'webauthn_login';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateLoginFlowWithWebAuthnMethod.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Sending the anti-csrf token is only required for browser login flows.
+        */
+        Object.defineProperty(this, 'csrf_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Identifier is the email or username of the user trying to log in.
+        */
+        Object.defineProperty(this, 'identifier', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method should be set to \"webAuthn\" when logging in using the WebAuthn strategy.
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Login a WebAuthn Security Key  This must contain the ID of the WebAuthN connection.
+        */
+        Object.defineProperty(this, 'webauthn_login', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateLoginFlowWithWebAuthnMethod, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateLoginFlowWithWebAuthnMethod, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "csrf_token",
             "baseName": "csrf_token",
@@ -55,11 +90,6 @@ class UpdateLoginFlowWithWebAuthnMethod {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateLoginFlowWithWebAuthnMethod.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateLoginFlowWithWebAuthnMethod };

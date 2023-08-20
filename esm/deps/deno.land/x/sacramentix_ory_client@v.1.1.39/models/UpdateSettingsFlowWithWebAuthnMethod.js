@@ -13,28 +13,68 @@
 * Update Settings Flow with WebAuthn Method
 */
 class UpdateSettingsFlowWithWebAuthnMethod {
-    /**
-    * CSRFToken is the anti-CSRF token
-    */
-    'csrf_token';
-    /**
-    * Method  Should be set to \"webauthn\" when trying to add, update, or remove a webAuthn pairing.
-    */
-    'method';
-    /**
-    * Register a WebAuthn Security Key  It is expected that the JSON returned by the WebAuthn registration process is included here.
-    */
-    'webauthn_register';
-    /**
-    * Name of the WebAuthn Security Key to be Added  A human-readable name for the security key which will be added.
-    */
-    'webauthn_register_displayname';
-    /**
-    * Remove a WebAuthn Security Key  This must contain the ID of the WebAuthN connection.
-    */
-    'webauthn_remove';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateSettingsFlowWithWebAuthnMethod.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * CSRFToken is the anti-CSRF token
+        */
+        Object.defineProperty(this, 'csrf_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method  Should be set to \"webauthn\" when trying to add, update, or remove a webAuthn pairing.
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Register a WebAuthn Security Key  It is expected that the JSON returned by the WebAuthn registration process is included here.
+        */
+        Object.defineProperty(this, 'webauthn_register', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Name of the WebAuthn Security Key to be Added  A human-readable name for the security key which will be added.
+        */
+        Object.defineProperty(this, 'webauthn_register_displayname', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Remove a WebAuthn Security Key  This must contain the ID of the WebAuthN connection.
+        */
+        Object.defineProperty(this, 'webauthn_remove', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateSettingsFlowWithWebAuthnMethod, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateSettingsFlowWithWebAuthnMethod, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "csrf_token",
             "baseName": "csrf_token",
@@ -65,11 +105,6 @@ class UpdateSettingsFlowWithWebAuthnMethod {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateSettingsFlowWithWebAuthnMethod.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateSettingsFlowWithWebAuthnMethod };

@@ -66,11 +66,31 @@ const childrenToStringToBuffer = (children, buffer) => {
     }
 };
 export class JSXNode {
-    tag;
-    props;
-    children;
-    isEscaped = true;
     constructor(tag, props, children) {
+        Object.defineProperty(this, "tag", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "props", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "children", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "isEscaped", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: true
+        });
         this.tag = tag;
         this.props = props;
         this.children = children;

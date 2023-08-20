@@ -13,20 +13,50 @@
 * Update Settings Flow with Password Method
 */
 class UpdateSettingsFlowWithPasswordMethod {
-    /**
-    * CSRFToken is the anti-CSRF token
-    */
-    'csrf_token';
-    /**
-    * Method  Should be set to password when trying to update a password.
-    */
-    'method';
-    /**
-    * Password is the updated password
-    */
-    'password';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateSettingsFlowWithPasswordMethod.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * CSRFToken is the anti-CSRF token
+        */
+        Object.defineProperty(this, 'csrf_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method  Should be set to password when trying to update a password.
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Password is the updated password
+        */
+        Object.defineProperty(this, 'password', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateSettingsFlowWithPasswordMethod, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateSettingsFlowWithPasswordMethod, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "csrf_token",
             "baseName": "csrf_token",
@@ -45,11 +75,6 @@ class UpdateSettingsFlowWithPasswordMethod {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateSettingsFlowWithPasswordMethod.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateSettingsFlowWithPasswordMethod };

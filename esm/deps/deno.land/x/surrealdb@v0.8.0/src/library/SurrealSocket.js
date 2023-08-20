@@ -3,22 +3,87 @@ import WebSocket from "./WebSocket/deno.js";
 import { getIncrementalID } from "./getIncrementalID.js";
 import { processUrl } from "./processUrl.js";
 export class SurrealSocket {
-    url;
-    onOpen;
-    onClose;
-    ws;
-    status = WebsocketStatus.CLOSED;
-    queue = {};
-    liveQueue = {};
-    unprocessedLiveResponses = {};
-    ready;
-    resolveReady;
-    closed;
-    resolveClosed;
-    socketClosureReason = {
-        1000: "CLOSE_NORMAL",
-    };
     constructor({ url, onOpen, onClose, }) {
+        Object.defineProperty(this, "url", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "onOpen", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "onClose", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "ws", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "status", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: WebsocketStatus.CLOSED
+        });
+        Object.defineProperty(this, "queue", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: {}
+        });
+        Object.defineProperty(this, "liveQueue", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: {}
+        });
+        Object.defineProperty(this, "unprocessedLiveResponses", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: {}
+        });
+        Object.defineProperty(this, "ready", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "resolveReady", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "closed", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "resolveClosed", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "socketClosureReason", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: {
+                1000: "CLOSE_NORMAL",
+            }
+        });
         this.resolveReady = () => { }; // Purely for typescript typing :)
         this.ready = new Promise((r) => (this.resolveReady = r));
         this.resolveClosed = () => { }; // Purely for typescript typing :)

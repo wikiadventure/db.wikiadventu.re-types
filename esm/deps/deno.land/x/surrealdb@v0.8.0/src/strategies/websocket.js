@@ -2,16 +2,41 @@ import { NoActiveSocket, UnexpectedResponse } from "../errors.js";
 import { Pinger } from "../library/Pinger.js";
 import { SurrealSocket } from "../library/SurrealSocket.js";
 export class WebSocketStrategy {
-    socket;
-    pinger;
-    connection = {};
-    ready;
-    resolveReady;
     /**
      * Establish a socket connection to the database
      * @param connection - Connection details
      */
     constructor(url, options = {}) {
+        Object.defineProperty(this, "socket", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "pinger", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "connection", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: {}
+        });
+        Object.defineProperty(this, "ready", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "resolveReady", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.resolveReady = () => { }; // Purely for typescript typing :)
         this.ready = new Promise((r) => (this.resolveReady = r));
         if (url)

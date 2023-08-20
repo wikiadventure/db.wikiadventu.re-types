@@ -13,20 +13,35 @@
 * Relationship Namespace List
 */
 class RelationshipNamespaces {
-    'namespaces';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return RelationshipNamespaces.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'namespaces', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(RelationshipNamespaces, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(RelationshipNamespaces, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "namespaces",
             "baseName": "namespaces",
             "type": "Array<Namespace>",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return RelationshipNamespaces.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { RelationshipNamespaces };

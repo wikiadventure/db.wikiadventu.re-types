@@ -13,23 +13,38 @@
 * Deleted Session Count
 */
 class DeleteMySessionsCount {
-    /**
-    * The number of sessions that were revoked.
-    */
-    'count';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return DeleteMySessionsCount.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The number of sessions that were revoked.
+        */
+        Object.defineProperty(this, 'count', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(DeleteMySessionsCount, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(DeleteMySessionsCount, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "count",
             "baseName": "count",
             "type": "number",
             "format": "int64"
         }
-    ];
-    static getAttributeTypeMap() {
-        return DeleteMySessionsCount.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { DeleteMySessionsCount };

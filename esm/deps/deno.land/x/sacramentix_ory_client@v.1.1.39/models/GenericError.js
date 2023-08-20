@@ -13,41 +13,101 @@
 * Error responses are sent when an error (e.g. unauthorized, bad request, ...) occurred.
 */
 class GenericError {
-    /**
-    * The status code
-    */
-    'code';
-    /**
-    * Debug information  This field is often not exposed to protect against leaking sensitive information.
-    */
-    'debug';
-    /**
-    * Further error details
-    */
-    'details';
-    'error';
-    /**
-    * The error ID  Useful when trying to identify various errors in application logic.
-    */
-    'id';
-    /**
-    * Error message  The error\'s message.
-    */
-    'message';
-    /**
-    * A human-readable reason for the error
-    */
-    'reason';
-    /**
-    * The request ID  The request ID is often exposed internally in order to trace errors across service architectures. This is often a UUID.
-    */
-    'request';
-    /**
-    * The status description
-    */
-    'status';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return GenericError.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The status code
+        */
+        Object.defineProperty(this, 'code', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Debug information  This field is often not exposed to protect against leaking sensitive information.
+        */
+        Object.defineProperty(this, 'debug', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Further error details
+        */
+        Object.defineProperty(this, 'details', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'error', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The error ID  Useful when trying to identify various errors in application logic.
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Error message  The error\'s message.
+        */
+        Object.defineProperty(this, 'message', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * A human-readable reason for the error
+        */
+        Object.defineProperty(this, 'reason', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The request ID  The request ID is often exposed internally in order to trace errors across service architectures. This is often a UUID.
+        */
+        Object.defineProperty(this, 'request', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The status description
+        */
+        Object.defineProperty(this, 'status', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(GenericError, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(GenericError, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "code",
             "baseName": "code",
@@ -102,11 +162,6 @@ class GenericError {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return GenericError.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { GenericError };

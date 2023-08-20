@@ -13,20 +13,35 @@
 * This might include a label and other information that can optionally be used to render UIs.
 */
 class UiNodeMeta {
-    'label';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UiNodeMeta.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'label', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UiNodeMeta, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UiNodeMeta, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "label",
             "baseName": "label",
             "type": "UiText",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UiNodeMeta.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UiNodeMeta };

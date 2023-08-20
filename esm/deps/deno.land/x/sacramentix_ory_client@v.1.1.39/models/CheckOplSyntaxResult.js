@@ -10,23 +10,38 @@
  * Do not edit the class manually.
  */
 class CheckOplSyntaxResult {
-    /**
-    * The list of syntax errors
-    */
-    'errors';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return CheckOplSyntaxResult.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The list of syntax errors
+        */
+        Object.defineProperty(this, 'errors', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(CheckOplSyntaxResult, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(CheckOplSyntaxResult, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "errors",
             "baseName": "errors",
             "type": "Array<ParseError>",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return CheckOplSyntaxResult.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { CheckOplSyntaxResult };

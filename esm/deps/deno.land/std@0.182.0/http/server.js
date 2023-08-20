@@ -1,3 +1,15 @@
+var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+};
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var _Server_instances, _Server_port, _Server_host, _Server_handler, _Server_closed, _Server_listeners, _Server_acceptBackoffDelayAbortController, _Server_httpConnections, _Server_onError, _Server_respond, _Server_serveHttp, _Server_accept, _Server_closeHttpConn, _Server_trackListener, _Server_untrackListener, _Server_trackHttpConnection, _Server_untrackHttpConnection;
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 import * as dntShim from "../../../../_dnt.shims.js";
 import { delay } from "../async/mod.js";
@@ -13,14 +25,6 @@ const INITIAL_ACCEPT_BACKOFF_DELAY = 5;
 const MAX_ACCEPT_BACKOFF_DELAY = 1000;
 /** Used to construct an HTTP server. */
 export class Server {
-    #port;
-    #host;
-    #handler;
-    #closed = false;
-    #listeners = new Set();
-    #acceptBackoffDelayAbortController = new AbortController();
-    #httpConnections = new Set();
-    #onError;
     /**
      * Constructs a new HTTP Server instance.
      *
@@ -42,14 +46,23 @@ export class Server {
      * @param serverInit Options for running an HTTP server.
      */
     constructor(serverInit) {
-        this.#port = serverInit.port;
-        this.#host = serverInit.hostname;
-        this.#handler = serverInit.handler;
-        this.#onError = serverInit.onError ??
+        _Server_instances.add(this);
+        _Server_port.set(this, void 0);
+        _Server_host.set(this, void 0);
+        _Server_handler.set(this, void 0);
+        _Server_closed.set(this, false);
+        _Server_listeners.set(this, new Set());
+        _Server_acceptBackoffDelayAbortController.set(this, new AbortController());
+        _Server_httpConnections.set(this, new Set());
+        _Server_onError.set(this, void 0);
+        __classPrivateFieldSet(this, _Server_port, serverInit.port, "f");
+        __classPrivateFieldSet(this, _Server_host, serverInit.hostname, "f");
+        __classPrivateFieldSet(this, _Server_handler, serverInit.handler, "f");
+        __classPrivateFieldSet(this, _Server_onError, serverInit.onError ??
             function (error) {
                 console.error(error);
                 return new dntShim.Response("Internal Server Error", { status: 500 });
-            };
+            }, "f");
     }
     /**
      * Accept incoming connections on the given listener, and handle requests on
@@ -84,15 +97,15 @@ export class Server {
      * @param listener The listener to accept connections from.
      */
     async serve(listener) {
-        if (this.#closed) {
+        if (__classPrivateFieldGet(this, _Server_closed, "f")) {
             throw new dntShim.Deno.errors.Http(ERROR_SERVER_CLOSED);
         }
-        this.#trackListener(listener);
+        __classPrivateFieldGet(this, _Server_instances, "m", _Server_trackListener).call(this, listener);
         try {
-            return await this.#accept(listener);
+            return await __classPrivateFieldGet(this, _Server_instances, "m", _Server_accept).call(this, listener);
         }
         finally {
-            this.#untrackListener(listener);
+            __classPrivateFieldGet(this, _Server_instances, "m", _Server_untrackListener).call(this, listener);
             try {
                 listener.close();
             }
@@ -132,12 +145,12 @@ export class Server {
      * ```
      */
     async listenAndServe() {
-        if (this.#closed) {
+        if (__classPrivateFieldGet(this, _Server_closed, "f")) {
             throw new dntShim.Deno.errors.Http(ERROR_SERVER_CLOSED);
         }
         const listener = dntShim.Deno.listen({
-            port: this.#port ?? HTTP_PORT,
-            hostname: this.#host ?? "0.0.0.0",
+            port: __classPrivateFieldGet(this, _Server_port, "f") ?? HTTP_PORT,
+            hostname: __classPrivateFieldGet(this, _Server_host, "f") ?? "0.0.0.0",
             transport: "tcp",
         });
         return await this.serve(listener);
@@ -179,12 +192,12 @@ export class Server {
      * @param keyFile The path to the file containing the TLS private key.
      */
     async listenAndServeTls(certFile, keyFile) {
-        if (this.#closed) {
+        if (__classPrivateFieldGet(this, _Server_closed, "f")) {
             throw new dntShim.Deno.errors.Http(ERROR_SERVER_CLOSED);
         }
         const listener = dntShim.Deno.listenTls({
-            port: this.#port ?? HTTPS_PORT,
-            hostname: this.#host ?? "0.0.0.0",
+            port: __classPrivateFieldGet(this, _Server_port, "f") ?? HTTPS_PORT,
+            hostname: __classPrivateFieldGet(this, _Server_host, "f") ?? "0.0.0.0",
             certFile,
             keyFile,
             transport: "tcp",
@@ -199,11 +212,11 @@ export class Server {
      * Throws a server closed error if called after the server has been closed.
      */
     close() {
-        if (this.#closed) {
+        if (__classPrivateFieldGet(this, _Server_closed, "f")) {
             throw new dntShim.Deno.errors.Http(ERROR_SERVER_CLOSED);
         }
-        this.#closed = true;
-        for (const listener of this.#listeners) {
+        __classPrivateFieldSet(this, _Server_closed, true, "f");
+        for (const listener of __classPrivateFieldGet(this, _Server_listeners, "f")) {
             try {
                 listener.close();
             }
@@ -211,198 +224,169 @@ export class Server {
                 // Listener has already been closed.
             }
         }
-        this.#listeners.clear();
-        this.#acceptBackoffDelayAbortController.abort();
-        for (const httpConn of this.#httpConnections) {
-            this.#closeHttpConn(httpConn);
+        __classPrivateFieldGet(this, _Server_listeners, "f").clear();
+        __classPrivateFieldGet(this, _Server_acceptBackoffDelayAbortController, "f").abort();
+        for (const httpConn of __classPrivateFieldGet(this, _Server_httpConnections, "f")) {
+            __classPrivateFieldGet(this, _Server_instances, "m", _Server_closeHttpConn).call(this, httpConn);
         }
-        this.#httpConnections.clear();
+        __classPrivateFieldGet(this, _Server_httpConnections, "f").clear();
     }
     /** Get whether the server is closed. */
     get closed() {
-        return this.#closed;
+        return __classPrivateFieldGet(this, _Server_closed, "f");
     }
     /** Get the list of network addresses the server is listening on. */
     get addrs() {
-        return Array.from(this.#listeners).map((listener) => listener.addr);
-    }
-    /**
-     * Responds to an HTTP request.
-     *
-     * @param requestEvent The HTTP request to respond to.
-     * @param connInfo Information about the underlying connection.
-     */
-    async #respond(requestEvent, connInfo) {
-        let response;
-        try {
-            // Handle the request event, generating a response.
-            response = await this.#handler(requestEvent.request, connInfo);
-            if (response.bodyUsed && response.body !== null) {
-                throw new TypeError("Response body already consumed.");
-            }
-        }
-        catch (error) {
-            // Invoke onError handler when request handler throws.
-            response = await this.#onError(error);
-        }
-        try {
-            // Send the response.
-            await requestEvent.respondWith(response);
-        }
-        catch {
-            // `respondWith()` can throw for various reasons, including downstream and
-            // upstream connection errors, as well as errors thrown during streaming
-            // of the response content.  In order to avoid false negatives, we ignore
-            // the error here and let `serveHttp` close the connection on the
-            // following iteration if it is in fact a downstream connection error.
-        }
-    }
-    /**
-     * Serves all HTTP requests on a single connection.
-     *
-     * @param httpConn The HTTP connection to yield requests from.
-     * @param connInfo Information about the underlying connection.
-     */
-    async #serveHttp(httpConn, connInfo) {
-        while (!this.#closed) {
-            let requestEvent;
-            try {
-                // Yield the new HTTP request on the connection.
-                requestEvent = await httpConn.nextRequest();
-            }
-            catch {
-                // Connection has been closed.
-                break;
-            }
-            if (requestEvent === null) {
-                // Connection has been closed.
-                break;
-            }
-            // Respond to the request. Note we do not await this async method to
-            // allow the connection to handle multiple requests in the case of h2.
-            this.#respond(requestEvent, connInfo);
-        }
-        this.#closeHttpConn(httpConn);
-    }
-    /**
-     * Accepts all connections on a single network listener.
-     *
-     * @param listener The listener to accept connections from.
-     */
-    async #accept(listener) {
-        let acceptBackoffDelay;
-        while (!this.#closed) {
-            let conn;
-            try {
-                // Wait for a new connection.
-                conn = await listener.accept();
-            }
-            catch (error) {
-                if (
-                // The listener is closed.
-                error instanceof dntShim.Deno.errors.BadResource ||
-                    // TLS handshake errors.
-                    error instanceof dntShim.Deno.errors.InvalidData ||
-                    error instanceof dntShim.Deno.errors.UnexpectedEof ||
-                    error instanceof dntShim.Deno.errors.ConnectionReset ||
-                    error instanceof dntShim.Deno.errors.NotConnected) {
-                    // Backoff after transient errors to allow time for the system to
-                    // recover, and avoid blocking up the event loop with a continuously
-                    // running loop.
-                    if (!acceptBackoffDelay) {
-                        acceptBackoffDelay = INITIAL_ACCEPT_BACKOFF_DELAY;
-                    }
-                    else {
-                        acceptBackoffDelay *= 2;
-                    }
-                    if (acceptBackoffDelay >= MAX_ACCEPT_BACKOFF_DELAY) {
-                        acceptBackoffDelay = MAX_ACCEPT_BACKOFF_DELAY;
-                    }
-                    try {
-                        await delay(acceptBackoffDelay, {
-                            signal: this.#acceptBackoffDelayAbortController.signal,
-                        });
-                    }
-                    catch (err) {
-                        // The backoff delay timer is aborted when closing the server.
-                        if (!(err instanceof DOMException && err.name === "AbortError")) {
-                            throw err;
-                        }
-                    }
-                    continue;
-                }
-                throw error;
-            }
-            acceptBackoffDelay = undefined;
-            // "Upgrade" the network connection into an HTTP connection.
-            let httpConn;
-            try {
-                httpConn = dntShim.Deno.serveHttp(conn);
-            }
-            catch {
-                // Connection has been closed.
-                continue;
-            }
-            // Closing the underlying listener will not close HTTP connections, so we
-            // track for closure upon server close.
-            this.#trackHttpConnection(httpConn);
-            const connInfo = {
-                localAddr: conn.localAddr,
-                remoteAddr: conn.remoteAddr,
-            };
-            // Serve the requests that arrive on the just-accepted connection. Note
-            // we do not await this async method to allow the server to accept new
-            // connections.
-            this.#serveHttp(httpConn, connInfo);
-        }
-    }
-    /**
-     * Untracks and closes an HTTP connection.
-     *
-     * @param httpConn The HTTP connection to close.
-     */
-    #closeHttpConn(httpConn) {
-        this.#untrackHttpConnection(httpConn);
-        try {
-            httpConn.close();
-        }
-        catch {
-            // Connection has already been closed.
-        }
-    }
-    /**
-     * Adds the listener to the internal tracking list.
-     *
-     * @param listener Listener to track.
-     */
-    #trackListener(listener) {
-        this.#listeners.add(listener);
-    }
-    /**
-     * Removes the listener from the internal tracking list.
-     *
-     * @param listener Listener to untrack.
-     */
-    #untrackListener(listener) {
-        this.#listeners.delete(listener);
-    }
-    /**
-     * Adds the HTTP connection to the internal tracking list.
-     *
-     * @param httpConn HTTP connection to track.
-     */
-    #trackHttpConnection(httpConn) {
-        this.#httpConnections.add(httpConn);
-    }
-    /**
-     * Removes the HTTP connection from the internal tracking list.
-     *
-     * @param httpConn HTTP connection to untrack.
-     */
-    #untrackHttpConnection(httpConn) {
-        this.#httpConnections.delete(httpConn);
+        return Array.from(__classPrivateFieldGet(this, _Server_listeners, "f")).map((listener) => listener.addr);
     }
 }
+_Server_port = new WeakMap(), _Server_host = new WeakMap(), _Server_handler = new WeakMap(), _Server_closed = new WeakMap(), _Server_listeners = new WeakMap(), _Server_acceptBackoffDelayAbortController = new WeakMap(), _Server_httpConnections = new WeakMap(), _Server_onError = new WeakMap(), _Server_instances = new WeakSet(), _Server_respond = 
+/**
+ * Responds to an HTTP request.
+ *
+ * @param requestEvent The HTTP request to respond to.
+ * @param connInfo Information about the underlying connection.
+ */
+async function _Server_respond(requestEvent, connInfo) {
+    let response;
+    try {
+        // Handle the request event, generating a response.
+        response = await __classPrivateFieldGet(this, _Server_handler, "f").call(this, requestEvent.request, connInfo);
+        if (response.bodyUsed && response.body !== null) {
+            throw new TypeError("Response body already consumed.");
+        }
+    }
+    catch (error) {
+        // Invoke onError handler when request handler throws.
+        response = await __classPrivateFieldGet(this, _Server_onError, "f").call(this, error);
+    }
+    try {
+        // Send the response.
+        await requestEvent.respondWith(response);
+    }
+    catch {
+        // `respondWith()` can throw for various reasons, including downstream and
+        // upstream connection errors, as well as errors thrown during streaming
+        // of the response content.  In order to avoid false negatives, we ignore
+        // the error here and let `serveHttp` close the connection on the
+        // following iteration if it is in fact a downstream connection error.
+    }
+}, _Server_serveHttp = 
+/**
+ * Serves all HTTP requests on a single connection.
+ *
+ * @param httpConn The HTTP connection to yield requests from.
+ * @param connInfo Information about the underlying connection.
+ */
+async function _Server_serveHttp(httpConn, connInfo) {
+    while (!__classPrivateFieldGet(this, _Server_closed, "f")) {
+        let requestEvent;
+        try {
+            // Yield the new HTTP request on the connection.
+            requestEvent = await httpConn.nextRequest();
+        }
+        catch {
+            // Connection has been closed.
+            break;
+        }
+        if (requestEvent === null) {
+            // Connection has been closed.
+            break;
+        }
+        // Respond to the request. Note we do not await this async method to
+        // allow the connection to handle multiple requests in the case of h2.
+        __classPrivateFieldGet(this, _Server_instances, "m", _Server_respond).call(this, requestEvent, connInfo);
+    }
+    __classPrivateFieldGet(this, _Server_instances, "m", _Server_closeHttpConn).call(this, httpConn);
+}, _Server_accept = 
+/**
+ * Accepts all connections on a single network listener.
+ *
+ * @param listener The listener to accept connections from.
+ */
+async function _Server_accept(listener) {
+    let acceptBackoffDelay;
+    while (!__classPrivateFieldGet(this, _Server_closed, "f")) {
+        let conn;
+        try {
+            // Wait for a new connection.
+            conn = await listener.accept();
+        }
+        catch (error) {
+            if (
+            // The listener is closed.
+            error instanceof dntShim.Deno.errors.BadResource ||
+                // TLS handshake errors.
+                error instanceof dntShim.Deno.errors.InvalidData ||
+                error instanceof dntShim.Deno.errors.UnexpectedEof ||
+                error instanceof dntShim.Deno.errors.ConnectionReset ||
+                error instanceof dntShim.Deno.errors.NotConnected) {
+                // Backoff after transient errors to allow time for the system to
+                // recover, and avoid blocking up the event loop with a continuously
+                // running loop.
+                if (!acceptBackoffDelay) {
+                    acceptBackoffDelay = INITIAL_ACCEPT_BACKOFF_DELAY;
+                }
+                else {
+                    acceptBackoffDelay *= 2;
+                }
+                if (acceptBackoffDelay >= MAX_ACCEPT_BACKOFF_DELAY) {
+                    acceptBackoffDelay = MAX_ACCEPT_BACKOFF_DELAY;
+                }
+                try {
+                    await delay(acceptBackoffDelay, {
+                        signal: __classPrivateFieldGet(this, _Server_acceptBackoffDelayAbortController, "f").signal,
+                    });
+                }
+                catch (err) {
+                    // The backoff delay timer is aborted when closing the server.
+                    if (!(err instanceof DOMException && err.name === "AbortError")) {
+                        throw err;
+                    }
+                }
+                continue;
+            }
+            throw error;
+        }
+        acceptBackoffDelay = undefined;
+        // "Upgrade" the network connection into an HTTP connection.
+        let httpConn;
+        try {
+            httpConn = dntShim.Deno.serveHttp(conn);
+        }
+        catch {
+            // Connection has been closed.
+            continue;
+        }
+        // Closing the underlying listener will not close HTTP connections, so we
+        // track for closure upon server close.
+        __classPrivateFieldGet(this, _Server_instances, "m", _Server_trackHttpConnection).call(this, httpConn);
+        const connInfo = {
+            localAddr: conn.localAddr,
+            remoteAddr: conn.remoteAddr,
+        };
+        // Serve the requests that arrive on the just-accepted connection. Note
+        // we do not await this async method to allow the server to accept new
+        // connections.
+        __classPrivateFieldGet(this, _Server_instances, "m", _Server_serveHttp).call(this, httpConn, connInfo);
+    }
+}, _Server_closeHttpConn = function _Server_closeHttpConn(httpConn) {
+    __classPrivateFieldGet(this, _Server_instances, "m", _Server_untrackHttpConnection).call(this, httpConn);
+    try {
+        httpConn.close();
+    }
+    catch {
+        // Connection has already been closed.
+    }
+}, _Server_trackListener = function _Server_trackListener(listener) {
+    __classPrivateFieldGet(this, _Server_listeners, "f").add(listener);
+}, _Server_untrackListener = function _Server_untrackListener(listener) {
+    __classPrivateFieldGet(this, _Server_listeners, "f").delete(listener);
+}, _Server_trackHttpConnection = function _Server_trackHttpConnection(httpConn) {
+    __classPrivateFieldGet(this, _Server_httpConnections, "f").add(httpConn);
+}, _Server_untrackHttpConnection = function _Server_untrackHttpConnection(httpConn) {
+    __classPrivateFieldGet(this, _Server_httpConnections, "f").delete(httpConn);
+};
 /**
  * Constructs a server, accepts incoming connections on the given listener, and
  * handles requests on these connections with the given handler.

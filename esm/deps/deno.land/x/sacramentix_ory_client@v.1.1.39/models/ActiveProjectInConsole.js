@@ -13,23 +13,38 @@
 * The Active Project ID
 */
 class ActiveProjectInConsole {
-    /**
-    * The Active Project ID  format: uuid
-    */
-    'project_id';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ActiveProjectInConsole.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The Active Project ID  format: uuid
+        */
+        Object.defineProperty(this, 'project_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ActiveProjectInConsole, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ActiveProjectInConsole, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "project_id",
             "baseName": "project_id",
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return ActiveProjectInConsole.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ActiveProjectInConsole };

@@ -13,23 +13,38 @@
 * Create Project Request Body
 */
 class CreateProjectBody {
-    /**
-    * The name of the project to be created
-    */
-    'name';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return CreateProjectBody.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The name of the project to be created
+        */
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(CreateProjectBody, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(CreateProjectBody, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "name",
             "baseName": "name",
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return CreateProjectBody.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { CreateProjectBody };

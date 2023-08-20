@@ -20,17 +20,113 @@ const errorHandler = (err, c) => {
     return c.text(message, 500);
 };
 class Hono extends defineDynamicClass() {
-    /*
-      This class is like an abstract class and does not have a router.
-      To use it, inherit the class and implement router in the constructor.
-    */
-    router;
-    getPath;
-    _basePath = '';
-    path = '*';
-    routes = [];
     constructor(init = {}) {
         super();
+        /*
+          This class is like an abstract class and does not have a router.
+          To use it, inherit the class and implement router in the constructor.
+        */
+        Object.defineProperty(this, "router", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "getPath", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "_basePath", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: ''
+        });
+        Object.defineProperty(this, "path", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: '*'
+        });
+        Object.defineProperty(this, "routes", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: []
+        });
+        Object.defineProperty(this, "notFoundHandler", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: notFoundHandler
+        });
+        Object.defineProperty(this, "errorHandler", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: errorHandler
+        });
+        /**
+         * @deprecate
+         * `app.head()` is no longer used.
+         * `app.get()` implicitly handles the HEAD method.
+         */
+        Object.defineProperty(this, "head", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: () => {
+                console.warn('`app.head()` is no longer used. `app.get()` implicitly handles the HEAD method.');
+                return this;
+            }
+        });
+        Object.defineProperty(this, "handleEvent", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: (event) => {
+                return this.dispatch(event.request, event, undefined, event.request.method);
+            }
+        });
+        Object.defineProperty(this, "fetch", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: (request, Env, executionCtx) => {
+                return this.dispatch(request, executionCtx, Env, request.method);
+            }
+        });
+        Object.defineProperty(this, "request", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: async (input, requestInit) => {
+                if (input instanceof dntShim.Request) {
+                    if (requestInit !== undefined) {
+                        input = new dntShim.Request(input, requestInit);
+                    }
+                    return await this.fetch(input);
+                }
+                input = input.toString();
+                const path = /^https?:\/\//.test(input) ? input : `http://localhost${mergePath('/', input)}`;
+                const req = new dntShim.Request(path, requestInit);
+                return await this.fetch(req);
+            }
+        });
+        Object.defineProperty(this, "fire", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: () => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                addEventListener('fetch', (event) => {
+                    void event.respondWith(this.handleEvent(event));
+                });
+            }
+        });
         // Implementation of app.get(...handlers[]) or app.get(path, ...handlers[])
         const allMethods = [...METHODS, METHOD_NAME_ALL_LOWERCASE];
         allMethods.map((method) => {
@@ -89,8 +185,6 @@ class Hono extends defineDynamicClass() {
         clone.routes = this.routes;
         return clone;
     }
-    notFoundHandler = notFoundHandler;
-    errorHandler = errorHandler;
     route(path, app) {
         const subApp = this.basePath(path);
         if (!app) {
@@ -157,15 +251,6 @@ class Hono extends defineDynamicClass() {
         this.matchRoute('GET', '/');
         return this.router.name;
     }
-    /**
-     * @deprecate
-     * `app.head()` is no longer used.
-     * `app.get()` implicitly handles the HEAD method.
-     */
-    head = () => {
-        console.warn('`app.head()` is no longer used. `app.get()` implicitly handles the HEAD method.');
-        return this;
-    };
     addRoute(method, path, handler) {
         method = method.toUpperCase();
         if (this._basePath) {
@@ -249,30 +334,5 @@ class Hono extends defineDynamicClass() {
             }
         })();
     }
-    handleEvent = (event) => {
-        return this.dispatch(event.request, event, undefined, event.request.method);
-    };
-    fetch = (request, Env, executionCtx) => {
-        return this.dispatch(request, executionCtx, Env, request.method);
-    };
-    request = async (input, requestInit) => {
-        if (input instanceof dntShim.Request) {
-            if (requestInit !== undefined) {
-                input = new dntShim.Request(input, requestInit);
-            }
-            return await this.fetch(input);
-        }
-        input = input.toString();
-        const path = /^https?:\/\//.test(input) ? input : `http://localhost${mergePath('/', input)}`;
-        const req = new dntShim.Request(path, requestInit);
-        return await this.fetch(req);
-    };
-    fire = () => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        addEventListener('fetch', (event) => {
-            void event.respondWith(this.handleEvent(event));
-        });
-    };
 }
 export { Hono as HonoBase };

@@ -13,10 +13,35 @@
 * Create Identity and Import Credentials
 */
 class IdentityWithCredentials {
-    'oidc';
-    'password';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return IdentityWithCredentials.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'oidc', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'password', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(IdentityWithCredentials, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(IdentityWithCredentials, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "oidc",
             "baseName": "oidc",
@@ -29,11 +54,6 @@ class IdentityWithCredentials {
             "type": "IdentityWithCredentialsPassword",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return IdentityWithCredentials.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { IdentityWithCredentials };

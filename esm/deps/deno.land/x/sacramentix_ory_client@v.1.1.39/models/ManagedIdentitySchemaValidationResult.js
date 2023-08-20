@@ -13,10 +13,35 @@
 * Ory Identity Schema Validation Result
 */
 class ManagedIdentitySchemaValidationResult {
-    'message';
-    'valid';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ManagedIdentitySchemaValidationResult.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'message', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'valid', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ManagedIdentitySchemaValidationResult, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ManagedIdentitySchemaValidationResult, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "message",
             "baseName": "message",
@@ -29,11 +54,6 @@ class ManagedIdentitySchemaValidationResult {
             "type": "boolean",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return ManagedIdentitySchemaValidationResult.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ManagedIdentitySchemaValidationResult };

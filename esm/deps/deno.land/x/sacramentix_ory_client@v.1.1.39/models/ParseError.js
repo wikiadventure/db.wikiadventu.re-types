@@ -10,11 +10,41 @@
  * Do not edit the class manually.
  */
 class ParseError {
-    'end';
-    'message';
-    'start';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ParseError.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'end', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'message', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'start', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ParseError, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ParseError, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "end",
             "baseName": "end",
@@ -33,11 +63,6 @@ class ParseError {
             "type": "SourcePosition",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return ParseError.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ParseError };

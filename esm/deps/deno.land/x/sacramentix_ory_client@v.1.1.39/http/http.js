@@ -24,10 +24,6 @@ export class HttpException extends Error {
  * Represents an HTTP request context
  */
 export class RequestContext {
-    httpMethod;
-    headers = {};
-    body = undefined;
-    url;
     /**
      * Creates the request context using a http method and request resource url
      *
@@ -35,7 +31,30 @@ export class RequestContext {
      * @param httpMethod http method
      */
     constructor(url, httpMethod) {
-        this.httpMethod = httpMethod;
+        Object.defineProperty(this, "httpMethod", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: httpMethod
+        });
+        Object.defineProperty(this, "headers", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: {}
+        });
+        Object.defineProperty(this, "body", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: undefined
+        });
+        Object.defineProperty(this, "url", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.url = new URL(url);
     }
     /*
@@ -96,9 +115,13 @@ export class RequestContext {
  * Helper class to generate a `ResponseBody` from binary data
  */
 export class SelfDecodingBody {
-    dataSource;
     constructor(dataSource) {
-        this.dataSource = dataSource;
+        Object.defineProperty(this, "dataSource", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: dataSource
+        });
     }
     binary() {
         return this.dataSource;
@@ -109,13 +132,25 @@ export class SelfDecodingBody {
     }
 }
 export class ResponseContext {
-    httpStatusCode;
-    headers;
-    body;
     constructor(httpStatusCode, headers, body) {
-        this.httpStatusCode = httpStatusCode;
-        this.headers = headers;
-        this.body = body;
+        Object.defineProperty(this, "httpStatusCode", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: httpStatusCode
+        });
+        Object.defineProperty(this, "headers", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: headers
+        });
+        Object.defineProperty(this, "body", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: body
+        });
     }
     /**
      * Parse header value in the form `value; param1="value1"`

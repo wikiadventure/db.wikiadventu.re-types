@@ -10,16 +10,41 @@
  * Do not edit the class manually.
  */
 class IdentitySchemaPreset {
-    /**
-    * Schema is the Identity JSON Schema
-    */
-    'schema';
-    /**
-    * URL is the preset identifier
-    */
-    'url';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return IdentitySchemaPreset.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Schema is the Identity JSON Schema
+        */
+        Object.defineProperty(this, 'schema', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * URL is the preset identifier
+        */
+        Object.defineProperty(this, 'url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(IdentitySchemaPreset, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(IdentitySchemaPreset, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "schema",
             "baseName": "schema",
@@ -32,11 +57,6 @@ class IdentitySchemaPreset {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return IdentitySchemaPreset.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { IdentitySchemaPreset };

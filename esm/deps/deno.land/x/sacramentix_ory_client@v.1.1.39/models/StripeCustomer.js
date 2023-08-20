@@ -10,20 +10,35 @@
  * Do not edit the class manually.
  */
 class StripeCustomer {
-    'id';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return StripeCustomer.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(StripeCustomer, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(StripeCustomer, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "id",
             "baseName": "id",
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return StripeCustomer.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { StripeCustomer };

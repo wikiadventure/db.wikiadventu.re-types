@@ -13,25 +13,65 @@
 * Post Check Permission Or Error Body
 */
 class PostCheckPermissionOrErrorBody {
-    /**
-    * Namespace to query
-    */
-    'namespace';
-    /**
-    * Object to query
-    */
-    'object';
-    /**
-    * Relation to query
-    */
-    'relation';
-    /**
-    * SubjectID to query  Either SubjectSet or SubjectID can be provided.
-    */
-    'subject_id';
-    'subject_set';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return PostCheckPermissionOrErrorBody.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Namespace to query
+        */
+        Object.defineProperty(this, 'namespace', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Object to query
+        */
+        Object.defineProperty(this, 'object', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Relation to query
+        */
+        Object.defineProperty(this, 'relation', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * SubjectID to query  Either SubjectSet or SubjectID can be provided.
+        */
+        Object.defineProperty(this, 'subject_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'subject_set', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(PostCheckPermissionOrErrorBody, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(PostCheckPermissionOrErrorBody, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "namespace",
             "baseName": "namespace",
@@ -62,11 +102,6 @@ class PostCheckPermissionOrErrorBody {
             "type": "SubjectSet",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return PostCheckPermissionOrErrorBody.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { PostCheckPermissionOrErrorBody };

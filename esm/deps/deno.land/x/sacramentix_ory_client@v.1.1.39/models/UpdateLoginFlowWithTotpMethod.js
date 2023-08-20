@@ -13,20 +13,50 @@
 * Update Login Flow with TOTP Method
 */
 class UpdateLoginFlowWithTotpMethod {
-    /**
-    * Sending the anti-csrf token is only required for browser login flows.
-    */
-    'csrf_token';
-    /**
-    * Method should be set to \"totp\" when logging in using the TOTP strategy.
-    */
-    'method';
-    /**
-    * The TOTP code.
-    */
-    'totp_code';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateLoginFlowWithTotpMethod.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Sending the anti-csrf token is only required for browser login flows.
+        */
+        Object.defineProperty(this, 'csrf_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method should be set to \"totp\" when logging in using the TOTP strategy.
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The TOTP code.
+        */
+        Object.defineProperty(this, 'totp_code', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateLoginFlowWithTotpMethod, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateLoginFlowWithTotpMethod, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "csrf_token",
             "baseName": "csrf_token",
@@ -45,11 +75,6 @@ class UpdateLoginFlowWithTotpMethod {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateLoginFlowWithTotpMethod.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateLoginFlowWithTotpMethod };

@@ -13,18 +13,83 @@
 * Lifespans of different token types issued for this OAuth 2.0 Client.
 */
 class OAuth2ClientTokenLifespans {
-    'authorization_code_grant_access_token_lifespan';
-    'authorization_code_grant_id_token_lifespan';
-    'authorization_code_grant_refresh_token_lifespan';
-    'client_credentials_grant_access_token_lifespan';
-    'implicit_grant_access_token_lifespan';
-    'implicit_grant_id_token_lifespan';
-    'jwt_bearer_grant_access_token_lifespan';
-    'refresh_token_grant_access_token_lifespan';
-    'refresh_token_grant_id_token_lifespan';
-    'refresh_token_grant_refresh_token_lifespan';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return OAuth2ClientTokenLifespans.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'authorization_code_grant_access_token_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'authorization_code_grant_id_token_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'authorization_code_grant_refresh_token_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'client_credentials_grant_access_token_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'implicit_grant_access_token_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'implicit_grant_id_token_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'jwt_bearer_grant_access_token_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'refresh_token_grant_access_token_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'refresh_token_grant_id_token_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'refresh_token_grant_refresh_token_lifespan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(OAuth2ClientTokenLifespans, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(OAuth2ClientTokenLifespans, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "authorization_code_grant_access_token_lifespan",
             "baseName": "authorization_code_grant_access_token_lifespan",
@@ -85,11 +150,6 @@ class OAuth2ClientTokenLifespans {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return OAuth2ClientTokenLifespans.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { OAuth2ClientTokenLifespans };

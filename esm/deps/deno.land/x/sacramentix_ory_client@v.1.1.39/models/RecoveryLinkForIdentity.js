@@ -13,16 +13,41 @@
 * Used when an administrator creates a recovery link for an identity.
 */
 class RecoveryLinkForIdentity {
-    /**
-    * Recovery Link Expires At  The timestamp when the recovery link expires.
-    */
-    'expires_at';
-    /**
-    * Recovery Link  This link can be used to recover the account.
-    */
-    'recovery_link';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return RecoveryLinkForIdentity.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Recovery Link Expires At  The timestamp when the recovery link expires.
+        */
+        Object.defineProperty(this, 'expires_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Recovery Link  This link can be used to recover the account.
+        */
+        Object.defineProperty(this, 'recovery_link', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(RecoveryLinkForIdentity, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(RecoveryLinkForIdentity, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "expires_at",
             "baseName": "expires_at",
@@ -35,11 +60,6 @@ class RecoveryLinkForIdentity {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return RecoveryLinkForIdentity.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { RecoveryLinkForIdentity };

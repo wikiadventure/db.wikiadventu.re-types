@@ -10,16 +10,41 @@
  * Do not edit the class manually.
  */
 class AcceptOAuth2ConsentRequestSession {
-    /**
-    * AccessToken sets session data for the access and refresh token, as well as any future tokens issued by the refresh grant. Keep in mind that this data will be available to anyone performing OAuth 2.0 Challenge Introspection. If only your services can perform OAuth 2.0 Challenge Introspection, this is usually fine. But if third parties can access that endpoint as well, sensitive data from the session might be exposed to them. Use with care!
-    */
-    'access_token';
-    /**
-    * IDToken sets session data for the OpenID Connect ID token. Keep in mind that the session\'id payloads are readable by anyone that has access to the ID Challenge. Use with care!
-    */
-    'id_token';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return AcceptOAuth2ConsentRequestSession.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * AccessToken sets session data for the access and refresh token, as well as any future tokens issued by the refresh grant. Keep in mind that this data will be available to anyone performing OAuth 2.0 Challenge Introspection. If only your services can perform OAuth 2.0 Challenge Introspection, this is usually fine. But if third parties can access that endpoint as well, sensitive data from the session might be exposed to them. Use with care!
+        */
+        Object.defineProperty(this, 'access_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * IDToken sets session data for the OpenID Connect ID token. Keep in mind that the session\'id payloads are readable by anyone that has access to the ID Challenge. Use with care!
+        */
+        Object.defineProperty(this, 'id_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(AcceptOAuth2ConsentRequestSession, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(AcceptOAuth2ConsentRequestSession, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "access_token",
             "baseName": "access_token",
@@ -32,11 +57,6 @@ class AcceptOAuth2ConsentRequestSession {
             "type": "any",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return AcceptOAuth2ConsentRequestSession.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { AcceptOAuth2ConsentRequestSession };

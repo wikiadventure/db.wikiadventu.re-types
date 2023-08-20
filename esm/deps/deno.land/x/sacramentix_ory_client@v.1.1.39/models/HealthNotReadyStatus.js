@@ -10,23 +10,38 @@
  * Do not edit the class manually.
  */
 class HealthNotReadyStatus {
-    /**
-    * Errors contains a list of errors that caused the not ready status.
-    */
-    'errors';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return HealthNotReadyStatus.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Errors contains a list of errors that caused the not ready status.
+        */
+        Object.defineProperty(this, 'errors', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(HealthNotReadyStatus, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(HealthNotReadyStatus, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "errors",
             "baseName": "errors",
             "type": "{ [key: string]: string; }",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return HealthNotReadyStatus.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { HealthNotReadyStatus };

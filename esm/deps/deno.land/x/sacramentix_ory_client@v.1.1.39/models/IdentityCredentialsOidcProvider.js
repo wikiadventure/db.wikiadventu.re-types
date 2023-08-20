@@ -10,13 +10,53 @@
  * Do not edit the class manually.
  */
 class IdentityCredentialsOidcProvider {
-    'initial_access_token';
-    'initial_id_token';
-    'initial_refresh_token';
-    'provider';
-    'subject';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return IdentityCredentialsOidcProvider.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'initial_access_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'initial_id_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'initial_refresh_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'provider', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'subject', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(IdentityCredentialsOidcProvider, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(IdentityCredentialsOidcProvider, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "initial_access_token",
             "baseName": "initial_access_token",
@@ -47,11 +87,6 @@ class IdentityCredentialsOidcProvider {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return IdentityCredentialsOidcProvider.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { IdentityCredentialsOidcProvider };

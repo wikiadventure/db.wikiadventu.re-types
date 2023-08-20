@@ -13,76 +13,177 @@
 * Update Settings Flow Request Body
 */
 class UpdateSettingsFlowBody {
-    /**
-    * CSRFToken is the anti-CSRF token
-    */
-    'csrf_token';
-    /**
-    * Method  Should be set to \"lookup\" when trying to add, update, or remove a lookup pairing.
-    */
-    'method';
-    /**
-    * Password is the updated password
-    */
-    'password';
-    /**
-    * The identity\'s traits  in: body
-    */
-    'traits';
-    /**
-    * Flow ID is the flow\'s ID.  in: query
-    */
-    'flow';
-    /**
-    * Link this provider  Either this or `unlink` must be set.  type: string in: body
-    */
-    'link';
-    /**
-    * Unlink this provider  Either this or `link` must be set.  type: string in: body
-    */
-    'unlink';
-    /**
-    * UpstreamParameters are the parameters that are passed to the upstream identity provider.  These parameters are optional and depend on what the upstream identity provider supports. Supported parameters are: `login_hint` (string): The `login_hint` parameter suppresses the account chooser and either pre-fills the email box on the sign-in form, or selects the proper session. `hd` (string): The `hd` parameter limits the login/registration process to a Google Organization, e.g. `mycollege.edu`. `prompt` (string): The `prompt` specifies whether the Authorization Server prompts the End-User for reauthentication and consent, e.g. `select_account`.
-    */
-    'upstream_parameters';
-    /**
-    * ValidationTOTP must contain a valid TOTP based on the
-    */
-    'totp_code';
-    /**
-    * UnlinkTOTP if true will remove the TOTP pairing, effectively removing the credential. This can be used to set up a new TOTP device.
-    */
-    'totp_unlink';
-    /**
-    * Register a WebAuthn Security Key  It is expected that the JSON returned by the WebAuthn registration process is included here.
-    */
-    'webauthn_register';
-    /**
-    * Name of the WebAuthn Security Key to be Added  A human-readable name for the security key which will be added.
-    */
-    'webauthn_register_displayname';
-    /**
-    * Remove a WebAuthn Security Key  This must contain the ID of the WebAuthN connection.
-    */
-    'webauthn_remove';
-    /**
-    * If set to true will save the regenerated lookup secrets
-    */
-    'lookup_secret_confirm';
-    /**
-    * Disables this method if true.
-    */
-    'lookup_secret_disable';
-    /**
-    * If set to true will regenerate the lookup secrets
-    */
-    'lookup_secret_regenerate';
-    /**
-    * If set to true will reveal the lookup secrets
-    */
-    'lookup_secret_reveal';
-    static discriminator = "method";
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateSettingsFlowBody.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * CSRFToken is the anti-CSRF token
+        */
+        Object.defineProperty(this, 'csrf_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method  Should be set to \"lookup\" when trying to add, update, or remove a lookup pairing.
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Password is the updated password
+        */
+        Object.defineProperty(this, 'password', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The identity\'s traits  in: body
+        */
+        Object.defineProperty(this, 'traits', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Flow ID is the flow\'s ID.  in: query
+        */
+        Object.defineProperty(this, 'flow', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Link this provider  Either this or `unlink` must be set.  type: string in: body
+        */
+        Object.defineProperty(this, 'link', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Unlink this provider  Either this or `link` must be set.  type: string in: body
+        */
+        Object.defineProperty(this, 'unlink', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * UpstreamParameters are the parameters that are passed to the upstream identity provider.  These parameters are optional and depend on what the upstream identity provider supports. Supported parameters are: `login_hint` (string): The `login_hint` parameter suppresses the account chooser and either pre-fills the email box on the sign-in form, or selects the proper session. `hd` (string): The `hd` parameter limits the login/registration process to a Google Organization, e.g. `mycollege.edu`. `prompt` (string): The `prompt` specifies whether the Authorization Server prompts the End-User for reauthentication and consent, e.g. `select_account`.
+        */
+        Object.defineProperty(this, 'upstream_parameters', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ValidationTOTP must contain a valid TOTP based on the
+        */
+        Object.defineProperty(this, 'totp_code', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * UnlinkTOTP if true will remove the TOTP pairing, effectively removing the credential. This can be used to set up a new TOTP device.
+        */
+        Object.defineProperty(this, 'totp_unlink', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Register a WebAuthn Security Key  It is expected that the JSON returned by the WebAuthn registration process is included here.
+        */
+        Object.defineProperty(this, 'webauthn_register', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Name of the WebAuthn Security Key to be Added  A human-readable name for the security key which will be added.
+        */
+        Object.defineProperty(this, 'webauthn_register_displayname', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Remove a WebAuthn Security Key  This must contain the ID of the WebAuthN connection.
+        */
+        Object.defineProperty(this, 'webauthn_remove', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * If set to true will save the regenerated lookup secrets
+        */
+        Object.defineProperty(this, 'lookup_secret_confirm', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Disables this method if true.
+        */
+        Object.defineProperty(this, 'lookup_secret_disable', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * If set to true will regenerate the lookup secrets
+        */
+        Object.defineProperty(this, 'lookup_secret_regenerate', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * If set to true will reveal the lookup secrets
+        */
+        Object.defineProperty(this, 'lookup_secret_reveal', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        this.method = "UpdateSettingsFlowBody";
+    }
+}
+Object.defineProperty(UpdateSettingsFlowBody, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: "method"
+});
+Object.defineProperty(UpdateSettingsFlowBody, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "csrf_token",
             "baseName": "csrf_token",
@@ -185,12 +286,6 @@ class UpdateSettingsFlowBody {
             "type": "boolean",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateSettingsFlowBody.attributeTypeMap;
-    }
-    constructor() {
-        this.method = "UpdateSettingsFlowBody";
-    }
-}
+    ]
+});
 export { UpdateSettingsFlowBody };

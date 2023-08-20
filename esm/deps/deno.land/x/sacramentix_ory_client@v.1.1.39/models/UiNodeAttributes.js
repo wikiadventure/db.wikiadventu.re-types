@@ -10,87 +10,213 @@
  * Do not edit the class manually.
  */
 class UiNodeAttributes {
-    /**
-    * The autocomplete attribute for the input. email InputAttributeAutocompleteEmail tel InputAttributeAutocompleteTel url InputAttributeAutocompleteUrl current-password InputAttributeAutocompleteCurrentPassword new-password InputAttributeAutocompleteNewPassword one-time-code InputAttributeAutocompleteOneTimeCode
-    */
-    'autocomplete';
-    /**
-    * Sets the input\'s disabled field to true or false.
-    */
-    'disabled';
-    'label';
-    /**
-    * The input\'s element name.
-    */
-    'name';
-    /**
-    * NodeType represents this node\'s types. It is a mirror of `node.type` and is primarily used to allow compatibility with OpenAPI 3.0. In this struct it technically always is \"script\".
-    */
-    'node_type';
-    /**
-    * OnClick may contain javascript which should be executed on click. This is primarily used for WebAuthn.
-    */
-    'onclick';
-    /**
-    * The input\'s pattern.
-    */
-    'pattern';
-    /**
-    * Mark this input field as required.
-    */
-    'required';
-    /**
-    * The script MIME type
-    */
-    'type';
-    /**
-    * The input\'s value.
-    */
-    'value';
-    /**
-    * A unique identifier
-    */
-    'id';
-    'text';
-    /**
-    * Height of the image
-    */
-    'height';
-    /**
-    * The script source
-    */
-    'src';
-    /**
-    * Width of the image
-    */
-    'width';
-    /**
-    * The link\'s href (destination) URL.  format: uri
-    */
-    'href';
-    'title';
-    /**
-    * The script async type
-    */
-    'async';
-    /**
-    * The script cross origin policy
-    */
-    'crossorigin';
-    /**
-    * The script\'s integrity hash
-    */
-    'integrity';
-    /**
-    * Nonce for CSP  A nonce you may want to use to improve your Content Security Policy. You do not have to use this value but if you want to improve your CSP policies you may use it. You can also choose to use your own nonce value!
-    */
-    'nonce';
-    /**
-    * The script referrer policy
-    */
-    'referrerpolicy';
-    static discriminator = "node_type";
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UiNodeAttributes.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The autocomplete attribute for the input. email InputAttributeAutocompleteEmail tel InputAttributeAutocompleteTel url InputAttributeAutocompleteUrl current-password InputAttributeAutocompleteCurrentPassword new-password InputAttributeAutocompleteNewPassword one-time-code InputAttributeAutocompleteOneTimeCode
+        */
+        Object.defineProperty(this, 'autocomplete', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Sets the input\'s disabled field to true or false.
+        */
+        Object.defineProperty(this, 'disabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'label', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The input\'s element name.
+        */
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * NodeType represents this node\'s types. It is a mirror of `node.type` and is primarily used to allow compatibility with OpenAPI 3.0. In this struct it technically always is \"script\".
+        */
+        Object.defineProperty(this, 'node_type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * OnClick may contain javascript which should be executed on click. This is primarily used for WebAuthn.
+        */
+        Object.defineProperty(this, 'onclick', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The input\'s pattern.
+        */
+        Object.defineProperty(this, 'pattern', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Mark this input field as required.
+        */
+        Object.defineProperty(this, 'required', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The script MIME type
+        */
+        Object.defineProperty(this, 'type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The input\'s value.
+        */
+        Object.defineProperty(this, 'value', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * A unique identifier
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'text', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Height of the image
+        */
+        Object.defineProperty(this, 'height', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The script source
+        */
+        Object.defineProperty(this, 'src', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Width of the image
+        */
+        Object.defineProperty(this, 'width', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The link\'s href (destination) URL.  format: uri
+        */
+        Object.defineProperty(this, 'href', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'title', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The script async type
+        */
+        Object.defineProperty(this, 'async', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The script cross origin policy
+        */
+        Object.defineProperty(this, 'crossorigin', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The script\'s integrity hash
+        */
+        Object.defineProperty(this, 'integrity', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Nonce for CSP  A nonce you may want to use to improve your Content Security Policy. You do not have to use this value but if you want to improve your CSP policies you may use it. You can also choose to use your own nonce value!
+        */
+        Object.defineProperty(this, 'nonce', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The script referrer policy
+        */
+        Object.defineProperty(this, 'referrerpolicy', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        this.node_type = "UiNodeAttributes";
+    }
+}
+Object.defineProperty(UiNodeAttributes, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: "node_type"
+});
+Object.defineProperty(UiNodeAttributes, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "autocomplete",
             "baseName": "autocomplete",
@@ -223,12 +349,6 @@ class UiNodeAttributes {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UiNodeAttributes.attributeTypeMap;
-    }
-    constructor() {
-        this.node_type = "UiNodeAttributes";
-    }
-}
+    ]
+});
 export { UiNodeAttributes };

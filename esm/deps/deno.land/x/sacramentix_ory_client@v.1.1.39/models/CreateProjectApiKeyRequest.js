@@ -10,23 +10,38 @@
  * Do not edit the class manually.
  */
 class CreateProjectApiKeyRequest {
-    /**
-    * The Token Name  A descriptive name for the token.  in: body
-    */
-    'name';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return CreateProjectApiKeyRequest.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The Token Name  A descriptive name for the token.  in: body
+        */
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(CreateProjectApiKeyRequest, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(CreateProjectApiKeyRequest, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "name",
             "baseName": "name",
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return CreateProjectApiKeyRequest.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { CreateProjectApiKeyRequest };

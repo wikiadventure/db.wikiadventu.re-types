@@ -13,16 +13,41 @@
 * Logout Flow
 */
 class LogoutFlow {
-    /**
-    * LogoutToken can be used to perform logout using AJAX.
-    */
-    'logout_token';
-    /**
-    * LogoutURL can be opened in a browser to sign the user out.  format: uri
-    */
-    'logout_url';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return LogoutFlow.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * LogoutToken can be used to perform logout using AJAX.
+        */
+        Object.defineProperty(this, 'logout_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * LogoutURL can be opened in a browser to sign the user out.  format: uri
+        */
+        Object.defineProperty(this, 'logout_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(LogoutFlow, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(LogoutFlow, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "logout_token",
             "baseName": "logout_token",
@@ -35,11 +60,6 @@ class LogoutFlow {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return LogoutFlow.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { LogoutFlow };

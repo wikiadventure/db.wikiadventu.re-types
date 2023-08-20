@@ -13,16 +13,41 @@
 * Create Identity and Import Password Credentials Configuration
 */
 class IdentityWithCredentialsPasswordConfig {
-    /**
-    * The hashed password in [PHC format]( https://www.ory.sh/docs/kratos/concepts/credentials/username-email-password#hashed-password-format)
-    */
-    'hashed_password';
-    /**
-    * The password in plain text if no hash is available.
-    */
-    'password';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return IdentityWithCredentialsPasswordConfig.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The hashed password in [PHC format]( https://www.ory.sh/docs/kratos/concepts/credentials/username-email-password#hashed-password-format)
+        */
+        Object.defineProperty(this, 'hashed_password', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The password in plain text if no hash is available.
+        */
+        Object.defineProperty(this, 'password', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(IdentityWithCredentialsPasswordConfig, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(IdentityWithCredentialsPasswordConfig, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "hashed_password",
             "baseName": "hashed_password",
@@ -35,11 +60,6 @@ class IdentityWithCredentialsPasswordConfig {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return IdentityWithCredentialsPasswordConfig.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { IdentityWithCredentialsPasswordConfig };

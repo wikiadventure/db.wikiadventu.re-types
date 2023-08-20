@@ -10,23 +10,38 @@
  * Do not edit the class manually.
  */
 class IdentityCredentialsPassword {
-    /**
-    * HashedPassword is a hash-representation of the password.
-    */
-    'hashed_password';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return IdentityCredentialsPassword.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * HashedPassword is a hash-representation of the password.
+        */
+        Object.defineProperty(this, 'hashed_password', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(IdentityCredentialsPassword, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(IdentityCredentialsPassword, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "hashed_password",
             "baseName": "hashed_password",
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return IdentityCredentialsPassword.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { IdentityCredentialsPassword };

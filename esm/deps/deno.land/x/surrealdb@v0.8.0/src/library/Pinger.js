@@ -1,7 +1,17 @@
 export class Pinger {
-    pinger;
-    interval;
     constructor(interval = 30000) {
+        Object.defineProperty(this, "pinger", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "interval", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.interval = interval;
     }
     start(callback) {

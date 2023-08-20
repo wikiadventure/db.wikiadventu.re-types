@@ -1,7 +1,19 @@
 import { Node } from './node.js';
 export class Trie {
-    context = { varIndex: 0 };
-    root = new Node();
+    constructor() {
+        Object.defineProperty(this, "context", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: { varIndex: 0 }
+        });
+        Object.defineProperty(this, "root", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: new Node()
+        });
+    }
     insert(path, index, pathErrorCheckOnly) {
         const paramMap = [];
         const groups = []; // [mark, original string]

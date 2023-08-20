@@ -2,10 +2,25 @@ import { of, from } from '../rxjsStub.js';
 import { mergeMap, map } from '../rxjsStub.js';
 import { CourierApiRequestFactory, CourierApiResponseProcessor } from "../apis/CourierApi.js";
 export class ObservableCourierApi {
-    requestFactory;
-    responseProcessor;
-    configuration;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "requestFactory", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "responseProcessor", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "configuration", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.configuration = configuration;
         this.requestFactory = requestFactory || new CourierApiRequestFactory(configuration);
         this.responseProcessor = responseProcessor || new CourierApiResponseProcessor();
@@ -58,10 +73,25 @@ export class ObservableCourierApi {
 }
 import { FrontendApiRequestFactory, FrontendApiResponseProcessor } from "../apis/FrontendApi.js";
 export class ObservableFrontendApi {
-    requestFactory;
-    responseProcessor;
-    configuration;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "requestFactory", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "responseProcessor", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "configuration", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.configuration = configuration;
         this.requestFactory = requestFactory || new FrontendApiRequestFactory(configuration);
         this.responseProcessor = responseProcessor || new FrontendApiResponseProcessor();
@@ -737,10 +767,25 @@ export class ObservableFrontendApi {
 }
 import { IdentityApiRequestFactory, IdentityApiResponseProcessor } from "../apis/IdentityApi.js";
 export class ObservableIdentityApi {
-    requestFactory;
-    responseProcessor;
-    configuration;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "requestFactory", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "responseProcessor", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "configuration", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.configuration = configuration;
         this.requestFactory = requestFactory || new IdentityApiRequestFactory(configuration);
         this.responseProcessor = responseProcessor || new IdentityApiResponseProcessor();
@@ -1140,10 +1185,25 @@ export class ObservableIdentityApi {
 }
 import { JwkApiRequestFactory, JwkApiResponseProcessor } from "../apis/JwkApi.js";
 export class ObservableJwkApi {
-    requestFactory;
-    responseProcessor;
-    configuration;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "requestFactory", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "responseProcessor", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "configuration", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.configuration = configuration;
         this.requestFactory = requestFactory || new JwkApiRequestFactory(configuration);
         this.responseProcessor = responseProcessor || new JwkApiResponseProcessor();
@@ -1304,10 +1364,25 @@ export class ObservableJwkApi {
 }
 import { MetadataApiRequestFactory, MetadataApiResponseProcessor } from "../apis/MetadataApi.js";
 export class ObservableMetadataApi {
-    requestFactory;
-    responseProcessor;
-    configuration;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "requestFactory", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "responseProcessor", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "configuration", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.configuration = configuration;
         this.requestFactory = requestFactory || new MetadataApiRequestFactory(configuration);
         this.responseProcessor = responseProcessor || new MetadataApiResponseProcessor();
@@ -1375,10 +1450,25 @@ export class ObservableMetadataApi {
 }
 import { OAuth2ApiRequestFactory, OAuth2ApiResponseProcessor } from "../apis/OAuth2Api.js";
 export class ObservableOAuth2Api {
-    requestFactory;
-    responseProcessor;
-    configuration;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "requestFactory", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "responseProcessor", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "configuration", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.configuration = configuration;
         this.requestFactory = requestFactory || new OAuth2ApiRequestFactory(configuration);
         this.responseProcessor = responseProcessor || new OAuth2ApiResponseProcessor();
@@ -1998,10 +2088,25 @@ export class ObservableOAuth2Api {
 }
 import { OidcApiRequestFactory, OidcApiResponseProcessor } from "../apis/OidcApi.js";
 export class ObservableOidcApi {
-    requestFactory;
-    responseProcessor;
-    configuration;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "requestFactory", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "responseProcessor", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "configuration", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.configuration = configuration;
         this.requestFactory = requestFactory || new OidcApiRequestFactory(configuration);
         this.responseProcessor = responseProcessor || new OidcApiResponseProcessor();
@@ -2154,10 +2259,25 @@ export class ObservableOidcApi {
 }
 import { PermissionApiRequestFactory, PermissionApiResponseProcessor } from "../apis/PermissionApi.js";
 export class ObservablePermissionApi {
-    requestFactory;
-    responseProcessor;
-    configuration;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "requestFactory", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "responseProcessor", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "configuration", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.configuration = configuration;
         this.requestFactory = requestFactory || new PermissionApiRequestFactory(configuration);
         this.responseProcessor = responseProcessor || new PermissionApiResponseProcessor();
@@ -2289,10 +2409,25 @@ export class ObservablePermissionApi {
 }
 import { ProjectApiRequestFactory, ProjectApiResponseProcessor } from "../apis/ProjectApi.js";
 export class ObservableProjectApi {
-    requestFactory;
-    responseProcessor;
-    configuration;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "requestFactory", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "responseProcessor", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "configuration", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.configuration = configuration;
         this.requestFactory = requestFactory || new ProjectApiRequestFactory(configuration);
         this.responseProcessor = responseProcessor || new ProjectApiResponseProcessor();
@@ -2600,10 +2735,25 @@ export class ObservableProjectApi {
 }
 import { RelationshipApiRequestFactory, RelationshipApiResponseProcessor } from "../apis/RelationshipApi.js";
 export class ObservableRelationshipApi {
-    requestFactory;
-    responseProcessor;
-    configuration;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "requestFactory", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "responseProcessor", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "configuration", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.configuration = configuration;
         this.requestFactory = requestFactory || new RelationshipApiRequestFactory(configuration);
         this.responseProcessor = responseProcessor || new RelationshipApiResponseProcessor();
@@ -2750,10 +2900,25 @@ export class ObservableRelationshipApi {
 }
 import { WellknownApiRequestFactory, WellknownApiResponseProcessor } from "../apis/WellknownApi.js";
 export class ObservableWellknownApi {
-    requestFactory;
-    responseProcessor;
-    configuration;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "requestFactory", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "responseProcessor", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "configuration", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.configuration = configuration;
         this.requestFactory = requestFactory || new WellknownApiRequestFactory(configuration);
         this.responseProcessor = responseProcessor || new WellknownApiResponseProcessor();

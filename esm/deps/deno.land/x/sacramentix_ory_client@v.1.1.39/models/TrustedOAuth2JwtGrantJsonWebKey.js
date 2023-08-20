@@ -13,16 +13,41 @@
 * OAuth2 JWT Bearer Grant Type Issuer Trusted JSON Web Key
 */
 class TrustedOAuth2JwtGrantJsonWebKey {
-    /**
-    * The \"key_id\" is key unique identifier (same as kid header in jws/jwt).
-    */
-    'kid';
-    /**
-    * The \"set\" is basically a name for a group(set) of keys. Will be the same as \"issuer\" in grant.
-    */
-    'set';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return TrustedOAuth2JwtGrantJsonWebKey.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The \"key_id\" is key unique identifier (same as kid header in jws/jwt).
+        */
+        Object.defineProperty(this, 'kid', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The \"set\" is basically a name for a group(set) of keys. Will be the same as \"issuer\" in grant.
+        */
+        Object.defineProperty(this, 'set', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(TrustedOAuth2JwtGrantJsonWebKey, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(TrustedOAuth2JwtGrantJsonWebKey, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "kid",
             "baseName": "kid",
@@ -35,11 +60,6 @@ class TrustedOAuth2JwtGrantJsonWebKey {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return TrustedOAuth2JwtGrantJsonWebKey.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { TrustedOAuth2JwtGrantJsonWebKey };

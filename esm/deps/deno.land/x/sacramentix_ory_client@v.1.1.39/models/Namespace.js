@@ -10,23 +10,38 @@
  * Do not edit the class manually.
  */
 class Namespace {
-    /**
-    * Name of the namespace.
-    */
-    'name';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return Namespace.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Name of the namespace.
+        */
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(Namespace, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(Namespace, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "name",
             "baseName": "name",
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return Namespace.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { Namespace };

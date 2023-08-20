@@ -13,24 +13,59 @@
 * Internal Provision Mock Subscription Request Body
 */
 class InternalProvisionMockSubscription {
-    /**
-    * Currency usd USD eur Euro
-    */
-    'currency';
-    /**
-    * Identity ID
-    */
-    'identity_id';
-    /**
-    * Billing Interval monthly Monthly yearly Yearly
-    */
-    'interval';
-    /**
-    * Plan ID
-    */
-    'plan';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return InternalProvisionMockSubscription.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Currency usd USD eur Euro
+        */
+        Object.defineProperty(this, 'currency', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Identity ID
+        */
+        Object.defineProperty(this, 'identity_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Billing Interval monthly Monthly yearly Yearly
+        */
+        Object.defineProperty(this, 'interval', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Plan ID
+        */
+        Object.defineProperty(this, 'plan', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(InternalProvisionMockSubscription, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(InternalProvisionMockSubscription, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "currency",
             "baseName": "currency",
@@ -55,11 +90,6 @@ class InternalProvisionMockSubscription {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return InternalProvisionMockSubscription.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { InternalProvisionMockSubscription };

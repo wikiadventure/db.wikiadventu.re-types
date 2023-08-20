@@ -10,29 +10,74 @@
  * Do not edit the class manually.
  */
 class OAuth2LogoutRequest {
-    /**
-    * Challenge is the identifier (\"logout challenge\") of the logout authentication request. It is used to identify the session.
-    */
-    'challenge';
-    'client';
-    /**
-    * RequestURL is the original Logout URL requested.
-    */
-    'request_url';
-    /**
-    * RPInitiated is set to true if the request was initiated by a Relying Party (RP), also known as an OAuth 2.0 Client.
-    */
-    'rp_initiated';
-    /**
-    * SessionID is the login session ID that was requested to log out.
-    */
-    'sid';
-    /**
-    * Subject is the user for whom the logout was request.
-    */
-    'subject';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return OAuth2LogoutRequest.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Challenge is the identifier (\"logout challenge\") of the logout authentication request. It is used to identify the session.
+        */
+        Object.defineProperty(this, 'challenge', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'client', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * RequestURL is the original Logout URL requested.
+        */
+        Object.defineProperty(this, 'request_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * RPInitiated is set to true if the request was initiated by a Relying Party (RP), also known as an OAuth 2.0 Client.
+        */
+        Object.defineProperty(this, 'rp_initiated', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * SessionID is the login session ID that was requested to log out.
+        */
+        Object.defineProperty(this, 'sid', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Subject is the user for whom the logout was request.
+        */
+        Object.defineProperty(this, 'subject', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(OAuth2LogoutRequest, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(OAuth2LogoutRequest, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "challenge",
             "baseName": "challenge",
@@ -69,11 +114,6 @@ class OAuth2LogoutRequest {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return OAuth2LogoutRequest.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { OAuth2LogoutRequest };

@@ -10,11 +10,41 @@
  * Do not edit the class manually.
  */
 class CloudAccount {
-    'email';
-    'id';
-    'name';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return CloudAccount.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'email', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(CloudAccount, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(CloudAccount, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "email",
             "baseName": "email",
@@ -33,11 +63,6 @@ class CloudAccount {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return CloudAccount.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { CloudAccount };

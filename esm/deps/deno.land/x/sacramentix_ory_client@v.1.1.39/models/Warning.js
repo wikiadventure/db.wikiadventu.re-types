@@ -10,10 +10,35 @@
  * Do not edit the class manually.
  */
 class Warning {
-    'code';
-    'message';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return Warning.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'code', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'message', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(Warning, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(Warning, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "code",
             "baseName": "code",
@@ -26,11 +51,6 @@ class Warning {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return Warning.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { Warning };

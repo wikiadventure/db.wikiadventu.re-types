@@ -13,64 +13,149 @@
 * Introspection contains an access token\'s session data as specified by [IETF RFC 7662](https://tools.ietf.org/html/rfc7662)
 */
 class IntrospectedOAuth2Token {
-    /**
-    * Active is a boolean indicator of whether or not the presented token is currently active.  The specifics of a token\'s \"active\" state will vary depending on the implementation of the authorization server and the information it keeps about its tokens, but a \"true\" value return for the \"active\" property will generally indicate that a given token has been issued by this authorization server, has not been revoked by the resource owner, and is within its given time window of validity (e.g., after its issuance time and before its expiration time).
-    */
-    'active';
-    /**
-    * Audience contains a list of the token\'s intended audiences.
-    */
-    'aud';
-    /**
-    * ID is aclient identifier for the OAuth 2.0 client that requested this token.
-    */
-    'client_id';
-    /**
-    * Expires at is an integer timestamp, measured in the number of seconds since January 1 1970 UTC, indicating when this token will expire.
-    */
-    'exp';
-    /**
-    * Extra is arbitrary data set by the session.
-    */
-    'ext';
-    /**
-    * Issued at is an integer timestamp, measured in the number of seconds since January 1 1970 UTC, indicating when this token was originally issued.
-    */
-    'iat';
-    /**
-    * IssuerURL is a string representing the issuer of this token
-    */
-    'iss';
-    /**
-    * NotBefore is an integer timestamp, measured in the number of seconds since January 1 1970 UTC, indicating when this token is not to be used before.
-    */
-    'nbf';
-    /**
-    * ObfuscatedSubject is set when the subject identifier algorithm was set to \"pairwise\" during authorization. It is the `sub` value of the ID Token that was issued.
-    */
-    'obfuscated_subject';
-    /**
-    * Scope is a JSON string containing a space-separated list of scopes associated with this token.
-    */
-    'scope';
-    /**
-    * Subject of the token, as defined in JWT [RFC7519]. Usually a machine-readable identifier of the resource owner who authorized this token.
-    */
-    'sub';
-    /**
-    * TokenType is the introspected token\'s type, typically `Bearer`.
-    */
-    'token_type';
-    /**
-    * TokenUse is the introspected token\'s use, for example `access_token` or `refresh_token`.
-    */
-    'token_use';
-    /**
-    * Username is a human-readable identifier for the resource owner who authorized this token.
-    */
-    'username';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return IntrospectedOAuth2Token.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Active is a boolean indicator of whether or not the presented token is currently active.  The specifics of a token\'s \"active\" state will vary depending on the implementation of the authorization server and the information it keeps about its tokens, but a \"true\" value return for the \"active\" property will generally indicate that a given token has been issued by this authorization server, has not been revoked by the resource owner, and is within its given time window of validity (e.g., after its issuance time and before its expiration time).
+        */
+        Object.defineProperty(this, 'active', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Audience contains a list of the token\'s intended audiences.
+        */
+        Object.defineProperty(this, 'aud', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ID is aclient identifier for the OAuth 2.0 client that requested this token.
+        */
+        Object.defineProperty(this, 'client_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Expires at is an integer timestamp, measured in the number of seconds since January 1 1970 UTC, indicating when this token will expire.
+        */
+        Object.defineProperty(this, 'exp', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Extra is arbitrary data set by the session.
+        */
+        Object.defineProperty(this, 'ext', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Issued at is an integer timestamp, measured in the number of seconds since January 1 1970 UTC, indicating when this token was originally issued.
+        */
+        Object.defineProperty(this, 'iat', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * IssuerURL is a string representing the issuer of this token
+        */
+        Object.defineProperty(this, 'iss', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * NotBefore is an integer timestamp, measured in the number of seconds since January 1 1970 UTC, indicating when this token is not to be used before.
+        */
+        Object.defineProperty(this, 'nbf', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ObfuscatedSubject is set when the subject identifier algorithm was set to \"pairwise\" during authorization. It is the `sub` value of the ID Token that was issued.
+        */
+        Object.defineProperty(this, 'obfuscated_subject', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Scope is a JSON string containing a space-separated list of scopes associated with this token.
+        */
+        Object.defineProperty(this, 'scope', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Subject of the token, as defined in JWT [RFC7519]. Usually a machine-readable identifier of the resource owner who authorized this token.
+        */
+        Object.defineProperty(this, 'sub', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * TokenType is the introspected token\'s type, typically `Bearer`.
+        */
+        Object.defineProperty(this, 'token_type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * TokenUse is the introspected token\'s use, for example `access_token` or `refresh_token`.
+        */
+        Object.defineProperty(this, 'token_use', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Username is a human-readable identifier for the resource owner who authorized this token.
+        */
+        Object.defineProperty(this, 'username', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(IntrospectedOAuth2Token, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(IntrospectedOAuth2Token, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "active",
             "baseName": "active",
@@ -155,11 +240,6 @@ class IntrospectedOAuth2Token {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return IntrospectedOAuth2Token.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { IntrospectedOAuth2Token };

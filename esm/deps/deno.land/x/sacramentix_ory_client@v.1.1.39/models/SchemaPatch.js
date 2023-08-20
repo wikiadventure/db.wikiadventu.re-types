@@ -10,16 +10,41 @@
  * Do not edit the class manually.
  */
 class SchemaPatch {
-    /**
-    * The json schema
-    */
-    'data';
-    /**
-    * The user defined schema name
-    */
-    'name';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return SchemaPatch.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The json schema
+        */
+        Object.defineProperty(this, 'data', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The user defined schema name
+        */
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(SchemaPatch, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(SchemaPatch, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "data",
             "baseName": "data",
@@ -32,11 +57,6 @@ class SchemaPatch {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return SchemaPatch.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { SchemaPatch };

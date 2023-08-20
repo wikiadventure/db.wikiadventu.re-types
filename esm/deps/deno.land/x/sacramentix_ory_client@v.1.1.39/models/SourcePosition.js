@@ -10,10 +10,35 @@
  * Do not edit the class manually.
  */
 class SourcePosition {
-    'Line';
-    'column';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return SourcePosition.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'Line', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'column', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(SourcePosition, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(SourcePosition, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "Line",
             "baseName": "Line",
@@ -26,11 +51,6 @@ class SourcePosition {
             "type": "number",
             "format": "int64"
         }
-    ];
-    static getAttributeTypeMap() {
-        return SourcePosition.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { SourcePosition };

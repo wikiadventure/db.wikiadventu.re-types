@@ -13,24 +13,59 @@
 * A JSONPatch document as defined by RFC 6902
 */
 class JsonPatch {
-    /**
-    * This field is used together with operation \"move\" and uses JSON Pointer notation.  Learn more [about JSON Pointers](https://datatracker.ietf.org/doc/html/rfc6901#section-5).
-    */
-    '_from';
-    /**
-    * The operation to be performed. One of \"add\", \"remove\", \"replace\", \"move\", \"copy\", or \"test\".
-    */
-    'op';
-    /**
-    * The path to the target path. Uses JSON pointer notation.  Learn more [about JSON Pointers](https://datatracker.ietf.org/doc/html/rfc6901#section-5).
-    */
-    'path';
-    /**
-    * The value to be used within the operations.  Learn more [about JSON Pointers](https://datatracker.ietf.org/doc/html/rfc6901#section-5).
-    */
-    'value';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return JsonPatch.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * This field is used together with operation \"move\" and uses JSON Pointer notation.  Learn more [about JSON Pointers](https://datatracker.ietf.org/doc/html/rfc6901#section-5).
+        */
+        Object.defineProperty(this, '_from', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The operation to be performed. One of \"add\", \"remove\", \"replace\", \"move\", \"copy\", or \"test\".
+        */
+        Object.defineProperty(this, 'op', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The path to the target path. Uses JSON pointer notation.  Learn more [about JSON Pointers](https://datatracker.ietf.org/doc/html/rfc6901#section-5).
+        */
+        Object.defineProperty(this, 'path', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The value to be used within the operations.  Learn more [about JSON Pointers](https://datatracker.ietf.org/doc/html/rfc6901#section-5).
+        */
+        Object.defineProperty(this, 'value', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(JsonPatch, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(JsonPatch, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "_from",
             "baseName": "from",
@@ -55,11 +90,6 @@ class JsonPatch {
             "type": "any",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return JsonPatch.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { JsonPatch };

@@ -13,25 +13,65 @@
 * Relationship
 */
 class Relationship {
-    /**
-    * Namespace of the Relation Tuple
-    */
-    'namespace';
-    /**
-    * Object of the Relation Tuple
-    */
-    'object';
-    /**
-    * Relation of the Relation Tuple
-    */
-    'relation';
-    /**
-    * SubjectID of the Relation Tuple  Either SubjectSet or SubjectID can be provided.
-    */
-    'subject_id';
-    'subject_set';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return Relationship.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Namespace of the Relation Tuple
+        */
+        Object.defineProperty(this, 'namespace', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Object of the Relation Tuple
+        */
+        Object.defineProperty(this, 'object', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Relation of the Relation Tuple
+        */
+        Object.defineProperty(this, 'relation', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * SubjectID of the Relation Tuple  Either SubjectSet or SubjectID can be provided.
+        */
+        Object.defineProperty(this, 'subject_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'subject_set', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(Relationship, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(Relationship, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "namespace",
             "baseName": "namespace",
@@ -62,11 +102,6 @@ class Relationship {
             "type": "SubjectSet",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return Relationship.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { Relationship };

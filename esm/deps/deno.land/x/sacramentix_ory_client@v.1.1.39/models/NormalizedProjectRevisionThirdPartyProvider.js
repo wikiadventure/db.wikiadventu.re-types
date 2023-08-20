@@ -10,74 +10,194 @@
  * Do not edit the class manually.
  */
 class NormalizedProjectRevisionThirdPartyProvider {
-    'apple_private_key';
-    /**
-    * Apple Private Key Identifier  Sign In with Apple Private Key Identifier needed for generating a JWT token for client secret
-    */
-    'apple_private_key_id';
-    /**
-    * Apple Developer Team ID  Apple Developer Team ID needed for generating a JWT token for client secret
-    */
-    'apple_team_id';
-    /**
-    * AuthURL is the authorize url, typically something like: https://example.org/oauth2/auth Should only be used when the OAuth2 / OpenID Connect server is not supporting OpenID Connect Discovery and when `provider` is set to `generic`.
-    */
-    'auth_url';
-    /**
-    * Tenant is the Azure AD Tenant to use for authentication, and must be set when `provider` is set to `microsoft`.  Can be either `common`, `organizations`, `consumers` for a multitenant application or a specific tenant like `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` or `contoso.onmicrosoft.com`.
-    */
-    'azure_tenant';
-    /**
-    * ClientID is the application\'s Client ID.
-    */
-    'client_id';
-    'client_secret';
-    /**
-    * The Project\'s Revision Creation Date
-    */
-    'created_at';
-    'id';
-    /**
-    * IssuerURL is the OpenID Connect Server URL. You can leave this empty if `provider` is not set to `generic`. If set, neither `auth_url` nor `token_url` are required.
-    */
-    'issuer_url';
-    /**
-    * Label represents an optional label which can be used in the UI generation.
-    */
-    'label';
-    /**
-    * Mapper specifies the JSONNet code snippet which uses the OpenID Connect Provider\'s data (e.g. GitHub or Google profile information) to hydrate the identity\'s data.  It can be either a URL (file://, http(s)://, base64://) or an inline JSONNet code snippet.
-    */
-    'mapper_url';
-    /**
-    * The Revision\'s ID this schema belongs to
-    */
-    'project_revision_id';
-    /**
-    * Provider is either \"generic\" for a generic OAuth 2.0 / OpenID Connect Provider or one of: generic google github gitlab microsoft discord slack facebook vk yandex apple
-    */
-    'provider';
-    /**
-    * ID is the provider\'s ID
-    */
-    'provider_id';
-    'requested_claims';
-    'scope';
-    /**
-    * State indicates the state of the provider  Only providers with state `enabled` will be used for authentication enabled ThirdPartyProviderStateEnabled disabled ThirdPartyProviderStateDisabled
-    */
-    'state';
-    'subject_source';
-    /**
-    * TokenURL is the token url, typically something like: https://example.org/oauth2/token  Should only be used when the OAuth2 / OpenID Connect server is not supporting OpenID Connect Discovery and when `provider` is set to `generic`.
-    */
-    'token_url';
-    /**
-    * Last Time Project\'s Revision was Updated
-    */
-    'updated_at';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return NormalizedProjectRevisionThirdPartyProvider.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'apple_private_key', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Apple Private Key Identifier  Sign In with Apple Private Key Identifier needed for generating a JWT token for client secret
+        */
+        Object.defineProperty(this, 'apple_private_key_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Apple Developer Team ID  Apple Developer Team ID needed for generating a JWT token for client secret
+        */
+        Object.defineProperty(this, 'apple_team_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * AuthURL is the authorize url, typically something like: https://example.org/oauth2/auth Should only be used when the OAuth2 / OpenID Connect server is not supporting OpenID Connect Discovery and when `provider` is set to `generic`.
+        */
+        Object.defineProperty(this, 'auth_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Tenant is the Azure AD Tenant to use for authentication, and must be set when `provider` is set to `microsoft`.  Can be either `common`, `organizations`, `consumers` for a multitenant application or a specific tenant like `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` or `contoso.onmicrosoft.com`.
+        */
+        Object.defineProperty(this, 'azure_tenant', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ClientID is the application\'s Client ID.
+        */
+        Object.defineProperty(this, 'client_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'client_secret', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Project\'s Revision Creation Date
+        */
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * IssuerURL is the OpenID Connect Server URL. You can leave this empty if `provider` is not set to `generic`. If set, neither `auth_url` nor `token_url` are required.
+        */
+        Object.defineProperty(this, 'issuer_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Label represents an optional label which can be used in the UI generation.
+        */
+        Object.defineProperty(this, 'label', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Mapper specifies the JSONNet code snippet which uses the OpenID Connect Provider\'s data (e.g. GitHub or Google profile information) to hydrate the identity\'s data.  It can be either a URL (file://, http(s)://, base64://) or an inline JSONNet code snippet.
+        */
+        Object.defineProperty(this, 'mapper_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Revision\'s ID this schema belongs to
+        */
+        Object.defineProperty(this, 'project_revision_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Provider is either \"generic\" for a generic OAuth 2.0 / OpenID Connect Provider or one of: generic google github gitlab microsoft discord slack facebook vk yandex apple
+        */
+        Object.defineProperty(this, 'provider', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ID is the provider\'s ID
+        */
+        Object.defineProperty(this, 'provider_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'requested_claims', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'scope', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * State indicates the state of the provider  Only providers with state `enabled` will be used for authentication enabled ThirdPartyProviderStateEnabled disabled ThirdPartyProviderStateDisabled
+        */
+        Object.defineProperty(this, 'state', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'subject_source', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * TokenURL is the token url, typically something like: https://example.org/oauth2/token  Should only be used when the OAuth2 / OpenID Connect server is not supporting OpenID Connect Discovery and when `provider` is set to `generic`.
+        */
+        Object.defineProperty(this, 'token_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Last Time Project\'s Revision was Updated
+        */
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(NormalizedProjectRevisionThirdPartyProvider, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(NormalizedProjectRevisionThirdPartyProvider, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "apple_private_key",
             "baseName": "apple_private_key",
@@ -204,11 +324,6 @@ class NormalizedProjectRevisionThirdPartyProvider {
             "type": "Date",
             "format": "date-time"
         }
-    ];
-    static getAttributeTypeMap() {
-        return NormalizedProjectRevisionThirdPartyProvider.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { NormalizedProjectRevisionThirdPartyProvider };

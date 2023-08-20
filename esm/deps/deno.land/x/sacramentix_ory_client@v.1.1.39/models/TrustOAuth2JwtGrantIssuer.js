@@ -13,29 +13,74 @@
 * Trust OAuth2 JWT Bearer Grant Type Issuer Request Body
 */
 class TrustOAuth2JwtGrantIssuer {
-    /**
-    * The \"allow_any_subject\" indicates that the issuer is allowed to have any principal as the subject of the JWT.
-    */
-    'allow_any_subject';
-    /**
-    * The \"expires_at\" indicates, when grant will expire, so we will reject assertion from \"issuer\" targeting \"subject\".
-    */
-    'expires_at';
-    /**
-    * The \"issuer\" identifies the principal that issued the JWT assertion (same as \"iss\" claim in JWT).
-    */
-    'issuer';
-    'jwk';
-    /**
-    * The \"scope\" contains list of scope values (as described in Section 3.3 of OAuth 2.0 [RFC6749])
-    */
-    'scope';
-    /**
-    * The \"subject\" identifies the principal that is the subject of the JWT.
-    */
-    'subject';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return TrustOAuth2JwtGrantIssuer.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The \"allow_any_subject\" indicates that the issuer is allowed to have any principal as the subject of the JWT.
+        */
+        Object.defineProperty(this, 'allow_any_subject', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The \"expires_at\" indicates, when grant will expire, so we will reject assertion from \"issuer\" targeting \"subject\".
+        */
+        Object.defineProperty(this, 'expires_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The \"issuer\" identifies the principal that issued the JWT assertion (same as \"iss\" claim in JWT).
+        */
+        Object.defineProperty(this, 'issuer', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'jwk', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The \"scope\" contains list of scope values (as described in Section 3.3 of OAuth 2.0 [RFC6749])
+        */
+        Object.defineProperty(this, 'scope', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The \"subject\" identifies the principal that is the subject of the JWT.
+        */
+        Object.defineProperty(this, 'subject', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(TrustOAuth2JwtGrantIssuer, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(TrustOAuth2JwtGrantIssuer, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "allow_any_subject",
             "baseName": "allow_any_subject",
@@ -72,11 +117,6 @@ class TrustOAuth2JwtGrantIssuer {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return TrustOAuth2JwtGrantIssuer.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { TrustOAuth2JwtGrantIssuer };

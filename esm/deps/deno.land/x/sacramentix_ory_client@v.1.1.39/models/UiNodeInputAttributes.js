@@ -13,45 +13,110 @@
 * InputAttributes represents the attributes of an input node
 */
 class UiNodeInputAttributes {
-    /**
-    * The autocomplete attribute for the input. email InputAttributeAutocompleteEmail tel InputAttributeAutocompleteTel url InputAttributeAutocompleteUrl current-password InputAttributeAutocompleteCurrentPassword new-password InputAttributeAutocompleteNewPassword one-time-code InputAttributeAutocompleteOneTimeCode
-    */
-    'autocomplete';
-    /**
-    * Sets the input\'s disabled field to true or false.
-    */
-    'disabled';
-    'label';
-    /**
-    * The input\'s element name.
-    */
-    'name';
-    /**
-    * NodeType represents this node\'s types. It is a mirror of `node.type` and is primarily used to allow compatibility with OpenAPI 3.0.  In this struct it technically always is \"input\".
-    */
-    'node_type';
-    /**
-    * OnClick may contain javascript which should be executed on click. This is primarily used for WebAuthn.
-    */
-    'onclick';
-    /**
-    * The input\'s pattern.
-    */
-    'pattern';
-    /**
-    * Mark this input field as required.
-    */
-    'required';
-    /**
-    * The input\'s element type. text InputAttributeTypeText password InputAttributeTypePassword number InputAttributeTypeNumber checkbox InputAttributeTypeCheckbox hidden InputAttributeTypeHidden email InputAttributeTypeEmail tel InputAttributeTypeTel submit InputAttributeTypeSubmit button InputAttributeTypeButton datetime-local InputAttributeTypeDateTimeLocal date InputAttributeTypeDate url InputAttributeTypeURI
-    */
-    'type';
-    /**
-    * The input\'s value.
-    */
-    'value';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UiNodeInputAttributes.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The autocomplete attribute for the input. email InputAttributeAutocompleteEmail tel InputAttributeAutocompleteTel url InputAttributeAutocompleteUrl current-password InputAttributeAutocompleteCurrentPassword new-password InputAttributeAutocompleteNewPassword one-time-code InputAttributeAutocompleteOneTimeCode
+        */
+        Object.defineProperty(this, 'autocomplete', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Sets the input\'s disabled field to true or false.
+        */
+        Object.defineProperty(this, 'disabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'label', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The input\'s element name.
+        */
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * NodeType represents this node\'s types. It is a mirror of `node.type` and is primarily used to allow compatibility with OpenAPI 3.0.  In this struct it technically always is \"input\".
+        */
+        Object.defineProperty(this, 'node_type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * OnClick may contain javascript which should be executed on click. This is primarily used for WebAuthn.
+        */
+        Object.defineProperty(this, 'onclick', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The input\'s pattern.
+        */
+        Object.defineProperty(this, 'pattern', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Mark this input field as required.
+        */
+        Object.defineProperty(this, 'required', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The input\'s element type. text InputAttributeTypeText password InputAttributeTypePassword number InputAttributeTypeNumber checkbox InputAttributeTypeCheckbox hidden InputAttributeTypeHidden email InputAttributeTypeEmail tel InputAttributeTypeTel submit InputAttributeTypeSubmit button InputAttributeTypeButton datetime-local InputAttributeTypeDateTimeLocal date InputAttributeTypeDate url InputAttributeTypeURI
+        */
+        Object.defineProperty(this, 'type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The input\'s value.
+        */
+        Object.defineProperty(this, 'value', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UiNodeInputAttributes, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UiNodeInputAttributes, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "autocomplete",
             "baseName": "autocomplete",
@@ -112,11 +177,6 @@ class UiNodeInputAttributes {
             "type": "any",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UiNodeInputAttributes.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UiNodeInputAttributes };

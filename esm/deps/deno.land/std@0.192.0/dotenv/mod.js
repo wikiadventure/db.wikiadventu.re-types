@@ -222,9 +222,14 @@ function readEnv(restrictEnvAccessTo) {
     return dntShim.Deno.env.toObject();
 }
 export class MissingEnvVarsError extends Error {
-    missing;
     constructor(message, missing) {
         super(message);
+        Object.defineProperty(this, "missing", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.name = "MissingEnvVarsError";
         this.missing = missing;
         Object.setPrototypeOf(this, new.target.prototype);

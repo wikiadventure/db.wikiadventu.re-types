@@ -10,23 +10,38 @@
  * Do not edit the class manually.
  */
 class InternalIsOwnerForProjectBySlugResponse {
-    /**
-    * ProjectID is the project\'s ID.
-    */
-    'project_id';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return InternalIsOwnerForProjectBySlugResponse.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * ProjectID is the project\'s ID.
+        */
+        Object.defineProperty(this, 'project_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(InternalIsOwnerForProjectBySlugResponse, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(InternalIsOwnerForProjectBySlugResponse, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "project_id",
             "baseName": "project_id",
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return InternalIsOwnerForProjectBySlugResponse.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { InternalIsOwnerForProjectBySlugResponse };

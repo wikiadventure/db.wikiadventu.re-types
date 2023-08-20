@@ -10,11 +10,41 @@
  * Do not edit the class manually.
  */
 class ProjectServices {
-    'identity';
-    'oauth2';
-    'permission';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ProjectServices.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'identity', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'oauth2', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'permission', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ProjectServices, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ProjectServices, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "identity",
             "baseName": "identity",
@@ -33,11 +63,6 @@ class ProjectServices {
             "type": "ProjectServicePermission",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return ProjectServices.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ProjectServices };

@@ -10,21 +10,56 @@
  * Do not edit the class manually.
  */
 class UiNodeAnchorAttributes {
-    /**
-    * The link\'s href (destination) URL.  format: uri
-    */
-    'href';
-    /**
-    * A unique identifier
-    */
-    'id';
-    /**
-    * NodeType represents this node\'s types. It is a mirror of `node.type` and is primarily used to allow compatibility with OpenAPI 3.0.  In this struct it technically always is \"a\".
-    */
-    'node_type';
-    'title';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UiNodeAnchorAttributes.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The link\'s href (destination) URL.  format: uri
+        */
+        Object.defineProperty(this, 'href', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * A unique identifier
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * NodeType represents this node\'s types. It is a mirror of `node.type` and is primarily used to allow compatibility with OpenAPI 3.0.  In this struct it technically always is \"a\".
+        */
+        Object.defineProperty(this, 'node_type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'title', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UiNodeAnchorAttributes, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UiNodeAnchorAttributes, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "href",
             "baseName": "href",
@@ -49,11 +84,6 @@ class UiNodeAnchorAttributes {
             "type": "UiText",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UiNodeAnchorAttributes.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UiNodeAnchorAttributes };

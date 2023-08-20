@@ -6,11 +6,19 @@ import { RequestContext } from "./http/http.js";
  *
  */
 export class ServerConfiguration {
-    url;
-    variableConfiguration;
     constructor(url, variableConfiguration) {
-        this.url = url;
-        this.variableConfiguration = variableConfiguration;
+        Object.defineProperty(this, "url", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: url
+        });
+        Object.defineProperty(this, "variableConfiguration", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: variableConfiguration
+        });
     }
     /**
      * Sets the value of the variables of this server. Variables are included in

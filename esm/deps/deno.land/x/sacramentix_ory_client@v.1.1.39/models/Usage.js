@@ -10,20 +10,35 @@
  * Do not edit the class manually.
  */
 class Usage {
-    'GenericUsage';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return Usage.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'GenericUsage', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(Usage, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(Usage, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "GenericUsage",
             "baseName": "GenericUsage",
             "type": "GenericUsage",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return Usage.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { Usage };

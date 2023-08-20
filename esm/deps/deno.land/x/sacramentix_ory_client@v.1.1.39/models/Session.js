@@ -13,38 +13,98 @@
 * A Session
 */
 class Session {
-    /**
-    * Active state. If false the session is no longer active.
-    */
-    'active';
-    /**
-    * The Session Authentication Timestamp  When this session was authenticated at. If multi-factor authentication was used this is the time when the last factor was authenticated (e.g. the TOTP code challenge was completed).
-    */
-    'authenticated_at';
-    /**
-    * A list of authenticators which were used to authenticate the session.
-    */
-    'authentication_methods';
-    'authenticator_assurance_level';
-    /**
-    * Devices has history of all endpoints where the session was used
-    */
-    'devices';
-    /**
-    * The Session Expiry  When this session expires at.
-    */
-    'expires_at';
-    /**
-    * Session ID
-    */
-    'id';
-    'identity';
-    /**
-    * The Session Issuance Timestamp  When this session was issued at. Usually equal or close to `authenticated_at`.
-    */
-    'issued_at';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return Session.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Active state. If false the session is no longer active.
+        */
+        Object.defineProperty(this, 'active', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Session Authentication Timestamp  When this session was authenticated at. If multi-factor authentication was used this is the time when the last factor was authenticated (e.g. the TOTP code challenge was completed).
+        */
+        Object.defineProperty(this, 'authenticated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * A list of authenticators which were used to authenticate the session.
+        */
+        Object.defineProperty(this, 'authentication_methods', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'authenticator_assurance_level', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Devices has history of all endpoints where the session was used
+        */
+        Object.defineProperty(this, 'devices', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Session Expiry  When this session expires at.
+        */
+        Object.defineProperty(this, 'expires_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Session ID
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'identity', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Session Issuance Timestamp  When this session was issued at. Usually equal or close to `authenticated_at`.
+        */
+        Object.defineProperty(this, 'issued_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(Session, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(Session, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "active",
             "baseName": "active",
@@ -99,11 +159,6 @@ class Session {
             "type": "Date",
             "format": "date-time"
         }
-    ];
-    static getAttributeTypeMap() {
-        return Session.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { Session };

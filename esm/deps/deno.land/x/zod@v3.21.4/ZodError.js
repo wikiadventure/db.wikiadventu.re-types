@@ -22,12 +22,33 @@ export const quotelessJson = (obj) => {
     return json.replace(/"([^"]+)":/g, "$1:");
 };
 class ZodError extends Error {
-    issues = [];
     get errors() {
         return this.issues;
     }
     constructor(issues) {
         super();
+        Object.defineProperty(this, "issues", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: []
+        });
+        Object.defineProperty(this, "addIssue", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: (sub) => {
+                this.issues = [...this.issues, sub];
+            }
+        });
+        Object.defineProperty(this, "addIssues", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: (subs = []) => {
+                this.issues = [...this.issues, ...subs];
+            }
+        });
         const actualProto = new.target.prototype;
         if (Object.setPrototypeOf) {
             // eslint-disable-next-line ban/ban
@@ -88,10 +109,6 @@ class ZodError extends Error {
         processError(this);
         return fieldErrors;
     }
-    static create = (issues) => {
-        const error = new ZodError(issues);
-        return error;
-    };
     toString() {
         return this.message;
     }
@@ -101,12 +118,6 @@ class ZodError extends Error {
     get isEmpty() {
         return this.issues.length === 0;
     }
-    addIssue = (sub) => {
-        this.issues = [...this.issues, sub];
-    };
-    addIssues = (subs = []) => {
-        this.issues = [...this.issues, ...subs];
-    };
     flatten(mapper = (issue) => issue.message) {
         const fieldErrors = {};
         const formErrors = [];
@@ -125,4 +136,13 @@ class ZodError extends Error {
         return this.flatten();
     }
 }
+Object.defineProperty(ZodError, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (issues) => {
+        const error = new ZodError(issues);
+        return error;
+    }
+});
 export { ZodError };

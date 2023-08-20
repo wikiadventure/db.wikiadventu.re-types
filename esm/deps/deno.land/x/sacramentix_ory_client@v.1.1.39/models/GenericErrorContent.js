@@ -13,28 +13,68 @@
 * Error response
 */
 class GenericErrorContent {
-    /**
-    * Debug contains debug information. This is usually not available and has to be enabled.
-    */
-    'debug';
-    /**
-    * Name is the error name.
-    */
-    'error';
-    /**
-    * Description contains further information on the nature of the error.
-    */
-    'error_description';
-    /**
-    * Message contains the error message.
-    */
-    'message';
-    /**
-    * Code represents the error status code (404, 403, 401, ...).
-    */
-    'status_code';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return GenericErrorContent.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Debug contains debug information. This is usually not available and has to be enabled.
+        */
+        Object.defineProperty(this, 'debug', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Name is the error name.
+        */
+        Object.defineProperty(this, 'error', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Description contains further information on the nature of the error.
+        */
+        Object.defineProperty(this, 'error_description', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Message contains the error message.
+        */
+        Object.defineProperty(this, 'message', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Code represents the error status code (404, 403, 401, ...).
+        */
+        Object.defineProperty(this, 'status_code', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(GenericErrorContent, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(GenericErrorContent, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "debug",
             "baseName": "debug",
@@ -65,11 +105,6 @@ class GenericErrorContent {
             "type": "number",
             "format": "int64"
         }
-    ];
-    static getAttributeTypeMap() {
-        return GenericErrorContent.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { GenericErrorContent };

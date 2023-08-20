@@ -13,19 +13,59 @@
 * Nodes are represented as HTML elements or their native UI equivalents. For example, a node can be an `<img>` tag, or an `<input element>` but also `some plain text`.
 */
 class UiNode {
-    'attributes';
-    /**
-    * Group specifies which group (e.g. password authenticator) this node belongs to. default DefaultGroup password PasswordGroup oidc OpenIDConnectGroup profile ProfileGroup link LinkGroup code CodeGroup totp TOTPGroup lookup_secret LookupGroup webauthn WebAuthnGroup
-    */
-    'group';
-    'messages';
-    'meta';
-    /**
-    * The node\'s type text Text input Input img Image a Anchor script Script
-    */
-    'type';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UiNode.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'attributes', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Group specifies which group (e.g. password authenticator) this node belongs to. default DefaultGroup password PasswordGroup oidc OpenIDConnectGroup profile ProfileGroup link LinkGroup code CodeGroup totp TOTPGroup lookup_secret LookupGroup webauthn WebAuthnGroup
+        */
+        Object.defineProperty(this, 'group', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'messages', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'meta', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The node\'s type text Text input Input img Image a Anchor script Script
+        */
+        Object.defineProperty(this, 'type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UiNode, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UiNode, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "attributes",
             "baseName": "attributes",
@@ -56,11 +96,6 @@ class UiNode {
             "type": "UiNodeTypeEnum",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UiNode.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UiNode };

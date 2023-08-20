@@ -13,21 +13,56 @@
 * Is sent when a flow is expired
 */
 class SelfServiceFlowExpiredError {
-    'error';
-    /**
-    * When the flow has expired
-    */
-    'expired_at';
-    /**
-    * A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.
-    */
-    'since';
-    /**
-    * The flow ID that should be used for the new flow as it contains the correct messages.
-    */
-    'use_flow_id';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return SelfServiceFlowExpiredError.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'error', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * When the flow has expired
+        */
+        Object.defineProperty(this, 'expired_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.
+        */
+        Object.defineProperty(this, 'since', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The flow ID that should be used for the new flow as it contains the correct messages.
+        */
+        Object.defineProperty(this, 'use_flow_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(SelfServiceFlowExpiredError, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(SelfServiceFlowExpiredError, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "error",
             "baseName": "error",
@@ -52,11 +87,6 @@ class SelfServiceFlowExpiredError {
             "type": "string",
             "format": "uuid"
         }
-    ];
-    static getAttributeTypeMap() {
-        return SelfServiceFlowExpiredError.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { SelfServiceFlowExpiredError };

@@ -1,14 +1,29 @@
 import { NoConnectionDetails } from "../errors.js";
 import { SurrealHTTP } from "../library/SurrealHTTP.js";
 export class HTTPStrategy {
-    http;
-    ready;
-    resolveReady;
     /**
      * Establish a socket connection to the database
      * @param connection - Connection details
      */
     constructor(url, options = {}) {
+        Object.defineProperty(this, "http", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "ready", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "resolveReady", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.resolveReady = () => { }; // Purely for typescript typing :)
         this.ready = new Promise((r) => (this.resolveReady = r));
         if (url)

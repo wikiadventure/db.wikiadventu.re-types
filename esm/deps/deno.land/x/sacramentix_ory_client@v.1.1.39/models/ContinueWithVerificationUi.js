@@ -13,13 +13,38 @@
 * Indicates, that the UI flow could be continued by showing a verification ui
 */
 class ContinueWithVerificationUi {
-    /**
-    * Action will always be `show_verification_ui` set_ory_session_token ContinueWithActionSetOrySessionToken show_verification_ui ContinueWithActionShowVerificationUI
-    */
-    'action';
-    'flow';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ContinueWithVerificationUi.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Action will always be `show_verification_ui` set_ory_session_token ContinueWithActionSetOrySessionToken show_verification_ui ContinueWithActionShowVerificationUI
+        */
+        Object.defineProperty(this, 'action', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'flow', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ContinueWithVerificationUi, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ContinueWithVerificationUi, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "action",
             "baseName": "action",
@@ -32,11 +57,6 @@ class ContinueWithVerificationUi {
             "type": "ContinueWithVerificationUiFlow",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return ContinueWithVerificationUi.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ContinueWithVerificationUi };

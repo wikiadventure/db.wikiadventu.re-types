@@ -13,34 +13,89 @@
 * Create Identity Body
 */
 class CreateIdentityBody {
-    'credentials';
-    /**
-    * Store metadata about the user which is only accessible through admin APIs such as `GET /admin/identities/<id>`.
-    */
-    'metadata_admin';
-    /**
-    * Store metadata about the identity which the identity itself can see when calling for example the session endpoint. Do not store sensitive information (e.g. credit score) about the identity in this field.
-    */
-    'metadata_public';
-    /**
-    * RecoveryAddresses contains all the addresses that can be used to recover an identity.  Use this structure to import recovery addresses for an identity. Please keep in mind that the address needs to be represented in the Identity Schema or this field will be overwritten on the next identity update.
-    */
-    'recovery_addresses';
-    /**
-    * SchemaID is the ID of the JSON Schema to be used for validating the identity\'s traits.
-    */
-    'schema_id';
-    'state';
-    /**
-    * Traits represent an identity\'s traits. The identity is able to create, modify, and delete traits in a self-service manner. The input will always be validated against the JSON Schema defined in `schema_url`.
-    */
-    'traits';
-    /**
-    * VerifiableAddresses contains all the addresses that can be verified by the user.  Use this structure to import verified addresses for an identity. Please keep in mind that the address needs to be represented in the Identity Schema or this field will be overwritten on the next identity update.
-    */
-    'verifiable_addresses';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return CreateIdentityBody.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'credentials', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Store metadata about the user which is only accessible through admin APIs such as `GET /admin/identities/<id>`.
+        */
+        Object.defineProperty(this, 'metadata_admin', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Store metadata about the identity which the identity itself can see when calling for example the session endpoint. Do not store sensitive information (e.g. credit score) about the identity in this field.
+        */
+        Object.defineProperty(this, 'metadata_public', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * RecoveryAddresses contains all the addresses that can be used to recover an identity.  Use this structure to import recovery addresses for an identity. Please keep in mind that the address needs to be represented in the Identity Schema or this field will be overwritten on the next identity update.
+        */
+        Object.defineProperty(this, 'recovery_addresses', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * SchemaID is the ID of the JSON Schema to be used for validating the identity\'s traits.
+        */
+        Object.defineProperty(this, 'schema_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'state', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Traits represent an identity\'s traits. The identity is able to create, modify, and delete traits in a self-service manner. The input will always be validated against the JSON Schema defined in `schema_url`.
+        */
+        Object.defineProperty(this, 'traits', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * VerifiableAddresses contains all the addresses that can be verified by the user.  Use this structure to import verified addresses for an identity. Please keep in mind that the address needs to be represented in the Identity Schema or this field will be overwritten on the next identity update.
+        */
+        Object.defineProperty(this, 'verifiable_addresses', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(CreateIdentityBody, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(CreateIdentityBody, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "credentials",
             "baseName": "credentials",
@@ -89,11 +144,6 @@ class CreateIdentityBody {
             "type": "Array<VerifiableIdentityAddress>",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return CreateIdentityBody.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { CreateIdentityBody };

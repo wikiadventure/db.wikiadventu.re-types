@@ -10,20 +10,35 @@
  * Do not edit the class manually.
  */
 class IdentityCredentialsOidc {
-    'providers';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return IdentityCredentialsOidc.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'providers', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(IdentityCredentialsOidc, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(IdentityCredentialsOidc, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "providers",
             "baseName": "providers",
             "type": "Array<IdentityCredentialsOidcProvider>",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return IdentityCredentialsOidc.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { IdentityCredentialsOidc };

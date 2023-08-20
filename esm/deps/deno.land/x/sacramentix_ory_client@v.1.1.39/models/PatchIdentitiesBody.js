@@ -13,23 +13,38 @@
 * Patch Identities Body
 */
 class PatchIdentitiesBody {
-    /**
-    * Identities holds the list of patches to apply  required
-    */
-    'identities';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return PatchIdentitiesBody.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Identities holds the list of patches to apply  required
+        */
+        Object.defineProperty(this, 'identities', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(PatchIdentitiesBody, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(PatchIdentitiesBody, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "identities",
             "baseName": "identities",
             "type": "Array<IdentityPatch>",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return PatchIdentitiesBody.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { PatchIdentitiesBody };

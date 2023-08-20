@@ -10,20 +10,35 @@
  * Do not edit the class manually.
  */
 class ProjectServiceIdentity {
-    'config';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ProjectServiceIdentity.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'config', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ProjectServiceIdentity, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ProjectServiceIdentity, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "config",
             "baseName": "config",
             "type": "any",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return ProjectServiceIdentity.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ProjectServiceIdentity };

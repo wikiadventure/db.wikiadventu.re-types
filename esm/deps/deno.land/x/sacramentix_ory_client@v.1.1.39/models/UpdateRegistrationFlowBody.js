@@ -13,44 +13,105 @@
 * Update Registration Request Body
 */
 class UpdateRegistrationFlowBody {
-    /**
-    * CSRFToken is the anti-CSRF token
-    */
-    'csrf_token';
-    /**
-    * Method  Should be set to \"webauthn\" when trying to add, update, or remove a webAuthn pairing.
-    */
-    'method';
-    /**
-    * Password to sign the user up with
-    */
-    'password';
-    /**
-    * The identity\'s traits
-    */
-    'traits';
-    /**
-    * Transient data to pass along to any webhooks
-    */
-    'transient_payload';
-    /**
-    * The provider to register with
-    */
-    'provider';
-    /**
-    * UpstreamParameters are the parameters that are passed to the upstream identity provider.  These parameters are optional and depend on what the upstream identity provider supports. Supported parameters are: `login_hint` (string): The `login_hint` parameter suppresses the account chooser and either pre-fills the email box on the sign-in form, or selects the proper session. `hd` (string): The `hd` parameter limits the login/registration process to a Google Organization, e.g. `mycollege.edu`. `prompt` (string): The `prompt` specifies whether the Authorization Server prompts the End-User for reauthentication and consent, e.g. `select_account`.
-    */
-    'upstream_parameters';
-    /**
-    * Register a WebAuthn Security Key  It is expected that the JSON returned by the WebAuthn registration process is included here.
-    */
-    'webauthn_register';
-    /**
-    * Name of the WebAuthn Security Key to be Added  A human-readable name for the security key which will be added.
-    */
-    'webauthn_register_displayname';
-    static discriminator = "method";
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateRegistrationFlowBody.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * CSRFToken is the anti-CSRF token
+        */
+        Object.defineProperty(this, 'csrf_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method  Should be set to \"webauthn\" when trying to add, update, or remove a webAuthn pairing.
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Password to sign the user up with
+        */
+        Object.defineProperty(this, 'password', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The identity\'s traits
+        */
+        Object.defineProperty(this, 'traits', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Transient data to pass along to any webhooks
+        */
+        Object.defineProperty(this, 'transient_payload', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The provider to register with
+        */
+        Object.defineProperty(this, 'provider', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * UpstreamParameters are the parameters that are passed to the upstream identity provider.  These parameters are optional and depend on what the upstream identity provider supports. Supported parameters are: `login_hint` (string): The `login_hint` parameter suppresses the account chooser and either pre-fills the email box on the sign-in form, or selects the proper session. `hd` (string): The `hd` parameter limits the login/registration process to a Google Organization, e.g. `mycollege.edu`. `prompt` (string): The `prompt` specifies whether the Authorization Server prompts the End-User for reauthentication and consent, e.g. `select_account`.
+        */
+        Object.defineProperty(this, 'upstream_parameters', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Register a WebAuthn Security Key  It is expected that the JSON returned by the WebAuthn registration process is included here.
+        */
+        Object.defineProperty(this, 'webauthn_register', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Name of the WebAuthn Security Key to be Added  A human-readable name for the security key which will be added.
+        */
+        Object.defineProperty(this, 'webauthn_register_displayname', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        this.method = "UpdateRegistrationFlowBody";
+    }
+}
+Object.defineProperty(UpdateRegistrationFlowBody, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: "method"
+});
+Object.defineProperty(UpdateRegistrationFlowBody, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "csrf_token",
             "baseName": "csrf_token",
@@ -105,12 +166,6 @@ class UpdateRegistrationFlowBody {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateRegistrationFlowBody.attributeTypeMap;
-    }
-    constructor() {
-        this.method = "UpdateRegistrationFlowBody";
-    }
-}
+    ]
+});
 export { UpdateRegistrationFlowBody };

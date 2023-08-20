@@ -1,7 +1,12 @@
 import { ObservableCourierApi } from './ObservableAPI.js';
 export class PromiseCourierApi {
-    api;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "api", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.api = new ObservableCourierApi(configuration, requestFactory, responseProcessor);
     }
     /**
@@ -28,8 +33,13 @@ export class PromiseCourierApi {
 }
 import { ObservableFrontendApi } from './ObservableAPI.js';
 export class PromiseFrontendApi {
-    api;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "api", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.api = new ObservableFrontendApi(configuration, requestFactory, responseProcessor);
     }
     /**
@@ -343,8 +353,13 @@ export class PromiseFrontendApi {
 }
 import { ObservableIdentityApi } from './ObservableAPI.js';
 export class PromiseIdentityApi {
-    api;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "api", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.api = new ObservableIdentityApi(configuration, requestFactory, responseProcessor);
     }
     /**
@@ -526,8 +541,13 @@ export class PromiseIdentityApi {
 }
 import { ObservableJwkApi } from './ObservableAPI.js';
 export class PromiseJwkApi {
-    api;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "api", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.api = new ObservableJwkApi(configuration, requestFactory, responseProcessor);
     }
     /**
@@ -602,8 +622,13 @@ export class PromiseJwkApi {
 }
 import { ObservableMetadataApi } from './ObservableAPI.js';
 export class PromiseMetadataApi {
-    api;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "api", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.api = new ObservableMetadataApi(configuration, requestFactory, responseProcessor);
     }
     /**
@@ -633,8 +658,13 @@ export class PromiseMetadataApi {
 }
 import { ObservableOAuth2Api } from './ObservableAPI.js';
 export class PromiseOAuth2Api {
-    api;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "api", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.api = new ObservableOAuth2Api(configuration, requestFactory, responseProcessor);
     }
     /**
@@ -916,8 +946,13 @@ export class PromiseOAuth2Api {
 }
 import { ObservableOidcApi } from './ObservableAPI.js';
 export class PromiseOidcApi {
-    api;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "api", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.api = new ObservableOidcApi(configuration, requestFactory, responseProcessor);
     }
     /**
@@ -984,8 +1019,13 @@ export class PromiseOidcApi {
 }
 import { ObservablePermissionApi } from './ObservableAPI.js';
 export class PromisePermissionApi {
-    api;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "api", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.api = new ObservablePermissionApi(configuration, requestFactory, responseProcessor);
     }
     /**
@@ -1055,8 +1095,13 @@ export class PromisePermissionApi {
 }
 import { ObservableProjectApi } from './ObservableAPI.js';
 export class PromiseProjectApi {
-    api;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "api", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.api = new ObservableProjectApi(configuration, requestFactory, responseProcessor);
     }
     /**
@@ -1194,8 +1239,13 @@ export class PromiseProjectApi {
 }
 import { ObservableRelationshipApi } from './ObservableAPI.js';
 export class PromiseRelationshipApi {
-    api;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "api", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.api = new ObservableRelationshipApi(configuration, requestFactory, responseProcessor);
     }
     /**
@@ -1268,8 +1318,13 @@ export class PromiseRelationshipApi {
 }
 import { ObservableWellknownApi } from './ObservableAPI.js';
 export class PromiseWellknownApi {
-    api;
     constructor(configuration, requestFactory, responseProcessor) {
+        Object.defineProperty(this, "api", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.api = new ObservableWellknownApi(configuration, requestFactory, responseProcessor);
     }
     /**

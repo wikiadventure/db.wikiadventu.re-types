@@ -1,9 +1,24 @@
 import { UnsupportedPathError } from '../../router.js';
 export class SmartRouter {
-    name = 'SmartRouter';
-    routers = [];
-    routes = [];
     constructor(init) {
+        Object.defineProperty(this, "name", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: 'SmartRouter'
+        });
+        Object.defineProperty(this, "routers", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: []
+        });
+        Object.defineProperty(this, "routes", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: []
+        });
         Object.assign(this, init);
     }
     add(method, path, handler) {

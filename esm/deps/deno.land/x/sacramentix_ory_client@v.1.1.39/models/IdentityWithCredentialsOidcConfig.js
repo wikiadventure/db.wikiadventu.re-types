@@ -10,13 +10,38 @@
  * Do not edit the class manually.
  */
 class IdentityWithCredentialsOidcConfig {
-    'config';
-    /**
-    * A list of OpenID Connect Providers
-    */
-    'providers';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return IdentityWithCredentialsOidcConfig.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'config', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * A list of OpenID Connect Providers
+        */
+        Object.defineProperty(this, 'providers', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(IdentityWithCredentialsOidcConfig, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(IdentityWithCredentialsOidcConfig, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "config",
             "baseName": "config",
@@ -29,11 +54,6 @@ class IdentityWithCredentialsOidcConfig {
             "type": "Array<IdentityWithCredentialsOidcConfigProvider>",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return IdentityWithCredentialsOidcConfig.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { IdentityWithCredentialsOidcConfig };

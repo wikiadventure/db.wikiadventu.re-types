@@ -13,20 +13,35 @@
 * The standard Ory JSON API error format.
 */
 class ErrorGeneric {
-    'error';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ErrorGeneric.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'error', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ErrorGeneric, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ErrorGeneric, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "error",
             "baseName": "error",
             "type": "GenericErrorContent",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return ErrorGeneric.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ErrorGeneric };

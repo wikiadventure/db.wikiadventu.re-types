@@ -13,28 +13,68 @@
 * Update Custom Hostname Body
 */
 class SetCustomDomainBody {
-    /**
-    * The domain where cookies will be set. Has to be a parent domain of the custom hostname to work.
-    */
-    'cookie_domain';
-    /**
-    * CORS Allowed origins for the custom hostname.
-    */
-    'cors_allowed_origins';
-    /**
-    * CORS Enabled for the custom hostname.
-    */
-    'cors_enabled';
-    /**
-    * The custom UI base URL where the UI will be exposed.
-    */
-    'custom_ui_base_url';
-    /**
-    * The custom hostname where the API will be exposed.
-    */
-    'hostname';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return SetCustomDomainBody.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The domain where cookies will be set. Has to be a parent domain of the custom hostname to work.
+        */
+        Object.defineProperty(this, 'cookie_domain', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * CORS Allowed origins for the custom hostname.
+        */
+        Object.defineProperty(this, 'cors_allowed_origins', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * CORS Enabled for the custom hostname.
+        */
+        Object.defineProperty(this, 'cors_enabled', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The custom UI base URL where the UI will be exposed.
+        */
+        Object.defineProperty(this, 'custom_ui_base_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The custom hostname where the API will be exposed.
+        */
+        Object.defineProperty(this, 'hostname', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(SetCustomDomainBody, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(SetCustomDomainBody, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "cookie_domain",
             "baseName": "cookie_domain",
@@ -65,11 +105,6 @@ class SetCustomDomainBody {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return SetCustomDomainBody.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { SetCustomDomainBody };

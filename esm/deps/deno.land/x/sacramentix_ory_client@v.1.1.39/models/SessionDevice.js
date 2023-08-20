@@ -13,24 +13,59 @@
 * Device corresponding to a Session
 */
 class SessionDevice {
-    /**
-    * Device record ID
-    */
-    'id';
-    /**
-    * IPAddress of the client
-    */
-    'ip_address';
-    /**
-    * Geo Location corresponding to the IP Address
-    */
-    'location';
-    /**
-    * UserAgent of the client
-    */
-    'user_agent';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return SessionDevice.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Device record ID
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * IPAddress of the client
+        */
+        Object.defineProperty(this, 'ip_address', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Geo Location corresponding to the IP Address
+        */
+        Object.defineProperty(this, 'location', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * UserAgent of the client
+        */
+        Object.defineProperty(this, 'user_agent', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(SessionDevice, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(SessionDevice, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "id",
             "baseName": "id",
@@ -55,11 +90,6 @@ class SessionDevice {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return SessionDevice.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { SessionDevice };

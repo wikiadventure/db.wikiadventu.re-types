@@ -1,7 +1,11 @@
 export class Observable {
-    promise;
     constructor(promise) {
-        this.promise = promise;
+        Object.defineProperty(this, "promise", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: promise
+        });
     }
     toPromise() {
         return this.promise;

@@ -10,10 +10,35 @@
  * Do not edit the class manually.
  */
 class KetoNamespace {
-    'id';
-    'name';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return KetoNamespace.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(KetoNamespace, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(KetoNamespace, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "id",
             "baseName": "id",
@@ -26,11 +51,6 @@ class KetoNamespace {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return KetoNamespace.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { KetoNamespace };

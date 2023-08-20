@@ -10,23 +10,38 @@
  * Do not edit the class manually.
  */
 class IsReady200Response {
-    /**
-    * Always \"ok\".
-    */
-    'status';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return IsReady200Response.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Always \"ok\".
+        */
+        Object.defineProperty(this, 'status', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(IsReady200Response, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(IsReady200Response, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "status",
             "baseName": "status",
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return IsReady200Response.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { IsReady200Response };

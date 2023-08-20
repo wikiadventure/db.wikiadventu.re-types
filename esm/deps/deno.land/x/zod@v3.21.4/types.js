@@ -4,12 +4,37 @@ import { addIssueToContext, DIRTY, INVALID, isAborted, isAsync, isDirty, isValid
 import { getParsedType, util, ZodParsedType } from "./helpers/util.js";
 import { ZodError, ZodIssueCode, } from "./ZodError.js";
 class ParseInputLazyPath {
-    parent;
-    data;
-    _path;
-    _key;
-    _cachedPath = [];
     constructor(parent, value, path, key) {
+        Object.defineProperty(this, "parent", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "data", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "_path", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "_key", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "_cachedPath", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: []
+        });
         this.parent = parent;
         this.data = value;
         this._path = path;
@@ -67,10 +92,6 @@ function processCreateParams(params) {
     return { errorMap: customMap, description };
 }
 export class ZodType {
-    _type;
-    _output;
-    _input;
-    _def;
     get description() {
         return this._def.description;
     }
@@ -158,8 +179,6 @@ export class ZodType {
             : Promise.resolve(maybeAsyncResult));
         return handleResult(ctx, result);
     }
-    /** Alias of safeParseAsync */
-    spa = this.safeParseAsync;
     refine(check, message) {
         const getIssueProperties = (val) => {
             if (typeof message === "string" || typeof message === "undefined") {
@@ -222,6 +241,37 @@ export class ZodType {
         return this._refinement(refinement);
     }
     constructor(def) {
+        Object.defineProperty(this, "_type", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "_output", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "_input", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "_def", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /** Alias of safeParseAsync */
+        Object.defineProperty(this, "spa", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: this.safeParseAsync
+        });
         this._def = def;
         this.parse = this.parse.bind(this);
         this.safeParse = this.safeParse.bind(this);
@@ -370,6 +420,56 @@ function isValidIP(ip, version) {
     return false;
 }
 class ZodString extends ZodType {
+    constructor() {
+        super(...arguments);
+        Object.defineProperty(this, "_regex", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: (regex, validation, message) => this.refinement((data) => regex.test(data), {
+                validation,
+                code: ZodIssueCode.invalid_string,
+                ...errorUtil.errToObj(message),
+            })
+        });
+        /**
+         * @deprecated Use z.string().min(1) instead.
+         * @see {@link ZodString.min}
+         */
+        Object.defineProperty(this, "nonempty", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: (message) => this.min(1, errorUtil.errToObj(message))
+        });
+        Object.defineProperty(this, "trim", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: () => new ZodString({
+                ...this._def,
+                checks: [...this._def.checks, { kind: "trim" }],
+            })
+        });
+        Object.defineProperty(this, "toLowerCase", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: () => new ZodString({
+                ...this._def,
+                checks: [...this._def.checks, { kind: "toLowerCase" }],
+            })
+        });
+        Object.defineProperty(this, "toUpperCase", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: () => new ZodString({
+                ...this._def,
+                checks: [...this._def.checks, { kind: "toUpperCase" }],
+            })
+        });
+    }
     _parse(input) {
         if (this._def.coerce) {
             input.data = String(input.data);
@@ -609,11 +709,6 @@ class ZodString extends ZodType {
         }
         return { status: status.value, value: input.data };
     }
-    _regex = (regex, validation, message) => this.refinement((data) => regex.test(data), {
-        validation,
-        code: ZodIssueCode.invalid_string,
-        ...errorUtil.errToObj(message),
-    });
     _addCheck(check) {
         return new ZodString({
             ...this._def,
@@ -710,23 +805,6 @@ class ZodString extends ZodType {
             ...errorUtil.errToObj(message),
         });
     }
-    /**
-     * @deprecated Use z.string().min(1) instead.
-     * @see {@link ZodString.min}
-     */
-    nonempty = (message) => this.min(1, errorUtil.errToObj(message));
-    trim = () => new ZodString({
-        ...this._def,
-        checks: [...this._def.checks, { kind: "trim" }],
-    });
-    toLowerCase = () => new ZodString({
-        ...this._def,
-        checks: [...this._def.checks, { kind: "toLowerCase" }],
-    });
-    toUpperCase = () => new ZodString({
-        ...this._def,
-        checks: [...this._def.checks, { kind: "toUpperCase" }],
-    });
     get isDatetime() {
         return !!this._def.checks.find((ch) => ch.kind === "datetime");
     }
@@ -774,15 +852,20 @@ class ZodString extends ZodType {
         }
         return max;
     }
-    static create = (params) => {
+}
+Object.defineProperty(ZodString, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (params) => {
         return new ZodString({
             checks: [],
             typeName: ZodFirstPartyTypeKind.ZodString,
             coerce: params?.coerce ?? false,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodString };
 // https://stackoverflow.com/questions/3966484/why-does-modulus-operator-return-fractional-number-in-javascript/31711034#31711034
 function floatSafeRemainder(val, step) {
@@ -794,6 +877,27 @@ function floatSafeRemainder(val, step) {
     return (valInt % stepInt) / Math.pow(10, decCount);
 }
 class ZodNumber extends ZodType {
+    constructor() {
+        super(...arguments);
+        Object.defineProperty(this, "min", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: this.gte
+        });
+        Object.defineProperty(this, "max", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: this.lte
+        });
+        Object.defineProperty(this, "step", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: this.multipleOf
+        });
+    }
     _parse(input) {
         if (this._def.coerce) {
             input.data = Number(input.data);
@@ -884,25 +988,15 @@ class ZodNumber extends ZodType {
         }
         return { status: status.value, value: input.data };
     }
-    static create = (params) => {
-        return new ZodNumber({
-            checks: [],
-            typeName: ZodFirstPartyTypeKind.ZodNumber,
-            coerce: params?.coerce || false,
-            ...processCreateParams(params),
-        });
-    };
     gte(value, message) {
         return this.setLimit("min", value, true, errorUtil.toString(message));
     }
-    min = this.gte;
     gt(value, message) {
         return this.setLimit("min", value, false, errorUtil.toString(message));
     }
     lte(value, message) {
         return this.setLimit("max", value, true, errorUtil.toString(message));
     }
-    max = this.lte;
     lt(value, message) {
         return this.setLimit("max", value, false, errorUtil.toString(message));
     }
@@ -971,7 +1065,6 @@ class ZodNumber extends ZodType {
             message: errorUtil.toString(message),
         });
     }
-    step = this.multipleOf;
     finite(message) {
         return this._addCheck({
             kind: "finite",
@@ -1035,8 +1128,36 @@ class ZodNumber extends ZodType {
         return Number.isFinite(min) && Number.isFinite(max);
     }
 }
+Object.defineProperty(ZodNumber, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (params) => {
+        return new ZodNumber({
+            checks: [],
+            typeName: ZodFirstPartyTypeKind.ZodNumber,
+            coerce: params?.coerce || false,
+            ...processCreateParams(params),
+        });
+    }
+});
 export { ZodNumber };
 class ZodBigInt extends ZodType {
+    constructor() {
+        super(...arguments);
+        Object.defineProperty(this, "min", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: this.gte
+        });
+        Object.defineProperty(this, "max", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: this.lte
+        });
+    }
     _parse(input) {
         if (this._def.coerce) {
             input.data = BigInt(input.data);
@@ -1103,25 +1224,15 @@ class ZodBigInt extends ZodType {
         }
         return { status: status.value, value: input.data };
     }
-    static create = (params) => {
-        return new ZodBigInt({
-            checks: [],
-            typeName: ZodFirstPartyTypeKind.ZodBigInt,
-            coerce: params?.coerce ?? false,
-            ...processCreateParams(params),
-        });
-    };
     gte(value, message) {
         return this.setLimit("min", value, true, errorUtil.toString(message));
     }
-    min = this.gte;
     gt(value, message) {
         return this.setLimit("min", value, false, errorUtil.toString(message));
     }
     lte(value, message) {
         return this.setLimit("max", value, true, errorUtil.toString(message));
     }
-    max = this.lte;
     lt(value, message) {
         return this.setLimit("max", value, false, errorUtil.toString(message));
     }
@@ -1205,6 +1316,19 @@ class ZodBigInt extends ZodType {
         return max;
     }
 }
+Object.defineProperty(ZodBigInt, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (params) => {
+        return new ZodBigInt({
+            checks: [],
+            typeName: ZodFirstPartyTypeKind.ZodBigInt,
+            coerce: params?.coerce ?? false,
+            ...processCreateParams(params),
+        });
+    }
+});
 export { ZodBigInt };
 class ZodBoolean extends ZodType {
     _parse(input) {
@@ -1223,14 +1347,19 @@ class ZodBoolean extends ZodType {
         }
         return OK(input.data);
     }
-    static create = (params) => {
+}
+Object.defineProperty(ZodBoolean, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (params) => {
         return new ZodBoolean({
             typeName: ZodFirstPartyTypeKind.ZodBoolean,
             coerce: params?.coerce || false,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodBoolean };
 class ZodDate extends ZodType {
     _parse(input) {
@@ -1334,15 +1463,20 @@ class ZodDate extends ZodType {
         }
         return max != null ? new Date(max) : null;
     }
-    static create = (params) => {
+}
+Object.defineProperty(ZodDate, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (params) => {
         return new ZodDate({
             checks: [],
             coerce: params?.coerce || false,
             typeName: ZodFirstPartyTypeKind.ZodDate,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodDate };
 class ZodSymbol extends ZodType {
     _parse(input) {
@@ -1358,15 +1492,29 @@ class ZodSymbol extends ZodType {
         }
         return OK(input.data);
     }
-    static create = (params) => {
+}
+Object.defineProperty(ZodSymbol, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (params) => {
         return new ZodSymbol({
             typeName: ZodFirstPartyTypeKind.ZodSymbol,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodSymbol };
 class ZodUndefined extends ZodType {
+    constructor() {
+        super(...arguments);
+        Object.defineProperty(this, "params", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
     _parse(input) {
         const parsedType = this._getType(input);
         if (parsedType !== ZodParsedType.undefined) {
@@ -1380,14 +1528,18 @@ class ZodUndefined extends ZodType {
         }
         return OK(input.data);
     }
-    params;
-    static create = (params) => {
+}
+Object.defineProperty(ZodUndefined, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (params) => {
         return new ZodUndefined({
             typeName: ZodFirstPartyTypeKind.ZodUndefined,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodUndefined };
 class ZodNull extends ZodType {
     _parse(input) {
@@ -1403,41 +1555,72 @@ class ZodNull extends ZodType {
         }
         return OK(input.data);
     }
-    static create = (params) => {
+}
+Object.defineProperty(ZodNull, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (params) => {
         return new ZodNull({
             typeName: ZodFirstPartyTypeKind.ZodNull,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodNull };
 class ZodAny extends ZodType {
-    // to prevent instances of other classes from extending ZodAny. this causes issues with catchall in ZodObject.
-    _any = true;
+    constructor() {
+        super(...arguments);
+        // to prevent instances of other classes from extending ZodAny. this causes issues with catchall in ZodObject.
+        Object.defineProperty(this, "_any", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: true
+        });
+    }
     _parse(input) {
         return OK(input.data);
     }
-    static create = (params) => {
+}
+Object.defineProperty(ZodAny, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (params) => {
         return new ZodAny({
             typeName: ZodFirstPartyTypeKind.ZodAny,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodAny };
 class ZodUnknown extends ZodType {
-    // required
-    _unknown = true;
+    constructor() {
+        super(...arguments);
+        // required
+        Object.defineProperty(this, "_unknown", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: true
+        });
+    }
     _parse(input) {
         return OK(input.data);
     }
-    static create = (params) => {
+}
+Object.defineProperty(ZodUnknown, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (params) => {
         return new ZodUnknown({
             typeName: ZodFirstPartyTypeKind.ZodUnknown,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodUnknown };
 class ZodNever extends ZodType {
     _parse(input) {
@@ -1449,13 +1632,18 @@ class ZodNever extends ZodType {
         });
         return INVALID;
     }
-    static create = (params) => {
+}
+Object.defineProperty(ZodNever, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (params) => {
         return new ZodNever({
             typeName: ZodFirstPartyTypeKind.ZodNever,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodNever };
 class ZodVoid extends ZodType {
     _parse(input) {
@@ -1471,13 +1659,18 @@ class ZodVoid extends ZodType {
         }
         return OK(input.data);
     }
-    static create = (params) => {
+}
+Object.defineProperty(ZodVoid, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (params) => {
         return new ZodVoid({
             typeName: ZodFirstPartyTypeKind.ZodVoid,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodVoid };
 class ZodArray extends ZodType {
     _parse(input) {
@@ -1569,7 +1762,12 @@ class ZodArray extends ZodType {
     nonempty(message) {
         return this.min(1, message);
     }
-    static create = (schema, params) => {
+}
+Object.defineProperty(ZodArray, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (schema, params) => {
         return new ZodArray({
             type: schema,
             minLength: null,
@@ -1578,8 +1776,8 @@ class ZodArray extends ZodType {
             typeName: ZodFirstPartyTypeKind.ZodArray,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodArray };
 function deepPartialify(schema) {
     if (schema instanceof ZodObject) {
@@ -1613,7 +1811,67 @@ function deepPartialify(schema) {
     }
 }
 class ZodObject extends ZodType {
-    _cached = null;
+    constructor() {
+        super(...arguments);
+        Object.defineProperty(this, "_cached", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: null
+        });
+        /**
+         * @deprecated In most cases, this is no longer needed - unknown properties are now silently stripped.
+         * If you want to pass through unknown properties, use `.passthrough()` instead.
+         */
+        Object.defineProperty(this, "nonstrict", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: this.passthrough
+        });
+        // extend<
+        //   Augmentation extends ZodRawShape,
+        //   NewOutput extends util.flatten<{
+        //     [k in keyof Augmentation | keyof Output]: k extends keyof Augmentation
+        //       ? Augmentation[k]["_output"]
+        //       : k extends keyof Output
+        //       ? Output[k]
+        //       : never;
+        //   }>,
+        //   NewInput extends util.flatten<{
+        //     [k in keyof Augmentation | keyof Input]: k extends keyof Augmentation
+        //       ? Augmentation[k]["_input"]
+        //       : k extends keyof Input
+        //       ? Input[k]
+        //       : never;
+        //   }>
+        // >(
+        //   augmentation: Augmentation
+        // ): ZodObject<
+        //   extendShape<T, Augmentation>,
+        //   UnknownKeys,
+        //   Catchall,
+        //   NewOutput,
+        //   NewInput
+        // > {
+        //   return new ZodObject({
+        //     ...this._def,
+        //     shape: () => ({
+        //       ...this._def.shape(),
+        //       ...augmentation,
+        //     }),
+        //   }) as any;
+        // }
+        /**
+         * @deprecated Use `.extend` instead
+         *  */
+        Object.defineProperty(this, "augment", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: this.extend
+        });
+    }
     _getCached() {
         if (this._cached !== null)
             return this._cached;
@@ -1749,11 +2007,6 @@ class ZodObject extends ZodType {
             unknownKeys: "passthrough",
         });
     }
-    /**
-     * @deprecated In most cases, this is no longer needed - unknown properties are now silently stripped.
-     * If you want to pass through unknown properties, use `.passthrough()` instead.
-     */
-    nonstrict = this.passthrough;
     // const AugmentFactory =
     //   <Def extends ZodObjectDef>(def: Def) =>
     //   <Augmentation extends ZodRawShape>(
@@ -1780,43 +2033,6 @@ class ZodObject extends ZodType {
             }),
         });
     }
-    // extend<
-    //   Augmentation extends ZodRawShape,
-    //   NewOutput extends util.flatten<{
-    //     [k in keyof Augmentation | keyof Output]: k extends keyof Augmentation
-    //       ? Augmentation[k]["_output"]
-    //       : k extends keyof Output
-    //       ? Output[k]
-    //       : never;
-    //   }>,
-    //   NewInput extends util.flatten<{
-    //     [k in keyof Augmentation | keyof Input]: k extends keyof Augmentation
-    //       ? Augmentation[k]["_input"]
-    //       : k extends keyof Input
-    //       ? Input[k]
-    //       : never;
-    //   }>
-    // >(
-    //   augmentation: Augmentation
-    // ): ZodObject<
-    //   extendShape<T, Augmentation>,
-    //   UnknownKeys,
-    //   Catchall,
-    //   NewOutput,
-    //   NewInput
-    // > {
-    //   return new ZodObject({
-    //     ...this._def,
-    //     shape: () => ({
-    //       ...this._def.shape(),
-    //       ...augmentation,
-    //     }),
-    //   }) as any;
-    // }
-    /**
-     * @deprecated Use `.extend` instead
-     *  */
-    augment = this.extend;
     /**
      * Prior to zod@1.0.12 there was a bug in the
      * inferred type of merged objects. Please
@@ -1968,7 +2184,12 @@ class ZodObject extends ZodType {
     keyof() {
         return createZodEnum(util.objectKeys(this.shape));
     }
-    static create = (shape, params) => {
+}
+Object.defineProperty(ZodObject, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (shape, params) => {
         return new ZodObject({
             shape: () => shape,
             unknownKeys: "strip",
@@ -1976,8 +2197,13 @@ class ZodObject extends ZodType {
             typeName: ZodFirstPartyTypeKind.ZodObject,
             ...processCreateParams(params),
         });
-    };
-    static strictCreate = (shape, params) => {
+    }
+});
+Object.defineProperty(ZodObject, "strictCreate", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (shape, params) => {
         return new ZodObject({
             shape: () => shape,
             unknownKeys: "strict",
@@ -1985,8 +2211,13 @@ class ZodObject extends ZodType {
             typeName: ZodFirstPartyTypeKind.ZodObject,
             ...processCreateParams(params),
         });
-    };
-    static lazycreate = (shape, params) => {
+    }
+});
+Object.defineProperty(ZodObject, "lazycreate", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (shape, params) => {
         return new ZodObject({
             shape,
             unknownKeys: "strip",
@@ -1994,8 +2225,8 @@ class ZodObject extends ZodType {
             typeName: ZodFirstPartyTypeKind.ZodObject,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodObject };
 class ZodUnion extends ZodType {
     _parse(input) {
@@ -2085,14 +2316,19 @@ class ZodUnion extends ZodType {
     get options() {
         return this._def.options;
     }
-    static create = (types, params) => {
+}
+Object.defineProperty(ZodUnion, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (types, params) => {
         return new ZodUnion({
             options: types,
             typeName: ZodFirstPartyTypeKind.ZodUnion,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodUnion };
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
@@ -2301,15 +2537,20 @@ class ZodIntersection extends ZodType {
             }));
         }
     }
-    static create = (left, right, params) => {
+}
+Object.defineProperty(ZodIntersection, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (left, right, params) => {
         return new ZodIntersection({
             left: left,
             right: right,
             typeName: ZodFirstPartyTypeKind.ZodIntersection,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodIntersection };
 class ZodTuple extends ZodType {
     _parse(input) {
@@ -2369,7 +2610,12 @@ class ZodTuple extends ZodType {
             rest,
         });
     }
-    static create = (schemas, params) => {
+}
+Object.defineProperty(ZodTuple, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (schemas, params) => {
         if (!Array.isArray(schemas)) {
             throw new Error("You must pass an array of schemas to z.tuple([ ... ])");
         }
@@ -2379,8 +2625,8 @@ class ZodTuple extends ZodType {
             rest: null,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodTuple };
 export class ZodRecord extends ZodType {
     get keySchema() {
@@ -2487,15 +2733,20 @@ class ZodMap extends ZodType {
             return { status: status.value, value: finalMap };
         }
     }
-    static create = (keyType, valueType, params) => {
+}
+Object.defineProperty(ZodMap, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (keyType, valueType, params) => {
         return new ZodMap({
             valueType,
             keyType,
             typeName: ZodFirstPartyTypeKind.ZodMap,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodMap };
 class ZodSet extends ZodType {
     _parse(input) {
@@ -2573,7 +2824,12 @@ class ZodSet extends ZodType {
     nonempty(message) {
         return this.min(1, message);
     }
-    static create = (valueType, params) => {
+}
+Object.defineProperty(ZodSet, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (valueType, params) => {
         return new ZodSet({
             valueType,
             minSize: null,
@@ -2581,10 +2837,19 @@ class ZodSet extends ZodType {
             typeName: ZodFirstPartyTypeKind.ZodSet,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodSet };
 export class ZodFunction extends ZodType {
+    constructor() {
+        super(...arguments);
+        Object.defineProperty(this, "validate", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: this.implement
+        });
+    }
     _parse(input) {
         const { ctx } = this._processInputParams(input);
         if (ctx.parsedType !== ZodParsedType.function) {
@@ -2689,7 +2954,6 @@ export class ZodFunction extends ZodType {
         const validatedFunc = this.parse(func);
         return validatedFunc;
     }
-    validate = this.implement;
     static create(args, returns, params) {
         return new ZodFunction({
             args: (args
@@ -2710,14 +2974,19 @@ class ZodLazy extends ZodType {
         const lazySchema = this._def.getter();
         return lazySchema._parse({ data: ctx.data, path: ctx.path, parent: ctx });
     }
-    static create = (getter, params) => {
+}
+Object.defineProperty(ZodLazy, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (getter, params) => {
         return new ZodLazy({
             getter: getter,
             typeName: ZodFirstPartyTypeKind.ZodLazy,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodLazy };
 class ZodLiteral extends ZodType {
     _parse(input) {
@@ -2735,14 +3004,19 @@ class ZodLiteral extends ZodType {
     get value() {
         return this._def.value;
     }
-    static create = (value, params) => {
+}
+Object.defineProperty(ZodLiteral, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (value, params) => {
         return new ZodLiteral({
             value: value,
             typeName: ZodFirstPartyTypeKind.ZodLiteral,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodLiteral };
 function createZodEnum(values, params) {
     return new ZodEnum({
@@ -2805,8 +3079,13 @@ class ZodEnum extends ZodType {
     exclude(values) {
         return ZodEnum.create(this.options.filter((opt) => !values.includes(opt)));
     }
-    static create = createZodEnum;
 }
+Object.defineProperty(ZodEnum, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: createZodEnum
+});
 export { ZodEnum };
 class ZodNativeEnum extends ZodType {
     _parse(input) {
@@ -2836,14 +3115,19 @@ class ZodNativeEnum extends ZodType {
     get enum() {
         return this._def.values;
     }
-    static create = (values, params) => {
+}
+Object.defineProperty(ZodNativeEnum, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (values, params) => {
         return new ZodNativeEnum({
             values: values,
             typeName: ZodFirstPartyTypeKind.ZodNativeEnum,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodNativeEnum };
 class ZodPromise extends ZodType {
     unwrap() {
@@ -2870,14 +3154,19 @@ class ZodPromise extends ZodType {
             });
         }));
     }
-    static create = (schema, params) => {
+}
+Object.defineProperty(ZodPromise, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (schema, params) => {
         return new ZodPromise({
             type: schema,
             typeName: ZodFirstPartyTypeKind.ZodPromise,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodPromise };
 class ZodEffects extends ZodType {
     innerType() {
@@ -2993,23 +3282,33 @@ class ZodEffects extends ZodType {
         }
         util.assertNever(effect);
     }
-    static create = (schema, effect, params) => {
+}
+Object.defineProperty(ZodEffects, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (schema, effect, params) => {
         return new ZodEffects({
             schema,
             typeName: ZodFirstPartyTypeKind.ZodEffects,
             effect,
             ...processCreateParams(params),
         });
-    };
-    static createWithPreprocess = (preprocess, schema, params) => {
+    }
+});
+Object.defineProperty(ZodEffects, "createWithPreprocess", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (preprocess, schema, params) => {
         return new ZodEffects({
             schema,
             effect: { type: "preprocess", transform: preprocess },
             typeName: ZodFirstPartyTypeKind.ZodEffects,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodEffects };
 export { ZodEffects as ZodTransformer };
 class ZodOptional extends ZodType {
@@ -3023,14 +3322,19 @@ class ZodOptional extends ZodType {
     unwrap() {
         return this._def.innerType;
     }
-    static create = (type, params) => {
+}
+Object.defineProperty(ZodOptional, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (type, params) => {
         return new ZodOptional({
             innerType: type,
             typeName: ZodFirstPartyTypeKind.ZodOptional,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodOptional };
 class ZodNullable extends ZodType {
     _parse(input) {
@@ -3043,14 +3347,19 @@ class ZodNullable extends ZodType {
     unwrap() {
         return this._def.innerType;
     }
-    static create = (type, params) => {
+}
+Object.defineProperty(ZodNullable, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (type, params) => {
         return new ZodNullable({
             innerType: type,
             typeName: ZodFirstPartyTypeKind.ZodNullable,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodNullable };
 class ZodDefault extends ZodType {
     _parse(input) {
@@ -3068,7 +3377,12 @@ class ZodDefault extends ZodType {
     removeDefault() {
         return this._def.innerType;
     }
-    static create = (type, params) => {
+}
+Object.defineProperty(ZodDefault, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (type, params) => {
         return new ZodDefault({
             innerType: type,
             typeName: ZodFirstPartyTypeKind.ZodDefault,
@@ -3077,8 +3391,8 @@ class ZodDefault extends ZodType {
                 : () => params.default,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodDefault };
 class ZodCatch extends ZodType {
     _parse(input) {
@@ -3130,15 +3444,20 @@ class ZodCatch extends ZodType {
     removeCatch() {
         return this._def.innerType;
     }
-    static create = (type, params) => {
+}
+Object.defineProperty(ZodCatch, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (type, params) => {
         return new ZodCatch({
             innerType: type,
             typeName: ZodFirstPartyTypeKind.ZodCatch,
             catchValue: typeof params.catch === "function" ? params.catch : () => params.catch,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodCatch };
 class ZodNaN extends ZodType {
     _parse(input) {
@@ -3154,13 +3473,18 @@ class ZodNaN extends ZodType {
         }
         return { status: "valid", value: input.data };
     }
-    static create = (params) => {
+}
+Object.defineProperty(ZodNaN, "create", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (params) => {
         return new ZodNaN({
             typeName: ZodFirstPartyTypeKind.ZodNaN,
             ...processCreateParams(params),
         });
-    };
-}
+    }
+});
 export { ZodNaN };
 export const BRAND = Symbol("zod_brand");
 export class ZodBranded extends ZodType {

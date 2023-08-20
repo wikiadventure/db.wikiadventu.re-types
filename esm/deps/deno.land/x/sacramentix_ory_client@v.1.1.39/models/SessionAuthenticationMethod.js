@@ -13,18 +13,53 @@
 * A singular authenticator used during authentication / login.
 */
 class SessionAuthenticationMethod {
-    'aal';
-    /**
-    * When the authentication challenge was completed.
-    */
-    'completed_at';
-    'method';
-    /**
-    * OIDC or SAML provider id used for authentication
-    */
-    'provider';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return SessionAuthenticationMethod.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'aal', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * When the authentication challenge was completed.
+        */
+        Object.defineProperty(this, 'completed_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * OIDC or SAML provider id used for authentication
+        */
+        Object.defineProperty(this, 'provider', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(SessionAuthenticationMethod, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(SessionAuthenticationMethod, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "aal",
             "baseName": "aal",
@@ -49,11 +84,6 @@ class SessionAuthenticationMethod {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return SessionAuthenticationMethod.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { SessionAuthenticationMethod };

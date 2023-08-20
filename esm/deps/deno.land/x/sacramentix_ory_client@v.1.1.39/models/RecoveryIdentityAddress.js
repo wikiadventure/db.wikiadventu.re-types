@@ -10,19 +10,59 @@
  * Do not edit the class manually.
  */
 class RecoveryIdentityAddress {
-    /**
-    * CreatedAt is a helper struct field for gobuffalo.pop.
-    */
-    'created_at';
-    'id';
-    /**
-    * UpdatedAt is a helper struct field for gobuffalo.pop.
-    */
-    'updated_at';
-    'value';
-    'via';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return RecoveryIdentityAddress.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * CreatedAt is a helper struct field for gobuffalo.pop.
+        */
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * UpdatedAt is a helper struct field for gobuffalo.pop.
+        */
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'value', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'via', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(RecoveryIdentityAddress, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(RecoveryIdentityAddress, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "created_at",
             "baseName": "created_at",
@@ -53,11 +93,6 @@ class RecoveryIdentityAddress {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return RecoveryIdentityAddress.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { RecoveryIdentityAddress };

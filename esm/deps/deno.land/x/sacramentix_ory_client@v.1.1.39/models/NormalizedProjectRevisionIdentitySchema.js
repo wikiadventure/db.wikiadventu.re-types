@@ -10,42 +10,107 @@
  * Do not edit the class manually.
  */
 class NormalizedProjectRevisionIdentitySchema {
-    /**
-    * The Project\'s Revision Creation Date
-    */
-    'created_at';
-    /**
-    * The unique ID of this entry.
-    */
-    'id';
-    'identity_schema';
-    'identity_schema_id';
-    /**
-    * The imported (named) ID of the Identity Schema referenced in the Ory Kratos config.
-    */
-    'import_id';
-    /**
-    * The ImportURL can be used to import an Identity Schema from a bse64 encoded string. In the future, this key also support HTTPS and other sources!  If you import an Ory Kratos configuration, this would be akin to the `identity.schemas.#.url` key.  The configuration will always return the import URL when you fetch it from the API.
-    */
-    'import_url';
-    /**
-    * If true sets the default schema for identities  Only one schema can ever be the default schema. If you try to add two schemas with default to true, the request will fail.
-    */
-    'is_default';
-    /**
-    * Use a preset instead of a custom identity schema.
-    */
-    'preset';
-    /**
-    * The Revision\'s ID this schema belongs to
-    */
-    'project_revision_id';
-    /**
-    * Last Time Project\'s Revision was Updated
-    */
-    'updated_at';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return NormalizedProjectRevisionIdentitySchema.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The Project\'s Revision Creation Date
+        */
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The unique ID of this entry.
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'identity_schema', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'identity_schema_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The imported (named) ID of the Identity Schema referenced in the Ory Kratos config.
+        */
+        Object.defineProperty(this, 'import_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The ImportURL can be used to import an Identity Schema from a bse64 encoded string. In the future, this key also support HTTPS and other sources!  If you import an Ory Kratos configuration, this would be akin to the `identity.schemas.#.url` key.  The configuration will always return the import URL when you fetch it from the API.
+        */
+        Object.defineProperty(this, 'import_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * If true sets the default schema for identities  Only one schema can ever be the default schema. If you try to add two schemas with default to true, the request will fail.
+        */
+        Object.defineProperty(this, 'is_default', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Use a preset instead of a custom identity schema.
+        */
+        Object.defineProperty(this, 'preset', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Revision\'s ID this schema belongs to
+        */
+        Object.defineProperty(this, 'project_revision_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Last Time Project\'s Revision was Updated
+        */
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(NormalizedProjectRevisionIdentitySchema, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(NormalizedProjectRevisionIdentitySchema, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "created_at",
             "baseName": "created_at",
@@ -106,11 +171,6 @@ class NormalizedProjectRevisionIdentitySchema {
             "type": "Date",
             "format": "date-time"
         }
-    ];
-    static getAttributeTypeMap() {
-        return NormalizedProjectRevisionIdentitySchema.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { NormalizedProjectRevisionIdentitySchema };

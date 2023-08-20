@@ -13,36 +13,86 @@
 * Together the name and identity uuid are a unique index constraint. This prevents a user from having schemas with the same name. This also allows schemas to have the same name across the system.
 */
 class ManagedIdentitySchema {
-    /**
-    * The gcs file name  This is a randomly generated name which is used to uniquely identify the file on the blob storage
-    */
-    'blob_name';
-    /**
-    * The publicly accessible url of the schema
-    */
-    'blob_url';
-    /**
-    * The Content Hash  Contains a hash of the schema\'s content.
-    */
-    'content_hash';
-    /**
-    * The Schema\'s Creation Date
-    */
-    'created_at';
-    /**
-    * The schema\'s ID.
-    */
-    'id';
-    /**
-    * The schema name  This is set by the user and is for them to easily recognise their schema
-    */
-    'name';
-    /**
-    * Last Time Schema was Updated
-    */
-    'updated_at';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ManagedIdentitySchema.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The gcs file name  This is a randomly generated name which is used to uniquely identify the file on the blob storage
+        */
+        Object.defineProperty(this, 'blob_name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The publicly accessible url of the schema
+        */
+        Object.defineProperty(this, 'blob_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Content Hash  Contains a hash of the schema\'s content.
+        */
+        Object.defineProperty(this, 'content_hash', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Schema\'s Creation Date
+        */
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The schema\'s ID.
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The schema name  This is set by the user and is for them to easily recognise their schema
+        */
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Last Time Schema was Updated
+        */
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ManagedIdentitySchema, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ManagedIdentitySchema, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "blob_name",
             "baseName": "blob_name",
@@ -85,11 +135,6 @@ class ManagedIdentitySchema {
             "type": "Date",
             "format": "date-time"
         }
-    ];
-    static getAttributeTypeMap() {
-        return ManagedIdentitySchema.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ManagedIdentitySchema };

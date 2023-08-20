@@ -10,13 +10,38 @@
  * Do not edit the class manually.
  */
 class ErrorAuthenticatorAssuranceLevelNotSatisfied {
-    'error';
-    /**
-    * Points to where to redirect the user to next.
-    */
-    'redirect_browser_to';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ErrorAuthenticatorAssuranceLevelNotSatisfied.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'error', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Points to where to redirect the user to next.
+        */
+        Object.defineProperty(this, 'redirect_browser_to', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ErrorAuthenticatorAssuranceLevelNotSatisfied, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ErrorAuthenticatorAssuranceLevelNotSatisfied, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "error",
             "baseName": "error",
@@ -29,11 +54,6 @@ class ErrorAuthenticatorAssuranceLevelNotSatisfied {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return ErrorAuthenticatorAssuranceLevelNotSatisfied.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ErrorAuthenticatorAssuranceLevelNotSatisfied };

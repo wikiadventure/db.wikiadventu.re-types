@@ -13,13 +13,38 @@
 * The Response for Login Flows via API
 */
 class SuccessfulNativeLogin {
-    'session';
-    /**
-    * The Session Token  A session token is equivalent to a session cookie, but it can be sent in the HTTP Authorization Header:  Authorization: bearer ${session-token}  The session token is only issued for API flows, not for Browser flows!
-    */
-    'session_token';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return SuccessfulNativeLogin.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'session', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The Session Token  A session token is equivalent to a session cookie, but it can be sent in the HTTP Authorization Header:  Authorization: bearer ${session-token}  The session token is only issued for API flows, not for Browser flows!
+        */
+        Object.defineProperty(this, 'session_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(SuccessfulNativeLogin, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(SuccessfulNativeLogin, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "session",
             "baseName": "session",
@@ -32,11 +57,6 @@ class SuccessfulNativeLogin {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return SuccessfulNativeLogin.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { SuccessfulNativeLogin };

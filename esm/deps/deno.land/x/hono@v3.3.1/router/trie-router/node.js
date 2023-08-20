@@ -15,13 +15,43 @@ function findParam(node, name) {
     return false;
 }
 export class Node {
-    methods;
-    children;
-    patterns;
-    order = 0;
-    name;
-    handlerSetCache;
     constructor(method, handler, children) {
+        Object.defineProperty(this, "methods", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "children", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "patterns", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "order", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: 0
+        });
+        Object.defineProperty(this, "name", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "handlerSetCache", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.children = children || {};
         this.methods = [];
         this.name = '';

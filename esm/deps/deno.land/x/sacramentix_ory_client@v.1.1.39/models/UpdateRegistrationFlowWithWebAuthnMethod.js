@@ -13,32 +13,77 @@
 * Update Registration Flow with WebAuthn Method
 */
 class UpdateRegistrationFlowWithWebAuthnMethod {
-    /**
-    * CSRFToken is the anti-CSRF token
-    */
-    'csrf_token';
-    /**
-    * Method  Should be set to \"webauthn\" when trying to add, update, or remove a webAuthn pairing.
-    */
-    'method';
-    /**
-    * The identity\'s traits
-    */
-    'traits';
-    /**
-    * Transient data to pass along to any webhooks
-    */
-    'transient_payload';
-    /**
-    * Register a WebAuthn Security Key  It is expected that the JSON returned by the WebAuthn registration process is included here.
-    */
-    'webauthn_register';
-    /**
-    * Name of the WebAuthn Security Key to be Added  A human-readable name for the security key which will be added.
-    */
-    'webauthn_register_displayname';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateRegistrationFlowWithWebAuthnMethod.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * CSRFToken is the anti-CSRF token
+        */
+        Object.defineProperty(this, 'csrf_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method  Should be set to \"webauthn\" when trying to add, update, or remove a webAuthn pairing.
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The identity\'s traits
+        */
+        Object.defineProperty(this, 'traits', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Transient data to pass along to any webhooks
+        */
+        Object.defineProperty(this, 'transient_payload', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Register a WebAuthn Security Key  It is expected that the JSON returned by the WebAuthn registration process is included here.
+        */
+        Object.defineProperty(this, 'webauthn_register', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Name of the WebAuthn Security Key to be Added  A human-readable name for the security key which will be added.
+        */
+        Object.defineProperty(this, 'webauthn_register_displayname', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateRegistrationFlowWithWebAuthnMethod, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateRegistrationFlowWithWebAuthnMethod, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "csrf_token",
             "baseName": "csrf_token",
@@ -75,11 +120,6 @@ class UpdateRegistrationFlowWithWebAuthnMethod {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateRegistrationFlowWithWebAuthnMethod.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateRegistrationFlowWithWebAuthnMethod };

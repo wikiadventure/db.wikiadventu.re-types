@@ -13,32 +13,77 @@
 * Update Settings Flow with Lookup Method
 */
 class UpdateSettingsFlowWithLookupMethod {
-    /**
-    * CSRFToken is the anti-CSRF token
-    */
-    'csrf_token';
-    /**
-    * If set to true will save the regenerated lookup secrets
-    */
-    'lookup_secret_confirm';
-    /**
-    * Disables this method if true.
-    */
-    'lookup_secret_disable';
-    /**
-    * If set to true will regenerate the lookup secrets
-    */
-    'lookup_secret_regenerate';
-    /**
-    * If set to true will reveal the lookup secrets
-    */
-    'lookup_secret_reveal';
-    /**
-    * Method  Should be set to \"lookup\" when trying to add, update, or remove a lookup pairing.
-    */
-    'method';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return UpdateSettingsFlowWithLookupMethod.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * CSRFToken is the anti-CSRF token
+        */
+        Object.defineProperty(this, 'csrf_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * If set to true will save the regenerated lookup secrets
+        */
+        Object.defineProperty(this, 'lookup_secret_confirm', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Disables this method if true.
+        */
+        Object.defineProperty(this, 'lookup_secret_disable', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * If set to true will regenerate the lookup secrets
+        */
+        Object.defineProperty(this, 'lookup_secret_regenerate', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * If set to true will reveal the lookup secrets
+        */
+        Object.defineProperty(this, 'lookup_secret_reveal', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Method  Should be set to \"lookup\" when trying to add, update, or remove a lookup pairing.
+        */
+        Object.defineProperty(this, 'method', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(UpdateSettingsFlowWithLookupMethod, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(UpdateSettingsFlowWithLookupMethod, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "csrf_token",
             "baseName": "csrf_token",
@@ -75,11 +120,6 @@ class UpdateSettingsFlowWithLookupMethod {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return UpdateSettingsFlowWithLookupMethod.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { UpdateSettingsFlowWithLookupMethod };

@@ -10,23 +10,38 @@
  * Do not edit the class manually.
  */
 class HealthStatus {
-    /**
-    * Status always contains \"ok\".
-    */
-    'status';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return HealthStatus.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Status always contains \"ok\".
+        */
+        Object.defineProperty(this, 'status', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(HealthStatus, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(HealthStatus, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "status",
             "baseName": "status",
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return HealthStatus.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { HealthStatus };

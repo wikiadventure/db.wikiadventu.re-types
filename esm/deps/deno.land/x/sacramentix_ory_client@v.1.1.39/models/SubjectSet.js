@@ -10,20 +10,50 @@
  * Do not edit the class manually.
  */
 class SubjectSet {
-    /**
-    * Namespace of the Subject Set
-    */
-    'namespace';
-    /**
-    * Object of the Subject Set
-    */
-    'object';
-    /**
-    * Relation of the Subject Set
-    */
-    'relation';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return SubjectSet.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Namespace of the Subject Set
+        */
+        Object.defineProperty(this, 'namespace', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Object of the Subject Set
+        */
+        Object.defineProperty(this, 'object', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Relation of the Subject Set
+        */
+        Object.defineProperty(this, 'relation', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(SubjectSet, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(SubjectSet, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "namespace",
             "baseName": "namespace",
@@ -42,11 +72,6 @@ class SubjectSet {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return SubjectSet.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { SubjectSet };

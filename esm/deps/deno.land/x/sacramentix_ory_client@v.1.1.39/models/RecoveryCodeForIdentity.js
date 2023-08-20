@@ -13,20 +13,50 @@
 * Used when an administrator creates a recovery code for an identity.
 */
 class RecoveryCodeForIdentity {
-    /**
-    * Expires At is the timestamp of when the recovery flow expires  The timestamp when the recovery link expires.
-    */
-    'expires_at';
-    /**
-    * RecoveryCode is the code that can be used to recover the account
-    */
-    'recovery_code';
-    /**
-    * RecoveryLink with flow  This link opens the recovery UI with an empty `code` field.
-    */
-    'recovery_link';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return RecoveryCodeForIdentity.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Expires At is the timestamp of when the recovery flow expires  The timestamp when the recovery link expires.
+        */
+        Object.defineProperty(this, 'expires_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * RecoveryCode is the code that can be used to recover the account
+        */
+        Object.defineProperty(this, 'recovery_code', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * RecoveryLink with flow  This link opens the recovery UI with an empty `code` field.
+        */
+        Object.defineProperty(this, 'recovery_link', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(RecoveryCodeForIdentity, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(RecoveryCodeForIdentity, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "expires_at",
             "baseName": "expires_at",
@@ -45,11 +75,6 @@ class RecoveryCodeForIdentity {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return RecoveryCodeForIdentity.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { RecoveryCodeForIdentity };

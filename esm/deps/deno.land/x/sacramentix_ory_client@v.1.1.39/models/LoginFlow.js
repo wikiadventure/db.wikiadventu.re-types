@@ -13,53 +13,143 @@
 * This object represents a login flow. A login flow is initiated at the \"Initiate Login API / Browser Flow\" endpoint by a client.  Once a login flow is completed successfully, a session cookie or session token will be issued.
 */
 class LoginFlow {
-    'active';
-    /**
-    * CreatedAt is a helper struct field for gobuffalo.pop.
-    */
-    'created_at';
-    /**
-    * ExpiresAt is the time (UTC) when the flow expires. If the user still wishes to log in, a new flow has to be initiated.
-    */
-    'expires_at';
-    /**
-    * ID represents the flow\'s unique ID. When performing the login flow, this represents the id in the login UI\'s query parameter: http://<selfservice.flows.login.ui_url>/?flow=<flow_id>
-    */
-    'id';
-    /**
-    * IssuedAt is the time (UTC) when the flow started.
-    */
-    'issued_at';
-    'oauth2_login_challenge';
-    'oauth2_login_request';
-    /**
-    * Refresh stores whether this login flow should enforce re-authentication.
-    */
-    'refresh';
-    /**
-    * RequestURL is the initial URL that was requested from Ory Kratos. It can be used to forward information contained in the URL\'s path or query for example.
-    */
-    'request_url';
-    'requested_aal';
-    /**
-    * ReturnTo contains the requested return_to URL.
-    */
-    'return_to';
-    /**
-    * SessionTokenExchangeCode holds the secret code that the client can use to retrieve a session token after the login flow has been completed. This is only set if the client has requested a session token exchange code, and if the flow is of type \"api\", and only on creating the login flow.
-    */
-    'session_token_exchange_code';
-    /**
-    * The flow type can either be `api` or `browser`.
-    */
-    'type';
-    'ui';
-    /**
-    * UpdatedAt is a helper struct field for gobuffalo.pop.
-    */
-    'updated_at';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return LoginFlow.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'active', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * CreatedAt is a helper struct field for gobuffalo.pop.
+        */
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ExpiresAt is the time (UTC) when the flow expires. If the user still wishes to log in, a new flow has to be initiated.
+        */
+        Object.defineProperty(this, 'expires_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ID represents the flow\'s unique ID. When performing the login flow, this represents the id in the login UI\'s query parameter: http://<selfservice.flows.login.ui_url>/?flow=<flow_id>
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * IssuedAt is the time (UTC) when the flow started.
+        */
+        Object.defineProperty(this, 'issued_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'oauth2_login_challenge', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'oauth2_login_request', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Refresh stores whether this login flow should enforce re-authentication.
+        */
+        Object.defineProperty(this, 'refresh', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * RequestURL is the initial URL that was requested from Ory Kratos. It can be used to forward information contained in the URL\'s path or query for example.
+        */
+        Object.defineProperty(this, 'request_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'requested_aal', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ReturnTo contains the requested return_to URL.
+        */
+        Object.defineProperty(this, 'return_to', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * SessionTokenExchangeCode holds the secret code that the client can use to retrieve a session token after the login flow has been completed. This is only set if the client has requested a session token exchange code, and if the flow is of type \"api\", and only on creating the login flow.
+        */
+        Object.defineProperty(this, 'session_token_exchange_code', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The flow type can either be `api` or `browser`.
+        */
+        Object.defineProperty(this, 'type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'ui', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * UpdatedAt is a helper struct field for gobuffalo.pop.
+        */
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(LoginFlow, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(LoginFlow, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "active",
             "baseName": "active",
@@ -150,11 +240,6 @@ class LoginFlow {
             "type": "Date",
             "format": "date-time"
         }
-    ];
-    static getAttributeTypeMap() {
-        return LoginFlow.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { LoginFlow };

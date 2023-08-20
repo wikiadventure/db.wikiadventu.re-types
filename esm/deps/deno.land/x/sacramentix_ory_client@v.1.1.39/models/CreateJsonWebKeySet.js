@@ -13,20 +13,50 @@
 * Create JSON Web Key Set Request Body
 */
 class CreateJsonWebKeySet {
-    /**
-    * JSON Web Key Algorithm  The algorithm to be used for creating the key. Supports `RS256`, `ES256`, `ES512`, `HS512`, and `HS256`.
-    */
-    'alg';
-    /**
-    * JSON Web Key ID  The Key ID of the key to be created.
-    */
-    'kid';
-    /**
-    * JSON Web Key Use  The \"use\" (public key use) parameter identifies the intended use of the public key. The \"use\" parameter is employed to indicate whether a public key is used for encrypting data or verifying the signature on data. Valid values are \"enc\" and \"sig\".
-    */
-    'use';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return CreateJsonWebKeySet.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * JSON Web Key Algorithm  The algorithm to be used for creating the key. Supports `RS256`, `ES256`, `ES512`, `HS512`, and `HS256`.
+        */
+        Object.defineProperty(this, 'alg', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * JSON Web Key ID  The Key ID of the key to be created.
+        */
+        Object.defineProperty(this, 'kid', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * JSON Web Key Use  The \"use\" (public key use) parameter identifies the intended use of the public key. The \"use\" parameter is employed to indicate whether a public key is used for encrypting data or verifying the signature on data. Valid values are \"enc\" and \"sig\".
+        */
+        Object.defineProperty(this, 'use', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(CreateJsonWebKeySet, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(CreateJsonWebKeySet, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "alg",
             "baseName": "alg",
@@ -45,11 +75,6 @@ class CreateJsonWebKeySet {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return CreateJsonWebKeySet.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { CreateJsonWebKeySet };

@@ -13,16 +13,41 @@
 * An Identity JSON Schema Container
 */
 class IdentitySchemaContainer {
-    /**
-    * The ID of the Identity JSON Schema
-    */
-    'id';
-    /**
-    * The actual Identity JSON Schema
-    */
-    'schema';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return IdentitySchemaContainer.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The ID of the Identity JSON Schema
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The actual Identity JSON Schema
+        */
+        Object.defineProperty(this, 'schema', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(IdentitySchemaContainer, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(IdentitySchemaContainer, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "id",
             "baseName": "id",
@@ -35,11 +60,6 @@ class IdentitySchemaContainer {
             "type": "any",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return IdentitySchemaContainer.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { IdentitySchemaContainer };

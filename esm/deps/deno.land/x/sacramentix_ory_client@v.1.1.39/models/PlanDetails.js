@@ -10,36 +10,86 @@
  * Do not edit the class manually.
  */
 class PlanDetails {
-    /**
-    * BaseFeeMonthly is the monthly base fee for the plan.
-    */
-    'base_fee_monthly';
-    /**
-    * BaseFeeYearly is the yearly base fee for the plan.
-    */
-    'base_fee_yearly';
-    /**
-    * Custom is true if the plan is custom. This means it will be hidden from the pricing page.
-    */
-    'custom';
-    /**
-    * Description is the description of the plan.
-    */
-    'description';
-    /**
-    * Features are the feature definitions included in the plan.
-    */
-    'features';
-    /**
-    * Name is the name of the plan.
-    */
-    'name';
-    /**
-    * Version is the version of the plan. The combination of `name@version` must be unique.
-    */
-    'version';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return PlanDetails.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * BaseFeeMonthly is the monthly base fee for the plan.
+        */
+        Object.defineProperty(this, 'base_fee_monthly', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * BaseFeeYearly is the yearly base fee for the plan.
+        */
+        Object.defineProperty(this, 'base_fee_yearly', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Custom is true if the plan is custom. This means it will be hidden from the pricing page.
+        */
+        Object.defineProperty(this, 'custom', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Description is the description of the plan.
+        */
+        Object.defineProperty(this, 'description', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Features are the feature definitions included in the plan.
+        */
+        Object.defineProperty(this, 'features', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Name is the name of the plan.
+        */
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Version is the version of the plan. The combination of `name@version` must be unique.
+        */
+        Object.defineProperty(this, 'version', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(PlanDetails, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(PlanDetails, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "base_fee_monthly",
             "baseName": "base_fee_monthly",
@@ -82,11 +132,6 @@ class PlanDetails {
             "type": "number",
             "format": "int64"
         }
-    ];
-    static getAttributeTypeMap() {
-        return PlanDetails.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { PlanDetails };

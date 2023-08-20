@@ -13,13 +13,38 @@
 * Paginated Relationship List
 */
 class Relationships {
-    /**
-    * The opaque token to provide in a subsequent request to get the next page. It is the empty string iff this is the last page.
-    */
-    'next_page_token';
-    'relation_tuples';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return Relationships.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The opaque token to provide in a subsequent request to get the next page. It is the empty string iff this is the last page.
+        */
+        Object.defineProperty(this, 'next_page_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'relation_tuples', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(Relationships, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(Relationships, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "next_page_token",
             "baseName": "next_page_token",
@@ -32,11 +57,6 @@ class Relationships {
             "type": "Array<Relationship>",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return Relationships.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { Relationships };

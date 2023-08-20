@@ -13,37 +13,92 @@
 * VerifiableAddress is an identity\'s verifiable address
 */
 class VerifiableIdentityAddress {
-    /**
-    * When this entry was created
-    */
-    'created_at';
-    /**
-    * The ID
-    */
-    'id';
-    /**
-    * VerifiableAddressStatus must not exceed 16 characters as that is the limitation in the SQL Schema
-    */
-    'status';
-    /**
-    * When this entry was last updated
-    */
-    'updated_at';
-    /**
-    * The address value  example foo@user.com
-    */
-    'value';
-    /**
-    * Indicates if the address has already been verified
-    */
-    'verified';
-    'verified_at';
-    /**
-    * VerifiableAddressType must not exceed 16 characters as that is the limitation in the SQL Schema
-    */
-    'via';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return VerifiableIdentityAddress.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * When this entry was created
+        */
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The ID
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * VerifiableAddressStatus must not exceed 16 characters as that is the limitation in the SQL Schema
+        */
+        Object.defineProperty(this, 'status', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * When this entry was last updated
+        */
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The address value  example foo@user.com
+        */
+        Object.defineProperty(this, 'value', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Indicates if the address has already been verified
+        */
+        Object.defineProperty(this, 'verified', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'verified_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * VerifiableAddressType must not exceed 16 characters as that is the limitation in the SQL Schema
+        */
+        Object.defineProperty(this, 'via', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(VerifiableIdentityAddress, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(VerifiableIdentityAddress, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "created_at",
             "baseName": "created_at",
@@ -92,11 +147,6 @@ class VerifiableIdentityAddress {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return VerifiableIdentityAddress.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { VerifiableIdentityAddress };

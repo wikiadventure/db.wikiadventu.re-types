@@ -14,9 +14,13 @@ export const COLLECTION_FORMATS = {
  * @class BaseAPI
  */
 export class BaseAPIRequestFactory {
-    configuration;
     constructor(configuration) {
-        this.configuration = configuration;
+        Object.defineProperty(this, "configuration", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: configuration
+        });
     }
 }
 ;
@@ -27,14 +31,31 @@ export class BaseAPIRequestFactory {
  * @extends {Error}
  */
 export class RequiredError extends Error {
-    api;
-    method;
-    field;
-    name = "RequiredError";
     constructor(api, method, field) {
         super("Required parameter " + field + " was null or undefined when calling " + api + "." + method + ".");
-        this.api = api;
-        this.method = method;
-        this.field = field;
+        Object.defineProperty(this, "api", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: api
+        });
+        Object.defineProperty(this, "method", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: method
+        });
+        Object.defineProperty(this, "field", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: field
+        });
+        Object.defineProperty(this, "name", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: "RequiredError"
+        });
     }
 }

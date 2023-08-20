@@ -10,21 +10,56 @@
  * Do not edit the class manually.
  */
 class FlowError {
-    /**
-    * CreatedAt is a helper struct field for gobuffalo.pop.
-    */
-    'created_at';
-    'error';
-    /**
-    * ID of the error container.
-    */
-    'id';
-    /**
-    * UpdatedAt is a helper struct field for gobuffalo.pop.
-    */
-    'updated_at';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return FlowError.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * CreatedAt is a helper struct field for gobuffalo.pop.
+        */
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'error', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ID of the error container.
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * UpdatedAt is a helper struct field for gobuffalo.pop.
+        */
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(FlowError, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(FlowError, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "created_at",
             "baseName": "created_at",
@@ -49,11 +84,6 @@ class FlowError {
             "type": "Date",
             "format": "date-time"
         }
-    ];
-    static getAttributeTypeMap() {
-        return FlowError.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { FlowError };

@@ -10,34 +10,89 @@
  * Do not edit the class manually.
  */
 class ProjectMetadata {
-    /**
-    * The Project\'s Creation Date
-    */
-    'created_at';
-    'hosts';
-    /**
-    * The project\'s ID.
-    */
-    'id';
-    /**
-    * The project\'s name if set
-    */
-    'name';
-    /**
-    * The project\'s slug
-    */
-    'slug';
-    /**
-    * The state of the project. running Running halted Halted deleted Deleted
-    */
-    'state';
-    'subscription_id';
-    /**
-    * Last Time Project was Updated
-    */
-    'updated_at';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return ProjectMetadata.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The Project\'s Creation Date
+        */
+        Object.defineProperty(this, 'created_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'hosts', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The project\'s ID.
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The project\'s name if set
+        */
+        Object.defineProperty(this, 'name', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The project\'s slug
+        */
+        Object.defineProperty(this, 'slug', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The state of the project. running Running halted Halted deleted Deleted
+        */
+        Object.defineProperty(this, 'state', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'subscription_id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Last Time Project was Updated
+        */
+        Object.defineProperty(this, 'updated_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(ProjectMetadata, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(ProjectMetadata, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "created_at",
             "baseName": "created_at",
@@ -86,11 +141,6 @@ class ProjectMetadata {
             "type": "Date",
             "format": "date-time"
         }
-    ];
-    static getAttributeTypeMap() {
-        return ProjectMetadata.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { ProjectMetadata };

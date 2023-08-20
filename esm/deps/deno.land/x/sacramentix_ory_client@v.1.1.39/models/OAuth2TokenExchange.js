@@ -13,32 +13,77 @@
 * OAuth2 Token Exchange Result
 */
 class OAuth2TokenExchange {
-    /**
-    * The access token issued by the authorization server.
-    */
-    'access_token';
-    /**
-    * The lifetime in seconds of the access token. For example, the value \"3600\" denotes that the access token will expire in one hour from the time the response was generated.
-    */
-    'expires_in';
-    /**
-    * To retrieve a refresh token request the id_token scope.
-    */
-    'id_token';
-    /**
-    * The refresh token, which can be used to obtain new access tokens. To retrieve it add the scope \"offline\" to your access token request.
-    */
-    'refresh_token';
-    /**
-    * The scope of the access token
-    */
-    'scope';
-    /**
-    * The type of the token issued
-    */
-    'token_type';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return OAuth2TokenExchange.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * The access token issued by the authorization server.
+        */
+        Object.defineProperty(this, 'access_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The lifetime in seconds of the access token. For example, the value \"3600\" denotes that the access token will expire in one hour from the time the response was generated.
+        */
+        Object.defineProperty(this, 'expires_in', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * To retrieve a refresh token request the id_token scope.
+        */
+        Object.defineProperty(this, 'id_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The refresh token, which can be used to obtain new access tokens. To retrieve it add the scope \"offline\" to your access token request.
+        */
+        Object.defineProperty(this, 'refresh_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The scope of the access token
+        */
+        Object.defineProperty(this, 'scope', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The type of the token issued
+        */
+        Object.defineProperty(this, 'token_type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(OAuth2TokenExchange, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(OAuth2TokenExchange, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "access_token",
             "baseName": "access_token",
@@ -75,11 +120,6 @@ class OAuth2TokenExchange {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return OAuth2TokenExchange.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { OAuth2TokenExchange };

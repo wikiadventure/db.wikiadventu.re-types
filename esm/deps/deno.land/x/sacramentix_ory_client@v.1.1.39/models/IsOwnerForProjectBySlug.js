@@ -10,16 +10,41 @@
  * Do not edit the class manually.
  */
 class IsOwnerForProjectBySlug {
-    /**
-    * ProjectSlug is the project\'s slug.
-    */
-    'ProjectSlug';
-    /**
-    * Subject is the subject from the API Token.
-    */
-    'Subject';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return IsOwnerForProjectBySlug.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * ProjectSlug is the project\'s slug.
+        */
+        Object.defineProperty(this, 'ProjectSlug', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Subject is the subject from the API Token.
+        */
+        Object.defineProperty(this, 'Subject', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(IsOwnerForProjectBySlug, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(IsOwnerForProjectBySlug, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "ProjectSlug",
             "baseName": "ProjectSlug",
@@ -32,11 +57,6 @@ class IsOwnerForProjectBySlug {
             "type": "string",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return IsOwnerForProjectBySlug.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { IsOwnerForProjectBySlug };

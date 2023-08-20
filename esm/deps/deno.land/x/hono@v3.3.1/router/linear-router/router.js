@@ -2,8 +2,20 @@ import { METHOD_NAME_ALL, UnsupportedPathError } from '../../router.js';
 const splitPathRe = /\/(:\w+(?:{[^}]+})?)|\/[^\/\?]+|(\?)/g;
 const splitByStarRe = /\*/;
 export class LinearRouter {
-    name = 'LinearRouter';
-    routes = [];
+    constructor() {
+        Object.defineProperty(this, "name", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: 'LinearRouter'
+        });
+        Object.defineProperty(this, "routes", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: []
+        });
+    }
     add(method, path, handler) {
         if (path.charCodeAt(path.length - 1) === 63) {
             // /path/to/:label? means /path/to/:label or /path/to

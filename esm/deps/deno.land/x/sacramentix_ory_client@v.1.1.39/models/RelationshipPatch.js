@@ -13,10 +13,35 @@
 * Payload for patching a relationship
 */
 class RelationshipPatch {
-    'action';
-    'relation_tuple';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return RelationshipPatch.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'action', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'relation_tuple', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(RelationshipPatch, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(RelationshipPatch, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "action",
             "baseName": "action",
@@ -29,11 +54,6 @@ class RelationshipPatch {
             "type": "Relationship",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return RelationshipPatch.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { RelationshipPatch };

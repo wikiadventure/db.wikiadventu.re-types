@@ -13,43 +13,113 @@
 * This flow is used when an identity wants to update settings (e.g. profile data, passwords, ...) in a selfservice manner.  We recommend reading the [User Settings Documentation](../self-service/flows/user-settings)
 */
 class SettingsFlow {
-    /**
-    * Active, if set, contains the registration method that is being used. It is initially not set.
-    */
-    'active';
-    /**
-    * Contains a list of actions, that could follow this flow  It can, for example, contain a reference to the verification flow, created as part of the user\'s registration.
-    */
-    'continue_with';
-    /**
-    * ExpiresAt is the time (UTC) when the flow expires. If the user still wishes to update the setting, a new flow has to be initiated.
-    */
-    'expires_at';
-    /**
-    * ID represents the flow\'s unique ID. When performing the settings flow, this represents the id in the settings ui\'s query parameter: http://<selfservice.flows.settings.ui_url>?flow=<id>
-    */
-    'id';
-    'identity';
-    /**
-    * IssuedAt is the time (UTC) when the flow occurred.
-    */
-    'issued_at';
-    /**
-    * RequestURL is the initial URL that was requested from Ory Kratos. It can be used to forward information contained in the URL\'s path or query for example.
-    */
-    'request_url';
-    /**
-    * ReturnTo contains the requested return_to URL.
-    */
-    'return_to';
-    'state';
-    /**
-    * The flow type can either be `api` or `browser`.
-    */
-    'type';
-    'ui';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return SettingsFlow.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * Active, if set, contains the registration method that is being used. It is initially not set.
+        */
+        Object.defineProperty(this, 'active', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * Contains a list of actions, that could follow this flow  It can, for example, contain a reference to the verification flow, created as part of the user\'s registration.
+        */
+        Object.defineProperty(this, 'continue_with', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ExpiresAt is the time (UTC) when the flow expires. If the user still wishes to update the setting, a new flow has to be initiated.
+        */
+        Object.defineProperty(this, 'expires_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ID represents the flow\'s unique ID. When performing the settings flow, this represents the id in the settings ui\'s query parameter: http://<selfservice.flows.settings.ui_url>?flow=<id>
+        */
+        Object.defineProperty(this, 'id', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'identity', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * IssuedAt is the time (UTC) when the flow occurred.
+        */
+        Object.defineProperty(this, 'issued_at', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * RequestURL is the initial URL that was requested from Ory Kratos. It can be used to forward information contained in the URL\'s path or query for example.
+        */
+        Object.defineProperty(this, 'request_url', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * ReturnTo contains the requested return_to URL.
+        */
+        Object.defineProperty(this, 'return_to', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'state', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        /**
+        * The flow type can either be `api` or `browser`.
+        */
+        Object.defineProperty(this, 'type', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'ui', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(SettingsFlow, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(SettingsFlow, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "active",
             "baseName": "active",
@@ -116,11 +186,6 @@ class SettingsFlow {
             "type": "UiContainer",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return SettingsFlow.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { SettingsFlow };

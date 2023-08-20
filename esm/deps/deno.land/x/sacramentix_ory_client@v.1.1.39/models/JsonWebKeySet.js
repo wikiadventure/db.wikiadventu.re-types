@@ -13,23 +13,38 @@
 * JSON Web Key Set
 */
 class JsonWebKeySet {
-    /**
-    * List of JSON Web Keys  The value of the \"keys\" parameter is an array of JSON Web Key (JWK) values. By default, the order of the JWK values within the array does not imply an order of preference among them, although applications of JWK Sets can choose to assign a meaning to the order for their purposes, if desired.
-    */
-    'keys';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return JsonWebKeySet.attributeTypeMap;
+    }
+    constructor() {
+        /**
+        * List of JSON Web Keys  The value of the \"keys\" parameter is an array of JSON Web Key (JWK) values. By default, the order of the JWK values within the array does not imply an order of preference among them, although applications of JWK Sets can choose to assign a meaning to the order for their purposes, if desired.
+        */
+        Object.defineProperty(this, 'keys', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(JsonWebKeySet, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(JsonWebKeySet, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "keys",
             "baseName": "keys",
             "type": "Array<JsonWebKey>",
             "format": ""
         }
-    ];
-    static getAttributeTypeMap() {
-        return JsonWebKeySet.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { JsonWebKeySet };

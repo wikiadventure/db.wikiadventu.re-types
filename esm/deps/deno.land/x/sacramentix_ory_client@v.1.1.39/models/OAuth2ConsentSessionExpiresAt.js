@@ -10,13 +10,53 @@
  * Do not edit the class manually.
  */
 class OAuth2ConsentSessionExpiresAt {
-    'access_token';
-    'authorize_code';
-    'id_token';
-    'par_context';
-    'refresh_token';
-    static discriminator = undefined;
-    static attributeTypeMap = [
+    static getAttributeTypeMap() {
+        return OAuth2ConsentSessionExpiresAt.attributeTypeMap;
+    }
+    constructor() {
+        Object.defineProperty(this, 'access_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'authorize_code', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'id_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'par_context', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, 'refresh_token', {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+    }
+}
+Object.defineProperty(OAuth2ConsentSessionExpiresAt, "discriminator", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: undefined
+});
+Object.defineProperty(OAuth2ConsentSessionExpiresAt, "attributeTypeMap", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [
         {
             "name": "access_token",
             "baseName": "access_token",
@@ -47,11 +87,6 @@ class OAuth2ConsentSessionExpiresAt {
             "type": "Date",
             "format": "date-time"
         }
-    ];
-    static getAttributeTypeMap() {
-        return OAuth2ConsentSessionExpiresAt.attributeTypeMap;
-    }
-    constructor() {
-    }
-}
+    ]
+});
 export { OAuth2ConsentSessionExpiresAt };
