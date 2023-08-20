@@ -1,6 +1,6 @@
 import * as dntShim from "../_dnt.shims.js";
-import { HTTPException } from "hono/http-exception";
-import { getCookie } from "hono/cookie";
+import { HTTPException } from "../deps/deno.land/x/hono@v3.3.1/http-exception.js";
+import { getCookie } from "../deps/deno.land/x/hono@v3.3.1/middleware.js";
 import { env } from "../env/index.js";
 export async function guardOrySession(c) {
     const ory_session_cookie = Object.entries(getCookie(c) ?? {}).find(([k, v]) => k.startsWith("ory_session"));
