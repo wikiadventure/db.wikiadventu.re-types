@@ -1,6 +1,5 @@
 {
   "module": "./esm/client/index.js",
-  "types": "./types/client/index.d.ts",
   "name": "db-wikiadventu-re",
   "description": "The type for db.wikiadventu.re that can be used with hono/client",
   "license": "MIT",
@@ -13,10 +12,7 @@
   },
   "exports": {
     ".": {
-      "import": {
-        "types": "./types/client/index.d.ts",
-        "default": "./esm/client/index.js"
-      }
+      "import": "./esm/client/index.js"
     }
   },
   "scripts": {
@@ -24,6 +20,8 @@
   },
   "dependencies": {
     "@hono/zod-validator": "0.1.8",
+    "hono": "3.4.3",
+    "zod": "3.22.2",
     "@deno/shim-deno": "~0.16.1",
     "@deno/shim-crypto": "~0.3.1",
     "undici": "^5.21.0"

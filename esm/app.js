@@ -1,6 +1,6 @@
-import { Hono } from "./deps/deno.land/x/hono@v3.3.1/mod.js";
-import { cors } from "./deps/deno.land/x/hono@v3.3.1/middleware.js";
-import { z } from "./deps/deno.land/x/zod@v3.21.4/mod.js";
+import { Hono } from "hono";
+import { cors } from "hono/cors";
+import { z } from "zod";
 import { zValidator } from "@hono/zod-validator";
 import { serve } from "./deps/deno.land/std@0.182.0/http/server.js";
 import { getAccount } from "./surreal/query/getAccountOrCreate/index.js";
